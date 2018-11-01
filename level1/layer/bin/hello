@@ -1,0 +1,8 @@
+#!/bin/sh
+echo -e "\n####################################"
+echo -e   "#                                  #"
+echo -e   "#       Hello! It's level 1        #"
+echo -e   "#   try something of cat, ls, cd   #"
+echo -e   "#                                  #"
+echo -e   "####################################"
+sh

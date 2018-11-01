@@ -1,0 +1,7 @@
+#!/bin/bash
+
+NAME="suzen4"
+CONFIG="sh|ls|awk|sed|sort|uniq|cat|find|grep|fold|rm|mv|split|cut|tr|less"
+VERSION="0.2"
+PASSWORD="ZGFpTmd1OGxvbzVmZWI2bXUxZGEK"
+ROHOME="false"
