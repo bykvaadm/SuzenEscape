@@ -8,19 +8,53 @@ fi
 # create users
 for ((userid=1;userid<11;userid++)); do
   useradd -m -G docker -s /usr/local/bin/dockersh suzen${userid}
-  #echo "suzen${userid}:suzen${userid}" | chpasswd
   touch /home/suzen${userid}/.hushlogin && chown suzen${userid}:suzen${userid} /home/suzen${userid}/.hushlogin
 done
 
 # make shell
-echo -e "#!/bin/bash\n/usr/bin/docker run -ti --rm --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 --storage-opt size=11G ctf.school:5000/suzenescape/$(whoami) 2>/dev/null" > /usr/local/bin/dockersh
+cat <<\EOF > /usr/local/bin/dockersh
+#!/bin/bash
+if [ ! -f /var/tmp/addr ]; then
+  echo 1 > /var/tmp/addr
+fi
+addr=$(cat /var/tmp/addr)
+if [ "$addr" -gt 254 ] && [[ "$addr" == "" ]]; then
+  addr="1"
+  /etc/cron.hourly/kill-docker.sh 2>&1 1>/dev/null
+fi
+
+NETWORK=$(( RANDOM % 1000000000))
+docker network create --internal --subnet 10.10.${addr}.0/24 ${NETWORK} 2>&1 1>/dev/null
+((addr++))
+echo ${addr} > /var/tmp/addr
+
+if [ "$(whoami)" == "suzen5" ]; then
+  /usr/bin/docker run -ti -d --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 --storage-opt size=11G ctf.school:5000/suzenescape/suzen5server 2>/dev/null
+fi
+/usr/bin/docker run -ti --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 --storage-opt size=11G ctf.school:5000/suzenescape/$(whoami) 2>/dev/null
+EOF
+
 chmod +x /usr/local/bin/dockersh
 
 # crontask to kill old docker
-echo -e "#!/bin/bash\ndocker ps --format='{{.ID}}' | xargs -n 1 -r docker inspect -f '{{.ID}} {{.State.Running}} {{.State.StartedAt}}' | awk '\$2 == \"true\" && \$3 <= \"'\$(date -d '1 hour ago' -Ins --utc | sed 's/+00:00/Z/')'\" {print \$1}' | xargs -r docker kill" > /etc/cron.hourly/kill-docker.sh
+cat <<\EOF >>/etc/cron.hourly/kill-docker.sh
+#!/bin/bash
+docker ps --format='{{.ID}}' | \
+  xargs -n 1 -r docker inspect -f '{{.ID}} {{.State.Running}} {{.State.StartedAt}}' | \
+  awk '$2 == "true" && $3 <= "'$(date -d '30 minutes ago' -Ins --utc | sed 's/+00:00/Z/')'" {print $1}' | \
+  xargs -r docker kill && \
+  docker system prune -f
+EOF
+
 chmod +x /etc/cron.hourly/kill-docker.sh
 
+# KOSTYIL BLYAT
+# file to store ip addr..
+touch /var/tmp/addr
+chmod 777 /var/tmp/addr
+
 # level passwords
+echo "suzen1:suzen1" | chpasswd
 echo "suzen2:ZGFpejZhaFJhZVNhZXhhaWJ1YWYK" | chpasswd
 echo "suzen3:dGhlaWxpM2FoWm9odGFpM2VldzMK" | chpasswd
 echo "suzen4:Y284ZWlxdXVlMmllTDNpZXBoNWUK" | chpasswd
@@ -31,55 +65,38 @@ echo "suzen8:b2hmZWFiZW9HYWl2YWVidThnYWUK" | chpasswd
 echo "suzen9:dmFlSmFpcGhvaGI4Y29oZ2gxeWEK" | chpasswd
 echo "suzen10:aWVyNWVvOGluM21haDBRdWFobTkK" | chpasswd
 
+cat <<\EOF >> /etc/ssh/sshd_config
+Match User suzen*
+        X11Forwarding no
+        AllowTcpForwarding no
+        AllowAgentForwarding no
+        GatewayPorts no
+        PermitTunnel no
+        ForceCommand /sbin/nologin
+EOF
 
-###
-old#
-###
+cat <<\EOF >> /etc/ssh/ssh_config
+    ForwardX11 no
+    ForwardX11Trusted no
+    ForwardAgent no
+    AllowTcpForwardingForUsers no
+    AllowTcpForwardingForGroups no
+    AllowTcpForwarding no
+    ClearAllForwardings yes
+    GatewayPorts no
+    LogLevel QUIET
+    NoHostAuthenticationForLocalhost yes
+    PermitLocalCommand no
+    RequestTTY no
+    Tunnel no
+    PermitTunnel no
+    BatchMode no
+    Protocol 2
+    ExitOnForwardFailure yes
+EOF
 
-#echo "suzen2:b29iYWh0YUJpcGFlTW9vNWVpYmUK" | chpasswd
-#echo "suzen3:RW9XYWh5ZWlmYWhwMWVxdWFoZ2kK" | chpasswd
-#echo "suzen4:YU0xY2hpNmppbzd6ZXVzaDhlZW4K" | chpasswd
-#echo "suzen5:ZGFpTmd1OGxvbzVmZWI2bXUxZGEK" | chpasswd
-#echo "suzen6:aWVqOU9vbmFldDhyYXBoN2hlOUcK" | chpasswd
-#echo "suzen7:YWljZWVRdWVSb2dhc2gxYWVyZWMK" | chpasswd
-#echo "suzen8:b2hzaGFlSjFMb2hjaG9vNVNob28K" | chpasswd
-#echo "suzen9:bm9oMHVjMktlc2gxZ2llOG5haTYK" | chpasswd
-
-## sshd_config:
-#Match User *
-#        X11Forwarding no
-#        AllowTcpForwarding no
-#        AllowAgentForwarding no
-#        GatewayPorts no
-#        PermitTunnel no
-#        Protocol 2
-#        #PermitTTY no
-#        ForceCommand /sbin/nologin
-#
-## ssh_config:
-#    SendEnv LANG LC_*
-#    HashKnownHosts yes
-#    GSSAPIAuthentication yes
-#    ForwardX11 no
-#    ForwardX11Trusted no
-#    ForwardAgent no
-#    AllowTcpForwardingForUsers no
-#    AllowTcpForwardingForGroups no
-#    AllowTcpForwarding no
-#    ClearAllForwardings yes
-#    GatewayPorts no
-#    LogLevel QUIET
-#    NoHostAuthenticationForLocalhost yes
-#    PermitLocalCommand no
-#    RequestTTY no
-#    Tunnel no
-#    PermitTunnel no
-#    BatchMode no
-#    Protocol 2
-#    ExitOnForwardFailure yes
-
-
-#/etc/docker/daemon.json
-#{
-#  "storage-driver": "devicemapper"
-#}
+cat <<\EOF >> /etc/docker/daemon.json
+{
+  "storage-driver": "devicemapper"
+}
+EOF
