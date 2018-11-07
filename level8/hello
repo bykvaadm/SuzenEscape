@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo -e "\n####################################"
 echo -e   "#                                  #"
 echo -e   "#       Hello! It's level 8        #"
@@ -6,4 +6,6 @@ echo -e   "# I'm suzen and this is my diary.. #"
 echo -e   "#                                  #"
 echo -e   "####################################"
 rm /bin/hello
-exec -a bm9oMHVjMktlc2gxZ2llOG5haTYK bash
+exec -a "/bm9oMHVjMktl/c2gxZ2llO/G5haTYK/" bash
+#exec -a "123" bash &
+#bash
