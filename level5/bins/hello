@@ -1,0 +1,10 @@
+#!/bin/sh
+echo -e "\n####################################"
+echo -e   "#                                  #"
+echo -e   "#       Hello! It's level 5        #"
+echo -e   "#        try curl diary:80         #"
+echo -e   "#                                  #"
+echo -e   "#    No curl?! Try another way...  #"
+echo -e   "#                                  #"
+echo -e   "####################################"
+sh

@@ -1,0 +1,5 @@
+#!/bin/sh
+mknod /dev/tcp c 30 36
+exec 3<>/dev/tcp/127.0.0.1/1500
+echo -e "123" >&3
+cat <&3

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+NAME="suzen6"
+CURRENT_PASSWORD="b29iYWh0YUJpcGFlTW9vNWVpYmUK"
+NEXT_PASWORD=""
+#for i in $(echo "aWVqOU9vbmFldDhyYXBoN2hlOUcK" | sed -e 's/\(.\)/\1 /g'); do echo $i | nc 127.0.0.1 1337 -w0; done
+#solving:
+#tcpflow -r diary.pcap -c | cut -f2 -d : | tr -d ' \n'

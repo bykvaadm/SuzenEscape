@@ -1,0 +1,6 @@
+#!/bin/bash
+
+NAME="suzen5"
+CONFIG="ls|cd|ls|mknod|sh"
+PASSWORD="ZGFpTmd1OGxvbzVmZWI2bXUxZGEK"
+ROHOME="false"

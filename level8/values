@@ -1,0 +1,6 @@
+#!/bin/bash
+
+NAME="suzen8"
+CONFIG="ls|cd|cat|file|du|find|sh"
+VERSION="0.2"
+PASSWORD="b29iYWh0YUJpcGFlTW9vNWVpYmUK"
