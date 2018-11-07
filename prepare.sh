@@ -21,46 +21,29 @@ echo -e "#!/bin/bash\ndocker ps --format='{{.ID}}' | xargs -n 1 -r docker inspec
 chmod +x /etc/cron.hourly/kill-docker.sh
 
 # level passwords
-echo "suzen1:suzen1" | chpasswd
-
-suzen2:ZGFpejZhaFJhZVNhZXhhaWJ1YWYK
-suzen3:dGhlaWxpM2FoWm9odGFpM2VldzMK
-suzen4:Y284ZWlxdXVlMmllTDNpZXBoNWUK
-suzen5:ZGFPTMD1OGXVBZVMZWI2BXUXZGEK
-suzen6:dmVlNFdvaE42ZWVoMFpvN3dhcGgK
-suzen7:YmllMWVraUQ0YWlxdWU5a2VpcGgK
-suzen8:b2hmZWFiZW9HYWl2YWVidThnYWUK
-suzen9:dmFlSmFpcGhvaGI4Y29oZ2gxeWEK
-suzen10:dGllU2gwYWl2bzl1YW04aWVrYWgK
-
-
-
-
-
-
-
-echo "suzen2:b29iYWh0YUJpcGFlTW9vNWVpYmUK" | chpasswd
-echo "suzen3:RW9XYWh5ZWlmYWhwMWVxdWFoZ2kK" | chpasswd
-echo "suzen4:YU0xY2hpNmppbzd6ZXVzaDhlZW4K" | chpasswd
-echo "suzen5:ZGFpTmd1OGxvbzVmZWI2bXUxZGEK" | chpasswd
-echo "suzen6:aWVqOU9vbmFldDhyYXBoN2hlOUcK" | chpasswd
-echo "suzen7:YWljZWVRdWVSb2dhc2gxYWVyZWMK" | chpasswd
-echo "suzen8:b2hzaGFlSjFMb2hjaG9vNVNob28K" | chpasswd
-echo "suzen9:bm9oMHVjMktlc2gxZ2llOG5haTYK" | chpasswd
+echo "suzen2:ZGFpejZhaFJhZVNhZXhhaWJ1YWYK" | chpasswd
+echo "suzen3:dGhlaWxpM2FoWm9odGFpM2VldzMK" | chpasswd
+echo "suzen4:Y284ZWlxdXVlMmllTDNpZXBoNWUK" | chpasswd
+echo "suzen5:ZGFPTMD1OGXVBZVMZWI2BXUXZGEK" | chpasswd
+echo "suzen6:dmVlNFdvaE42ZWVoMFpvN3dhcGgK" | chpasswd
+echo "suzen7:YmllMWVraUQ0YWlxdWU5a2VpcGgK" | chpasswd
+echo "suzen8:b2hmZWFiZW9HYWl2YWVidThnYWUK" | chpasswd
+echo "suzen9:dmFlSmFpcGhvaGI4Y29oZ2gxeWEK" | chpasswd
 echo "suzen10:aWVyNWVvOGluM21haDBRdWFobTkK" | chpasswd
-echo "suzen11:bW9oMW9kdWk1c2hvb1NoYWh5YWUK" | chpasswd
-echo "suzen12:QWl0MnplaXY5ZGllcGhlZXozbm8K" | chpasswd
-echo "suzen13:ZWVwZWlnaDFBaGw0ZmFoZzdoZWkK" | chpasswd
-echo "suzen14:YWVwMEFOb2g1Y2hvcGhlMG9oY2gK" | chpasswd
-echo "suzen15:YWh0dWUzeGllN0VkYWUyQ2llMGwK" | chpasswd
-echo "suzen16:YXF1YWUzYWVQaGllaG9veTBlaUgK" | chpasswd
-echo "suzen17:bmFoa2llOGl6OW9oeWVpcnV1NFkK" | chpasswd
-echo "suzen18:YWlMZWlnaGVlajNPbzBQb2g0amkK" | chpasswd
-echo "suzen19:eW9oaGVlMWVlU2VpOWFvMWphaTYK" | chpasswd
-echo "suzen20:ZXNhZTRrZXVnaWVtbzhlaU5nMWQK" | chpasswd
-echo "suzen21:d294NGFldzdjbzFpZTNaZWU2T2UK" | chpasswd
-echo "suzen22:YnVIYWVaM2FnZWVjNkNvaFBoNm8K" | chpasswd
 
+
+###
+old#
+###
+
+#echo "suzen2:b29iYWh0YUJpcGFlTW9vNWVpYmUK" | chpasswd
+#echo "suzen3:RW9XYWh5ZWlmYWhwMWVxdWFoZ2kK" | chpasswd
+#echo "suzen4:YU0xY2hpNmppbzd6ZXVzaDhlZW4K" | chpasswd
+#echo "suzen5:ZGFpTmd1OGxvbzVmZWI2bXUxZGEK" | chpasswd
+#echo "suzen6:aWVqOU9vbmFldDhyYXBoN2hlOUcK" | chpasswd
+#echo "suzen7:YWljZWVRdWVSb2dhc2gxYWVyZWMK" | chpasswd
+#echo "suzen8:b2hzaGFlSjFMb2hjaG9vNVNob28K" | chpasswd
+#echo "suzen9:bm9oMHVjMktlc2gxZ2llOG5haTYK" | chpasswd
 
 ## sshd_config:
 #Match User *
