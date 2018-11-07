@@ -22,6 +22,23 @@ chmod +x /etc/cron.hourly/kill-docker.sh
 
 # level passwords
 echo "suzen1:suzen1" | chpasswd
+
+suzen2:ZGFpejZhaFJhZVNhZXhhaWJ1YWYK
+suzen3:dGhlaWxpM2FoWm9odGFpM2VldzMK
+suzen4:Y284ZWlxdXVlMmllTDNpZXBoNWUK
+suzen5:ZGFPTMD1OGXVBZVMZWI2BXUXZGEK
+suzen6:dmVlNFdvaE42ZWVoMFpvN3dhcGgK
+suzen7:YmllMWVraUQ0YWlxdWU5a2VpcGgK
+suzen8:b2hmZWFiZW9HYWl2YWVidThnYWUK
+suzen9:dmFlSmFpcGhvaGI4Y29oZ2gxeWEK
+suzen10:dGllU2gwYWl2bzl1YW04aWVrYWgK
+
+
+
+
+
+
+
 echo "suzen2:b29iYWh0YUJpcGFlTW9vNWVpYmUK" | chpasswd
 echo "suzen3:RW9XYWh5ZWlmYWhwMWVxdWFoZ2kK" | chpasswd
 echo "suzen4:YU0xY2hpNmppbzd6ZXVzaDhlZW4K" | chpasswd
