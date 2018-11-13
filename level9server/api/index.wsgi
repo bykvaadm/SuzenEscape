@@ -9,7 +9,11 @@ sys.path.insert(0,"/var/www/api/src")
 
 # activate_env="/var/www/api/env/bin/activate_this.py"
 # from routes import app as application
-from main import app as application
+# from main import app as application
+import maze
+from maze import *
+# from main import rows, cols, maze, app as application
+from main import rows, cols, maze, app as application
 
 maze = Maze(100, 100)
 maze.solve_maze()

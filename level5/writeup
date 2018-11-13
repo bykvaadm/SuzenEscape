@@ -3,3 +3,5 @@ mknod /dev/tcp c 30 36
 exec 3<>/dev/tcp/127.0.0.1/1500
 echo -e "123" >&3
 cat <&3
+
+# echo -e "GET / HTTP/1.1\r\nhost: diary\r\nConnection: close\r\n\r\n" >&3

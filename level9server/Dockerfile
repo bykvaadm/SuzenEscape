@@ -25,7 +25,6 @@ COPY app.ini /etc/uwsgi/apps-enabled/app.ini
 COPY api /var/www/api
 RUN  mkdir /run/uwsgi && chown www-data /run/uwsgi
 
-#     pika                           \
-#     raven
+EXPOSE 80
 
 CMD ["/usr/bin/uwsgi", "--ini", "/etc/uwsgi/apps-enabled/app.ini"]

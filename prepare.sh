@@ -18,7 +18,7 @@ if [ ! -f /var/tmp/addr ]; then
   echo 1 > /var/tmp/addr
 fi
 addr=$(cat /var/tmp/addr)
-if [ "$addr" -gt 254 ] && [[ "$addr" == "" ]]; then
+if [ "$addr" -gt 254 ] || [[ "$addr" == "" ]]; then
   addr="1"
   /etc/cron.hourly/kill-docker.sh 2>&1 1>/dev/null
 fi
@@ -48,6 +48,11 @@ EOF
 
 chmod +x /etc/cron.hourly/kill-docker.sh
 
+cat <<\EOF >> /etc/crontab
+* * * * * root docker system prune -f
+* * * * * root /etc/cron.hourly/kill-docker.sh
+EOF
+
 # KOSTYIL BLYAT
 # file to store ip addr..
 touch /var/tmp/addr
@@ -58,7 +63,7 @@ echo "suzen1:suzen1" | chpasswd
 echo "suzen2:ZGFpejZhaFJhZVNhZXhhaWJ1YWYK" | chpasswd
 echo "suzen3:dGhlaWxpM2FoWm9odGFpM2VldzMK" | chpasswd
 echo "suzen4:Y284ZWlxdXVlMmllTDNpZXBoNWUK" | chpasswd
-echo "suzen5:ZGFPTMD1OGXVBZVMZWI2BXUXZGEK" | chpasswd
+echo "suzen5:C2HLBODHAER1ZMLLBNV1AGFPOW4K" | chpasswd
 echo "suzen6:dmVlNFdvaE42ZWVoMFpvN3dhcGgK" | chpasswd
 echo "suzen7:YmllMWVraUQ0YWlxdWU5a2VpcGgK" | chpasswd
 echo "suzen8:b2hmZWFiZW9HYWl2YWVidThnYWUK" | chpasswd
