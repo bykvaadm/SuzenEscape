@@ -1,0 +1,46 @@
+---
+- hosts: all
+  gather_facts: no
+  vars_files:
+  - vars.yaml
+
+  tasks:
+  - name: create users
+    user:
+      name: "{{ item.name }}"
+      password: "{{ item.password | password_hash('sha512', item.sault) }}"
+      shell: /usr/local/bin/dockersh
+      groups: docker
+      create_home: yes
+    with_items: "{{ levels }}"
+
+  - name: add custom shell in list
+    lineinfile:
+      path: /etc/shells
+      line: /usr/local/bin/dockersh
+
+  - name: upload custom shell
+    copy:
+      src: dockersh
+      dest: /usr/local/bin/dockersh
+      owner: root
+      group: root
+      mode: 0755
+
+  - name: Create cron jobs
+    cron:
+      name: docker cleanup
+      user: root
+      job: "{{ item }}"
+      cron_file: docker
+    with_items:
+    - "/usr/local/bin/kill-docker.sh"
+    - "docker system prune -f"
+
+  - name: upload cleanup docker script
+    copy:
+      src: kill-docker.sh
+      dest: /usr/local/bin/kill-docker.sh
+      owner: root
+      group: root
+      mode: 0755

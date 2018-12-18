@@ -1,0 +1,1 @@
+game ansible_ssh_host=167.114.236.211 ansible_ssh_user=debian
