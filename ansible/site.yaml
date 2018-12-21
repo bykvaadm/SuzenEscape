@@ -44,3 +44,35 @@
       owner: root
       group: root
       mode: 0755
+
+  - name: create kostyl file
+    lineinfile:
+      path: /var/tmp/addr
+      line: '1'
+      create: yes
+      mode: 0777
+      state: present
+
+  - name: upload docker config
+    copy:
+      src: daemon.json
+      dest: /etc/docker/daemon.json
+      owner: root
+      group: root
+      mode: 0755
+
+  - name: upload ssh_config
+    copy:
+      src: ssh_config
+      dest: /etc/ssh/ssh_config
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: upload sshd_config
+    copy:
+      src: sshd_config
+      dest: /etc/ssh/sshd_config
+      owner: root
+      group: root
+      mode: 0644
