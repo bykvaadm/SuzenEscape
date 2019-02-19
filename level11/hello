@@ -1,0 +1,8 @@
+#!/bin/sh
+echo -e "\n####################################"
+echo -e   "#                                  #"
+echo -e   "#       Hello! It's level 11       #"
+echo -e   "#           read diary.txt         #"
+echo -e   "#                                  #"
+echo -e   "####################################"
+sh

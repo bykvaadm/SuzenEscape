@@ -1,35 +1,91 @@
 ---
 levels:
   - name: suzen1
+    image: myctf.ru:5000/suzenescape/suzen1
     password: suzen1
     sault: "tCY.XnoD"
+    flag: "ZGFpejZhaFJhZVNhZXhhaWJ1YWYK"
+    config: "ls|cd|cat|file|du|find|sh"
+    version: "0.2"
   - name: suzen2
+    image: myctf.ru:5000/suzenescape/suzen2
     password: "ZGFpejZhaFJhZVNhZXhhaWJ1YWYK"
     sault: "3c9OnFo/"
+    flag: "dGhlaWxpM2FoWm9odGFpM2VldzMK"
+    config: "ls|cd|sh|cat|less|more|head|tail"
   - name: suzen3
+    image: myctf.ru:5000/suzenescape/suzen3
     password: "dGhlaWxpM2FoWm9odGFpM2VldzMK"
     sault: "oh3Rh950"
+    flag: "Y284ZWlxdXVlMmllTDNpZXBoNWUK"
+    config: "sh|ls"
+    version: "0.2"
+    rohome: "true"
   - name: suzen4
+    image: myctf.ru:5000/suzenescape/suzen4
     password: "Y284ZWlxdXVlMmllTDNpZXBoNWUK"
     sault: "rKQAVmA9"
-  - name: suzen5
+    flag: "C2HLBODHAER1ZMLLBNV1AGFPOW4K"
+    config: "sh|ls|awk|sed|sort|uniq|cat|find|grep|fold|rm|mv|split|cut|tr|less"
+    version: "0.2"
+    rohome: "false"
+  - name: suzen5server
+    image: myctf.ru:5000/suzenescape/suzen5server
     password: "suzen5"
     sault: "Yy9aP4bg"
+    flag: "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
+    config: "ls|cd|ls|mknod|sh"
+    rohome: "false"
+  - name: suzen5
+    image: myctf.ru:5000/suzenescape/suzen5
+    password: "suzen5"
+    sault: "Yy9aP4bg"
+    flag: "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
+    config: "ls|cd|ls|mknod|sh"
+    rohome: "false"
   - name: suzen6
+    image: myctf.ru:5000/suzenescape/suzen6
     password: "suzen6"
     sault: "wC41kJyn"
+    flag: "YmllMWVraUQ0YWlxdWU5a2VpcGgK"
   - name: suzen7
+    image: myctf.ru:5000/suzenescape/suzen7
     password: "YmllMWVraUQ0YWlxdWU5a2VpcGgK"
     sault: "XJ.z5hxy"
+    flag: "b2hmZWFiZW9HYWl2YWVidThnYWUK"
   - name: suzen8
+    image: myctf.ru:5000/suzenescape/suzen8
     password: "b2hmZWFiZW9HYWl2YWVidThnYWUK"
     sault: "PoZ3KIT4"
-  - name: suzen9
+    flag: dmFlSmFpcGhvaGI4Y29oZ2gxeWEK
+  - name: suzen9server
+    image: myctf.ru:5000/suzenescape/suzen9server
     password: "suzen9"
     sault:  "UP6ILIjj"
+    flag: aWVyNWVvOGluM21haDBRdWFobTkK
+  - name: suzen9
+    image: myctf.ru:5000/suzenescape/suzen9
+    password: "suzen9"
+    sault:  "UP6ILIjj"
+    flag: aWVyNWVvOGluM21haDBRdWFobTkK
   - name: suzen10
+    image: myctf.ru:5000/suzenescape/suzen10
     password: "aWVyNWVvOGluM21haDBRdWFobTkK"
     sault: "uiQs3XQL"
   - name: suzen11
+    image: myctf.ru:5000/suzenescape/suzen11
     password: "suzen11"
     sault: "tCY.XnoD"
+    flag: "aXY3ZWlqZWl5ZWlQaG9vczlhSmEK"
+    config: "ls|cd|cat|file|du|find|sh"
+  - name: suzen12
+    image: myctf.ru:5000/suzenescape/suzen12
+    password: "aXY3ZWlqZWl5ZWlQaG9vczlhSmEK"
+    sault: "tHnyJhTd"
+    flag: "eWFlMEhpZTByYWVwYXRoZWUwYWEK"
+    config: "ls|sh|cd"
+  - name: suzen13
+    image: myctf.ru:5000/suzenescape/suzen13
+    password: "suzen13"
+    sault: "tHnyJhTd"
+    flag: "Sm9vbmVlOGVlYzRFaXNob294ZWsK"

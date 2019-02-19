@@ -35,7 +35,6 @@
       cron_file: docker
     with_items:
     - "/usr/local/bin/kill-docker.sh"
-    - "docker system prune -f"
 
   - name: upload cleanup docker script
     copy:
@@ -45,6 +44,11 @@
       group: root
       mode: 0755
 
+  - name: check if rules file exists
+    stat: 
+      path: /var/tmp/addr
+    register: kostyl_stat
+
   - name: create kostyl file
     lineinfile:
       path: /var/tmp/addr
@@ -52,14 +56,16 @@
       create: yes
       mode: 0777
       state: present
+    when: kostyl_stat.stat.exists == false
 
-  - name: upload docker config
-    copy:
-      src: daemon.json
-      dest: /etc/docker/daemon.json
-      owner: root
-      group: root
-      mode: 0755
+
+  #- name: upload docker config
+  #  copy:
+  #    src: daemon.json
+  #    dest: /etc/docker/daemon.json
+  #    owner: root
+  #    group: root
+  #    mode: 0755
 
   - name: upload ssh_config
     copy:
@@ -76,3 +82,11 @@
       owner: root
       group: root
       mode: 0644
+
+  - name: Pull docker image
+    command: docker pull {{ item.image }}
+    register: docker_pull
+    changed_when: "'Status: Downloaded newer image' in docker_pull.stdout"
+    with_items: "{{ levels }}"
+    tags:
+    - pull

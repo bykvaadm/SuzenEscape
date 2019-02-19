@@ -29,9 +29,9 @@ docker network create --internal --subnet 10.10.${addr}.0/24 ${NETWORK} 2>&1 1>/
 echo ${addr} > /var/tmp/addr
 
 if [ "$(whoami)" == "suzen5" ]; then
-  /usr/bin/docker run -ti -d --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 --storage-opt size=11G ctf.school:5000/suzenescape/suzen5server 2>/dev/null
+  /usr/bin/docker run -ti -d --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 --storage-opt size=11G myctf.ru:5000/suzenescape/suzen5server 2>/dev/null
 fi
-/usr/bin/docker run -ti --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 --storage-opt size=11G ctf.school:5000/suzenescape/$(whoami) 2>/dev/null
+/usr/bin/docker run -ti --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 --storage-opt size=11G myctf.ru:5000/suzenescape/$(whoami) 2>/dev/null
 EOF
 
 chmod +x /usr/local/bin/dockersh

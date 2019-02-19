@@ -1,0 +1,5 @@
+from alpine
+COPY ./folder_builder .
+RUN df -h
+#./folder_builder -str hello -subdirs_count 2000
+CMD [ "ls", "-l" ]
