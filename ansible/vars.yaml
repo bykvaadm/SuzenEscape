@@ -122,8 +122,8 @@ levels:
     sault   : "tHnyJhTd"
     flag    : "Sm9vbmVlOGVlYzRFaXNob294ZWsK"
 
-    ## Chain 6 (my favorite text editor)
-    # cd, ls
+    ## Chain 6 (basic bash commands)
+    # cd
   - name    : suzen14
     image   : myctf.ru:5000/suzenescape/suzen14
     password: "suzen14"
@@ -141,15 +141,29 @@ levels:
     password: "TWVlMXdvaDJ6YWVoZWoyamllNm8K"
     sault   : "DKr8Jh13"
     flag    : "ZXVsb29naG91MFBob2g4T2hkYWkK"
-    # id
+    # ls
   - name    : suzen17
     image   : myctf.ru:5000/suzenescape/suzen17
     password: "ZXVsb29naG91MFBob2g4T2hkYWkK"
     sault   : "dcdcUI13"
     flag    : "bmVlNm1lMEhhaU11M2thaGVpNmEK"
-    # id
+    # man
   - name    : suzen18
     image   : myctf.ru:5000/suzenescape/suzen18
     password: "bmVlNm1lMEhhaU11M2thaGVpNmEK"
     sault   : "KKr8POR3"
     flag    : "Y2hpZWNoM2VpRzRJZWtlaXNlbGUK"
+
+    ## Chain 7 (basic bash commands2)
+    # mkdir
+  - name    : suzen19
+    image   : myctf.ru:5000/suzenescape/suzen19
+    password: "suzen19"
+    sault   : "DkOlP1Td"
+    flag    : "V2VpMGNvaHNoZWlxdWE0YWhnaG8K"
+    # rm
+  - name    : suzen20
+    image   : myctf.ru:5000/suzenescape/suzen20
+    password: "V2VpMGNvaHNoZWlxdWE0YWhnaG8K"
+    sault   : "D2fwe44d"
+    flag    : "YW1pZWhpaW0yb2h5NW9vRjZlaXcK"

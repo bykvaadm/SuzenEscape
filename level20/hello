@@ -1,0 +1,10 @@
+#!/bin/sh
+echo -e "\n########################################################################"
+echo -e   "#                                                                      #"
+echo -e   "#                       Hello! It's level 19                           #"
+echo -e   "#                                                                      #"
+echo -e   "#        remove everything from ~john and flag will appear             #"
+echo -e   "#                  in this directory:   ~suzen                         #"
+echo -e   "#                                                                      #"
+echo -e   "########################################################################"
+sh

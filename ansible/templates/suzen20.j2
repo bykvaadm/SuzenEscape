@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if ! find "/home/john" -mindepth 1 -print  2>/dev/null | grep -q .; then
+  mkdir "/home/suzen/{{ levels | selectattr('name', 'equalto', 'suzen20') | map(attribute='flag') | join(',') }}"
+fi

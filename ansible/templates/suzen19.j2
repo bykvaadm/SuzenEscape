@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ -d /home/suzen/Documents/projects/lab19/using/simple/bash/commands ]; then
+  mkdir "/home/suzen/Documents/projects/lab19/using/simple/bash/commands/{{ levels | selectattr('name', 'equalto', 'suzen19') | map(attribute='flag') | join(',') }}"
+fi
