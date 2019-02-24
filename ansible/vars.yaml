@@ -167,3 +167,9 @@ levels:
     password: "V2VpMGNvaHNoZWlxdWE0YWhnaG8K"
     sault   : "D2fwe44d"
     flag    : "YW1pZWhpaW0yb2h5NW9vRjZlaXcK"
+    # rm with filters
+  - name    : suzen21
+    image   : myctf.ru:5000/suzenescape/suzen21
+    password: "YW1pZWhpaW0yb2h5NW9vRjZlaXcK"
+    sault   : "DggOP112d"
+    flag    : "aWU0b29XdWxlaXBodXBpZWZveW8K"

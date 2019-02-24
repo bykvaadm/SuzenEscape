@@ -7,7 +7,7 @@ NAME="suzen6"
 # nc -lvk 127.0.0.1 1337
 
 #solving:
-#tcpflow -r diary.pcap -c | cut -f2 -d : | tr -d ' \n'
-
+#tcpflow -r diary.pcap -c | cut -f2 -d : | egrep '^ [a-zA-Z0-9]$' |  tr -d ' \n' |wc
+#
 CURRENT_PASSWORD="dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
 NEXT_LEVEL_PASSWORD="YmllMWVraUQ0YWlxdWU5a2VpcGgK"

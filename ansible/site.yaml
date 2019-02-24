@@ -65,6 +65,7 @@
       with_items:
         - suzen19
         - suzen20
+        - suzen21
 
     - name: upload cleanup docker script
       copy:
