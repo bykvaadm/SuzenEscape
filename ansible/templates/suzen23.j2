@@ -1,0 +1,10 @@
+#!/bin/sh
+
+md51=$(ls /home/suzen/source/      | md5sum | awk '{print $1}')
+md52=$(ls /home/suzen/destination/ | md5sum | awk '{print $1}')
+
+if [[ "$md51" = "d41d8cd98f00b204e9800998ecf8427e" ]]; then
+  if [[ "$md52" = "39b9bbe2ab9839d463a44843e2ad8234" ]]; then
+    mkdir "/home/suzen/{{ levels | selectattr('name', 'equalto', 'suzen23') | map(attribute='flag') | join(',') }}"
+  fi
+fi

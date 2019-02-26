@@ -1,0 +1,7 @@
+#!/bin/sh
+
+md5=$(ls /home/suzen | md5sum | awk '{print $1}')
+
+if [[ "$md5" = "0e1e388f75e27c33748cdfc1185cc2ec" ]]; then
+  mkdir "/home/suzen/{{ levels | selectattr('name', 'equalto', 'suzen22') | map(attribute='flag') | join(',') }}"
+fi

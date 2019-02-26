@@ -66,6 +66,9 @@
         - suzen19
         - suzen20
         - suzen21
+        - suzen22
+        - suzen23
+        - suzen24
 
     - name: upload cleanup docker script
       copy:

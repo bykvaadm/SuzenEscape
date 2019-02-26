@@ -1,6 +1,6 @@
 FROM bash
 
-RUN adduser -D john && mkdir /home/suzen && \
+RUN adduser -D john && adduser -D suzen && \
     bash -c "mkdir -p /home/john/Desktop/{films,music}/ololo" && \
     bash -c "mkdir -p /home/john/Documents/{films,music}/azaza" && \
     bash -c "touch /home/john/{file1,file2,file3}"

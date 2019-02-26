@@ -1,10 +1,10 @@
 #!/bin/sh
 echo -e "\n########################################################################"
 echo -e   "#                                                                      #"
-echo -e   "#                       Hello! It's level 20                           #"
+echo -e   "#                       Hello! It's level 24                           #"
 echo -e   "#                                                                      #"
-echo -e   "#        remove everything from ~john and flag will appear             #"
-echo -e   "#                  in this directory:   ~suzen                         #"
+echo -e   "#             copy Desktop/music content to ~suzen/Music               #"
+echo -e   "#            flag will appear in this directory:   ~suzen              #"
 echo -e   "#                                                                      #"
 echo -e   "########################################################################"
 sh

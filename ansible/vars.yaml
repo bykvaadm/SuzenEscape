@@ -173,3 +173,64 @@ levels:
     password: "YW1pZWhpaW0yb2h5NW9vRjZlaXcK"
     sault   : "DggOP112d"
     flag    : "aWU0b29XdWxlaXBodXBpZWZveW8K"
+    # touch
+  - name    : suzen22
+    image   : myctf.ru:5000/suzenescape/suzen22
+    password: "aWU0b29XdWxlaXBodXBpZWZveW8K"
+    sault   : "2hvOWpvb"
+    flag    : "dXI2dXNhaDNvaFQxaWV2MGNobzgK"
+    # mv
+  - name    : suzen23
+    image   : myctf.ru:5000/suzenescape/suzen23
+    password: "dXI2dXNhaDNvaFQxaWV2MGNobzgK"
+    sault   : "cXV1bmcK"
+    flag    : "dmVlc2VpQzVBb2dlaXI1cmVlM2YK"
+    # cp
+  - name    : suzen24
+    image   : myctf.ru:5000/suzenescape/suzen24
+    password: "dmVlc2VpQzVBb2dlaXI1cmVlM2YK"
+    sault   : "1YXRvaHp"
+    flag    : "YWVnaG9venVvejd2b292OHNvaEwK"
+
+    ## Chain 8 (basic bash commands3)
+    #
+  - name    : suzen25
+    image   : myctf.ru:5000/suzenescape/suzen25
+    password: "suzen25"
+    sault   : "aWJ1YzIK"
+    flag    : "dGhlZThhcXVpZUNpTGFpdGhlZTkK"
+    #
+  - name    : suzen25
+    image   : myctf.ru:5000/suzenescape/suzen25
+    password: "dGhlZThhcXVpZUNpTGFpdGhlZTkK"
+    sault   : "ZWNvaHhl"
+    flag    : "WWVpc2gxYWlndXVrZWl5ZWloaWUK"
+    #
+  - name    : suzen25
+    image   : myctf.ru:5000/suzenescape/suzen25
+    password: "WWVpc2gxYWlndXVrZWl5ZWloaWUK"
+    sault   : "GE0ZWlQ"
+    flag    : "dGVlMUtleThhUXVvaDFnZTFiaWkK"
+    #
+  - name    : suzen25
+    image   : myctf.ru:5000/suzenescape/suzen25
+    password: "dGVlMUtleThhUXVvaDFnZTFiaWkK"
+    sault   : "V5YWVUaW"
+    flag    : "ZWV4b1g1WnVkMm9oZnVjYWhkdTMK"
+    #
+  - name    : suzen25
+    image   : myctf.ru:5000/suzenescape/suzen25
+    password: "ZWV4b1g1WnVkMm9oZnVjYWhkdTMK"
+    sault   : "Glldm9vO"
+    flag    : "dmFvbmcwcGFlMWlodUJvaFppZWQK"
+
+#  - name    : suzen25
+#    image   : myctf.ru:5000/suzenescape/suzen25
+#    password: ""
+#    sault   : ""
+#    flag    : ""
+#  - name    : suzen25
+#    image   : myctf.ru:5000/suzenescape/suzen25
+#    password: ""
+#    sault   : ""
+#    flag    : ""

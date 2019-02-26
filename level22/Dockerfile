@@ -1,4 +1,4 @@
-FROM busybox
+FROM bash
 
 RUN adduser -D suzen
 ADD hello /bin/hello

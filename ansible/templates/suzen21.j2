@@ -2,6 +2,6 @@
 
 md5=$(ls /home/suzen | md5sum | awk '{print $1}')
 
-if [[ "$md5" = "ca4f08ef18d682059d163d84493f7387" ]]; then
+if [[ "$md5" = "696c858a571863c21ede8017a1399951" ]]; then
   mkdir "/home/suzen/{{ levels | selectattr('name', 'equalto', 'suzen21') | map(attribute='flag') | join(',') }}"
 fi
