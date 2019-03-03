@@ -1,0 +1,8 @@
+#!/bin/sh
+
+while true; do
+  while read line; do echo "$line" >> /home/suzen/diary; sleep 2s; done < /usr/share/misc/diary
+  echo -e "\n\n\n\nПленка закончилась\n\n\n\n\n" >> /home/suzen/diary
+  echo -e "\n\n\n\nПерематываем кассету....\n\n\n\n\n" >> /home/suzen/diary
+  echo -e "\n\n\n\nСтавим фильм заново\n\n\n\n\n" >> /home/suzen/diary
+done

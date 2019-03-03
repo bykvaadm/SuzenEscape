@@ -1,0 +1,6 @@
+#!/bin/sh
+
+
+if $(ps aux | grep '\-f' | grep diary | grep -q tail); then
+  echo -e "\nFLAG: {{ levels | selectattr('name', 'equalto', 'suzen27') | map(attribute='flag') | join(',') }} \n" >> /home/suzen/diary
+fi

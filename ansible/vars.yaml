@@ -193,36 +193,37 @@ levels:
     flag    : "YWVnaG9venVvejd2b292OHNvaEwK"
 
     ## Chain 8 (basic bash commands3)
-    #
+    # cat
   - name    : suzen25
     image   : myctf.ru:5000/suzenescape/suzen25
     password: "suzen25"
     sault   : "aWJ1YzIK"
     flag    : "dGhlZThhcXVpZUNpTGFpdGhlZTkK"
     #
-  - name    : suzen25
-    image   : myctf.ru:5000/suzenescape/suzen25
+  - name    : suzen26
+    image   : myctf.ru:5000/suzenescape/suzen26
     password: "dGhlZThhcXVpZUNpTGFpdGhlZTkK"
     sault   : "ZWNvaHhl"
     flag    : "WWVpc2gxYWlndXVrZWl5ZWloaWUK"
     #
-  - name    : suzen25
-    image   : myctf.ru:5000/suzenescape/suzen25
+  - name    : suzen27
+    image   : myctf.ru:5000/suzenescape/suzen27
     password: "WWVpc2gxYWlndXVrZWl5ZWloaWUK"
     sault   : "GE0ZWlQ"
     flag    : "dGVlMUtleThhUXVvaDFnZTFiaWkK"
     #
-  - name    : suzen25
-    image   : myctf.ru:5000/suzenescape/suzen25
+  - name    : suzen28
+    image   : myctf.ru:5000/suzenescape/suzen28
     password: "dGVlMUtleThhUXVvaDFnZTFiaWkK"
     sault   : "V5YWVUaW"
     flag    : "ZWV4b1g1WnVkMm9oZnVjYWhkdTMK"
     #
-  - name    : suzen25
-    image   : myctf.ru:5000/suzenescape/suzen25
+  - name    : suzen29
+    image   : myctf.ru:5000/suzenescape/suzen29
     password: "ZWV4b1g1WnVkMm9oZnVjYWhkdTMK"
     sault   : "Glldm9vO"
     flag    : "dmFvbmcwcGFlMWlodUJvaFppZWQK"
+
 
 #  - name    : suzen25
 #    image   : myctf.ru:5000/suzenescape/suzen25

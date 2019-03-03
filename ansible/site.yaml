@@ -59,16 +59,17 @@
 
     - name      : upload checker scripts
       template  :
-        src : "{{ item }}.j2"
-        dest: "/opt/susenescape/{{ item }}"
+        src : "suzen{{ item }}.j2"
+        dest: "/opt/susenescape/suzen{{ item }}"
         mode: 0755
       with_items:
-        - suzen19
-        - suzen20
-        - suzen21
-        - suzen22
-        - suzen23
-        - suzen24
+        - 19
+        - 20
+        - 21
+        - 22
+        - 23
+        - 24
+        - 27
 
     - name: upload cleanup docker script
       copy:
