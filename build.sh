@@ -36,7 +36,7 @@ fi
 
 echo $USERHOME
 
-# TO DO: filter out if CONFIG and SYSCONFIG have same binarys
+# TO DO: filter out if CONFIG and SYSCONFIG have same binaries
 # sysconfig - system utils for building
 SYSCONFIG="chown|chmod|adduser|addgroup|egrep|xargs|rm|ls"
 # level utils + build utils
