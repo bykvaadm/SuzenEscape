@@ -1,6 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
+ID="$1"
 
-if $(ps aux | grep '\-f' | grep diary | grep -q tail); then
-  echo -e "\nFLAG: {{ levels | selectattr('name', 'equalto', 'suzen27') | map(attribute='flag') | join(',') }} \n" >> /home/suzen/diary
+dockerstdout=$(docker exec ${ID} ps aux)
+
+if $(printf "%s\n" "$dockerstdout" | grep '\-f' | grep diary | grep -q tail); then
+  docker exec ${ID} sh -c "echo FLAG: {{ levels | selectattr('name', 'equalto', 'suzen27') | map(attribute='flag') | join(',') }} >> /home/suzen/diary"
 fi
