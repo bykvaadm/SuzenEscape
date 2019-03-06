@@ -15,11 +15,11 @@ echo ${addr} > /var/tmp/addr
 
 if [ "$(whoami)" == "suzen5" ]; then
   #--storage-opt size=11G
-  /usr/bin/docker run -ti -d --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 myctf.ru:5000/suzenescape/suzen5server 2>/dev/null 1>/dev/null
+  /usr/bin/docker run -ti -d --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 {{ registry_url }}/suzenescape/suzen5server 2>/dev/null 1>/dev/null
 fi
 
 if [ "$(whoami)" == "suzen9" ]; then
-  /usr/bin/docker run -ti -d --rm --network $NETWORK --cpus=".5" --memory=512m --kernel-memory=512m --pids-limit=100 --stop-timeout=3600 myctf.ru:5000/suzenescape/suzen9server 2>/dev/null 1>/dev/null
+  /usr/bin/docker run -ti -d --rm --network $NETWORK --cpus=".5" --memory=512m --kernel-memory=512m --pids-limit=100 --stop-timeout=3600 {{ registry_url }}/suzenescape/suzen9server 2>/dev/null 1>/dev/null
 fi
 
-/usr/bin/docker run -ti --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 myctf.ru:5000/suzenescape/$(whoami) 2>/dev/null
+/usr/bin/docker run -ti --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 {{ registry_url }}/suzenescape/$(whoami) 2>/dev/null

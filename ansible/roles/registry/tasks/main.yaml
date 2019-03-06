@@ -1,0 +1,16 @@
+- name: copy docker registry service file
+  copy:
+    src: registry.service
+    dest: /etc/systemd/system/registry.service
+    owner: root
+    group: root
+    mode: 0644
+  notify: reload systemd
+  register: service_file
+
+- name: Restart service
+  service: name=registry state=restarted
+  when: service_file.changed
+
+- name: Start service
+  service: name=registry state=started enabled=yes

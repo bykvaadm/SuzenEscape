@@ -1,9 +1,0 @@
-#!/bin/bash
-
-NAME="suzen3"
-CONFIG="sh|ls"
-VERSION="0.2"
-ROHOME="true"
-
-CURRENT_PASSWORD="dGhlaWxpM2FoWm9odGFpM2VldzMK"
-NEXT_LEVEL_PASSWORD="Y284ZWlxdXVlMmllTDNpZXBoNWUK"

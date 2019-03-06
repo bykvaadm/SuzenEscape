@@ -1,8 +1,0 @@
-#!/bin/bash
-
-NAME="suzen1"
-CONFIG="ls|cd|cat|file|du|find|sh"
-VERSION="0.2"
-
-CURRENT_PASSWORD="suzen1"
-NEXT_LEVEL_PASSWORD="ZGFpejZhaFJhZVNhZXhhaWJ1YWYK"

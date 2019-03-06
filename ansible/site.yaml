@@ -8,8 +8,15 @@
   pre_tasks:
   - name: intall python
     raw: apt -y update && apt install -y python-minimal python-apt
+  - name: determine if registry is already installed
+    uri:
+      url: "http://{{ repistry }}"
+      return_content: yes
+    register: result
+    timeout: 5
+  - debug: var=result
 
   roles       :
     - install_docker
     - registry
-    - deploy_tasks
+    - { role: deploy_tasks, when: "var == '123'", tags: ["deploy_tasks"] }

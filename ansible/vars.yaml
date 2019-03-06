@@ -1,5 +1,8 @@
 ---
-levels:
+install_registry: false
+registry_url    : "127.0.0.1:5000"
+# myctf.ru:5000
+levels          :
   ## Chain 1 (Beginner)
   # read file
   - name    : suzen1
@@ -8,7 +11,7 @@ levels:
     sault   : "tCY.XnoD"
     flag    : "ZGFpejZhaFJhZVNhZXhhaWJ1YWYK"
     config  : "ls|cd|cat|file|du|find|sh"
-    version : "0.2"
+    chain   : 1
     # read file
   - name    : suzen2
     image   : myctf.ru:5000/suzenescape/suzen2
@@ -16,6 +19,7 @@ levels:
     sault   : "3c9OnFo/"
     flag    : "dGhlaWxpM2FoWm9odGFpM2VldzMK"
     config  : "ls|cd|sh|cat|less|more|head|tail"
+    chain   : 1
     # read file
   - name    : suzen3
     image   : myctf.ru:5000/suzenescape/suzen3
@@ -23,8 +27,8 @@ levels:
     sault   : "oh3Rh950"
     flag    : "Y284ZWlxdXVlMmllTDNpZXBoNWUK"
     config  : "sh|ls"
-    version : "0.2"
     rohome  : "true"
+    chain   : 1
     # read file
   - name    : suzen4
     image   : myctf.ru:5000/suzenescape/suzen4
@@ -32,8 +36,8 @@ levels:
     sault   : "rKQAVmA9"
     flag    : "C2HLBODHAER1ZMLLBNV1AGFPOW4K"
     config  : "sh|ls|awk|sed|sort|uniq|cat|find|grep|fold|rm|mv|split|cut|tr|less"
-    version : "0.2"
     rohome  : "false"
+    chain   : 1
 
     ## Chain 2 (Talk to nginx)
     # /dev/tcp to nginx
@@ -44,6 +48,7 @@ levels:
     flag    : "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
     config  : "ls|cd|ls|mknod|sh"
     rohome  : "false"
+    chain   : 2
   - name    : suzen5
     image   : myctf.ru:5000/suzenescape/suzen5
     password: "suzen5"
@@ -51,6 +56,7 @@ levels:
     flag    : "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
     config  : "ls|cd|ls|mknod|sh"
     rohome  : "false"
+    chain   : 2
 
     ## Chain 3 (One line solve)
     # pcap
@@ -59,18 +65,21 @@ levels:
     password: "suzen6"
     sault   : "wC41kJyn"
     flag    : "YmllMWVraUQ0YWlxdWU5a2VpcGgK"
+    chain   : 3
     # magic
   - name    : suzen7
     image   : myctf.ru:5000/suzenescape/suzen7
     password: "YmllMWVraUQ0YWlxdWU5a2VpcGgK"
     sault   : "XJ.z5hxy"
     flag    : "b2hmZWFiZW9HYWl2YWVidThnYWUK"
+    chain   : 3
     # process name
   - name    : suzen8
     image   : myctf.ru:5000/suzenescape/suzen8
     password: "b2hmZWFiZW9HYWl2YWVidThnYWUK"
     sault   : "PoZ3KIT4"
     flag    : dmFlSmFpcGhvaGI4Y29oZ2gxeWEK
+    chain   : 3
 
     ## Chain 4 (maze)
     # maze
@@ -79,22 +88,21 @@ levels:
     password: "suzen9"
     sault   :  "UP6ILIjj"
     flag    : aWVyNWVvOGluM21haDBRdWFobTkK
+    chain   : 4
   - name    : suzen9
     image   : myctf.ru:5000/suzenescape/suzen9
     password: "suzen9"
     sault   :  "UP6ILIjj"
     flag    : aWVyNWVvOGluM21haDBRdWFobTkK
+    chain   : 4
 
-  ####
-  ####
+    ## Chain 5
+    # TODO
   - name    : suzen10
     image   : myctf.ru:5000/suzenescape/suzen10
     password: "aWVyNWVvOGluM21haDBRdWFobTkK"
     sault   : "uiQs3XQL"
-  ####
-  ####
-
-    ## Chain 5 (Recursive folders)
+    chain   : 5
     # Recursive folders
   - name    : suzen11
     image   : myctf.ru:5000/suzenescape/suzen11
@@ -102,25 +110,22 @@ levels:
     sault   : "tCY.XnoD"
     flag    : "aXY3ZWlqZWl5ZWlQaG9vczlhSmEK"
     config  : "ls|cd|cat|file|du|find|sh"
-
-  ####
-  ####
+    chain   : 5
+    # TODO
   - name    : suzen12
     image   : myctf.ru:5000/suzenescape/suzen12
     password: "aXY3ZWlqZWl5ZWlQaG9vczlhSmEK"
     sault   : "tHnyJhTd"
     flag    : "eWFlMEhpZTByYWVwYXRoZWUwYWEK"
     config  : "ls|sh|cd"
-  ####
-  ####
-
-    ## Chain 6 (my favorite text editor)
+    chain   : 5
     # vim
   - name    : suzen13
     image   : myctf.ru:5000/suzenescape/suzen13
     password: "suzen13"
     sault   : "tHnyJhTd"
     flag    : "Sm9vbmVlOGVlYzRFaXNob294ZWsK"
+    chain   : 5
 
     ## Chain 6 (basic bash commands)
     # cd
@@ -129,30 +134,35 @@ levels:
     password: "suzen14"
     sault   : "DnnfL1Td"
     flag    : "d2FodmFoMWFlV2FpYmVlaG9vMmIK"
+    chain   : 6
     # pwd
   - name    : suzen15
     image   : myctf.ru:5000/suzenescape/suzen15
     password: "d2FodmFoMWFlV2FpYmVlaG9vMmIK"
     sault   : "DKrmO1xd"
     flag    : "TWVlMXdvaDJ6YWVoZWoyamllNm8K"
+    chain   : 6
     # id
   - name    : suzen16
     image   : myctf.ru:5000/suzenescape/suzen16
     password: "TWVlMXdvaDJ6YWVoZWoyamllNm8K"
     sault   : "DKr8Jh13"
     flag    : "ZXVsb29naG91MFBob2g4T2hkYWkK"
+    chain   : 6
     # ls
   - name    : suzen17
     image   : myctf.ru:5000/suzenescape/suzen17
     password: "ZXVsb29naG91MFBob2g4T2hkYWkK"
     sault   : "dcdcUI13"
     flag    : "bmVlNm1lMEhhaU11M2thaGVpNmEK"
+    chain   : 6
     # man
   - name    : suzen18
     image   : myctf.ru:5000/suzenescape/suzen18
     password: "bmVlNm1lMEhhaU11M2thaGVpNmEK"
     sault   : "KKr8POR3"
     flag    : "Y2hpZWNoM2VpRzRJZWtlaXNlbGUK"
+    chain   : 6
 
     ## Chain 7 (basic bash commands2)
     # mkdir
@@ -161,36 +171,42 @@ levels:
     password: "suzen19"
     sault   : "DkOlP1Td"
     flag    : "V2VpMGNvaHNoZWlxdWE0YWhnaG8K"
+    chain   : 7
     # rm
   - name    : suzen20
     image   : myctf.ru:5000/suzenescape/suzen20
     password: "V2VpMGNvaHNoZWlxdWE0YWhnaG8K"
     sault   : "D2fwe44d"
     flag    : "YW1pZWhpaW0yb2h5NW9vRjZlaXcK"
+    chain   : 7
     # rm with filters
   - name    : suzen21
     image   : myctf.ru:5000/suzenescape/suzen21
     password: "YW1pZWhpaW0yb2h5NW9vRjZlaXcK"
     sault   : "DggOP112d"
     flag    : "aWU0b29XdWxlaXBodXBpZWZveW8K"
+    chain   : 7
     # touch
   - name    : suzen22
     image   : myctf.ru:5000/suzenescape/suzen22
     password: "aWU0b29XdWxlaXBodXBpZWZveW8K"
     sault   : "2hvOWpvb"
     flag    : "dXI2dXNhaDNvaFQxaWV2MGNobzgK"
+    chain   : 7
     # mv
   - name    : suzen23
     image   : myctf.ru:5000/suzenescape/suzen23
     password: "dXI2dXNhaDNvaFQxaWV2MGNobzgK"
     sault   : "cXV1bmcK"
     flag    : "dmVlc2VpQzVBb2dlaXI1cmVlM2YK"
+    chain   : 7
     # cp
   - name    : suzen24
     image   : myctf.ru:5000/suzenescape/suzen24
     password: "dmVlc2VpQzVBb2dlaXI1cmVlM2YK"
     sault   : "1YXRvaHp"
     flag    : "YWVnaG9venVvejd2b292OHNvaEwK"
+    chain   : 7
 
     ## Chain 8 (basic bash commands3)
     # cat
@@ -199,39 +215,43 @@ levels:
     password: "suzen25"
     sault   : "aWJ1YzIK"
     flag    : "dGhlZThhcXVpZUNpTGFpdGhlZTkK"
-    #
+    chain   : 8
+    # less
   - name    : suzen26
     image   : myctf.ru:5000/suzenescape/suzen26
     password: "dGhlZThhcXVpZUNpTGFpdGhlZTkK"
     sault   : "ZWNvaHhl"
     flag    : "WWVpc2gxYWlndXVrZWl5ZWloaWUK"
-    #
+    chain   : 8
+    # tail
   - name    : suzen27
     image   : myctf.ru:5000/suzenescape/suzen27
     password: "WWVpc2gxYWlndXVrZWl5ZWloaWUK"
     sault   : "GE0ZWlQ"
     flag    : "dGVlMUtleThhUXVvaDFnZTFiaWkK"
-    #
+    chain   : 8
+    # cat eof
   - name    : suzen28
     image   : myctf.ru:5000/suzenescape/suzen28
     password: "dGVlMUtleThhUXVvaDFnZTFiaWkK"
     sault   : "V5YWVUaW"
     flag    : "ZWV4b1g1WnVkMm9oZnVjYWhkdTMK"
-    #
+    config  : "sh|ls|cd|cat|md5sum|mkdir"
+    chain   : 8
+    # echo -e
   - name    : suzen29
     image   : myctf.ru:5000/suzenescape/suzen29
     password: "ZWV4b1g1WnVkMm9oZnVjYWhkdTMK"
     sault   : "Glldm9vO"
     flag    : "dmFvbmcwcGFlMWlodUJvaFppZWQK"
+    config  : "sh"
+    chain   : 8
 
-
-#  - name    : suzen25
-#    image   : myctf.ru:5000/suzenescape/suzen25
+## EXAMPLE TEMPLATE
+#  - name    : suzen
+#    image   : myctf.ru:5000/suzenescape/suzen
 #    password: ""
 #    sault   : ""
 #    flag    : ""
-#  - name    : suzen25
-#    image   : myctf.ru:5000/suzenescape/suzen25
-#    password: ""
-#    sault   : ""
-#    flag    : ""
+#    config  : ""
+#    chain   : ""
