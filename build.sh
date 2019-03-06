@@ -1,5 +1,7 @@
 #!/bin/bash
 
+REGISTRY_URL="$(cat ansible/vars.yaml | ruby -ryaml -e "puts YAML.load($<)[\"registry_url\"]")"
+
 if [ $# -eq 0 ]
   then
     echo "No arguments supplied"
@@ -46,12 +48,12 @@ JOINCONFIG="${CONFIG}|${SYSCONFIG}"
 
 if [ -e level${level}/Dockerfile ]; then
   cd level${level}/
-  docker build -t myctf.ru:5000/suzenescape/${NAME} . \
+  docker build -t ${REGISTRY_URL}/suzenescape/${NAME} . \
   --build-arg USERNAME=${NAME} \
   --build-arg CONFIG=${CONFIG} \
   --build-arg USERHOME=${USERHOME} \
   --build-arg FLAG=${FLAG}
-  docker push myctf.ru:5000/suzenescape/${NAME}
+  docker push ${REGISTRY_URL}/suzenescape/${NAME}
 else
   # copy and extract busybox layer
   cp busybox/layer.tar.gz ./ && mkdir layer && tar zxvf layer.tar.gz -C layer 1>/dev/null && rm layer.tar.gz
@@ -69,11 +71,11 @@ else
   cd level${level}/layer && tar zcvf level.tar.gz ./* && mv level.tar.gz ../../ && cd ../../
 
   # build and push image
-  docker build -t myctf.ru:5000/suzenescape/${NAME} . \
+  docker build -t ${REGISTRY_URL}/suzenescape/${NAME} . \
   --build-arg USERNAME=${NAME} \
   --build-arg CONFIG=${CONFIG} \
   --build-arg USERHOME=${USERHOME}
-  docker push myctf.ru:5000/suzenescape/${NAME}
+  docker push ${REGISTRY_URL}/suzenescape/${NAME}
 
   # cleanup
   rm layer.tar.gz level.tar.gz
