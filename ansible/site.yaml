@@ -10,7 +10,7 @@
     raw: apt -y update && apt install -y python-minimal python-apt
   - name: determine if registry is already installed
     uri:
-      url: "http://{{ repistry }}"
+      url: "http://{{ registry }}"
       return_content: yes
     register: result
     timeout: 5
