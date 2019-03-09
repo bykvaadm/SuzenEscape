@@ -14,3 +14,13 @@
 
 - name: Start service
   service: name=registry state=started enabled=yes
+
+- set_fact:
+    registry_host: "{{ registry_url.split(':')[0] | lower }}"
+    registry_port: "{{ registry_url.split(':')[1] | lower }}"
+
+- name: Wait for dockreg port 
+  wait_for:
+    port: "{{ registry_port }}"
+    host: "{{ registry_host }}"
+    delay: 10

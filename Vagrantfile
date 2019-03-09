@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "ansible/prepare.yaml"
+    ansible.playbook = "ansible/site.yaml"
   end
 
   # config.vm.provision "shell", inline: <<-SHELL

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+ID="$1"
+
+dockerstdout=$(docker exec ${ID} md5sum /home/suzen/diary)
+dockerstdout=$(tr -dc '[[:print:]]' <<< "$dockerstdout")
+md5=$(echo ${dockerstdout} | awk '{print $1}')
+
+if [ "$md5" = "09ad19c9d3502756f89a5e68c9938426" ]; then
+  docker exec ${ID} mkdir "/home/suzen/{{ levels | selectattr('name', 'equalto', 'suzen28') | map(attribute='flag') | join(',') }}"
+fi

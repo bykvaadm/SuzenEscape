@@ -10,13 +10,18 @@
     raw: apt -y update && apt install -y python-minimal python-apt
   - name: determine if registry is already installed
     uri:
-      url: "http://{{ repistry }}"
+      url: "http://{{ registry_url }}"
       return_content: yes
+      timeout: 5
     register: result
-    timeout: 5
-  - debug: var=result
+    ignore_errors: yes
+
+  - name: if running first time
+    debug:
+      msg: "THIS IS FIRST TIME RUNNING. RE-RUN vagrant provision after uploading tasks to registry"
+    when: "result.status == -1"
 
   roles       :
     - install_docker
     - registry
-    - { role: deploy_tasks, when: "var == '123'", tags: ["deploy_tasks"] }
+    - { role: deploy_tasks, when: "result.status != -1", tags: ["deploy_tasks"] }

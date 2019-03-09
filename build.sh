@@ -17,6 +17,7 @@ CONFIG=$(cat ansible/vars.yaml | ruby -ryaml -e "puts YAML.load($<)[\"levels\"].
 VERSION=$(cat ansible/vars.yaml | ruby -ryaml -e "puts YAML.load($<)[\"levels\"].select{|x| x[\"name\"] == \"suzen${level}\"}.map{|y| y[\"version\"]}")
 ROHOME=$(cat ansible/vars.yaml | ruby -ryaml -e "puts YAML.load($<)[\"levels\"].select{|x| x[\"name\"] == \"suzen${level}\"}.map{|y| y[\"rohome\"]}")
 CHAIN=$(cat ansible/vars.yaml | ruby -ryaml -e "puts YAML.load($<)[\"levels\"].select{|x| x[\"name\"] == \"suzen${level}\"}.map{|y| y[\"chain\"]}")
+SERVER=$(cat ansible/vars.yaml | ruby -ryaml -e "puts YAML.load($<)[\"levels\"].select{|x| x[\"name\"] == \"suzen${level}\"}.map{|y| y[\"server\"]}")
 
 if [ -z ${FLAG+x} ] || [ "${FLAG}" == "" ]; then FLAG="NONE"; fi
 if [ -z ${CONFIG+x} ] || [ "${CONFIG}" == "" ]; then CONFIG="NONE"; fi
@@ -29,6 +30,7 @@ else
   USERHOME="root"
 fi
 
+build(){
 cd chain${CHAIN}/level${level}/
 docker build -t ${REGISTRY_URL}/suzenescape/${NAME} . \
 --build-arg USERNAME=${NAME} \
@@ -36,3 +38,9 @@ docker build -t ${REGISTRY_URL}/suzenescape/${NAME} . \
 --build-arg USERHOME=${USERHOME} \
 --build-arg FLAG=${FLAG}
 docker push ${REGISTRY_URL}/suzenescape/${NAME}
+}
+
+
+build
+
+if [ "x${SERVER}" != "x" ]; then cd ../../; level="${level}server"; NAME="${NAME}server"; build;  fi

@@ -56,6 +56,7 @@ levels          :
     flag    : "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
     config  : "ls|cd|ls|mknod|sh"
     rohome  : "false"
+    server  : true
     chain   : 2
 
     ## Chain 3 (One line solve)
@@ -94,6 +95,7 @@ levels          :
     password: "suzen9"
     sault   :  "UP6ILIjj"
     flag    : aWVyNWVvOGluM21haDBRdWFobTkK
+    server  : true
     chain   : 4
 
     ## Chain 5
