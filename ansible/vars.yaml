@@ -232,7 +232,7 @@ levels          :
     sault   : "GE0ZWlQ"
     flag    : "dGVlMUtleThhUXVvaDFnZTFiaWkK"
     chain   : 8
-    # cat eof
+    # cat eof + echo
   - name    : suzen28
     image   : myctf.ru:5000/suzenescape/suzen28
     password: "dGVlMUtleThhUXVvaDFnZTFiaWkK"
