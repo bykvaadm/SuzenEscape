@@ -1,0 +1,13 @@
+#!/bin/sh
+echo -e "\n###########################################"
+echo -e   "#                                          #"
+echo -e   "#         Hello! It's level 29             #"
+echo -e   "#                                          #"
+echo -e   "#   find&copy the whole diary content      #"
+echo -e   "#      from level 27 and put it in         #"
+echo -e   "#           /home/suzen/diary              #"
+echo -e   "#   (flag will appear in /home/suzen)      #"
+echo -e   "#                                          #"
+echo -e   "###########################################"
+
+sh
