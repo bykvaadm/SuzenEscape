@@ -14,9 +14,11 @@ except Exception as exc:
     logging.error('docker client not init')
     exit()
 
+
 def build(level, registry_url, args):
     try:
-        image_tag = '{registry_url}/suzenescape/{level_name}'.format(registry_url=registry_url, level_name=level['name'])
+        image_tag = '{registry_url}/suzenescape/{level_name}'.format(registry_url=registry_url,
+                                                                     level_name=level['name'])
         _, build_log = client.images.build(
             path='chain{level_chain}/level{level_vl}'.format(level_chain=level['chain'], level_vl=level['level']),
             tag=image_tag,
@@ -42,9 +44,11 @@ def build(level, registry_url, args):
 
     return
 
+
 def push(image):
     client.images.push(image)
     return
+
 
 def argp():
     parser = argparse.ArgumentParser()
@@ -55,6 +59,7 @@ def argp():
     parser.add_argument('task', nargs='+', help='task to built list')
 
     return parser.parse_args()
+
 
 if __name__ == '__main__':
     args = argp()
