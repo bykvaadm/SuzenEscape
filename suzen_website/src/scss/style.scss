@@ -1,0 +1,98 @@
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700");
+
+
+/* -----------------------------------
+    1 - General Styles
+------------------------------------*/
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    background-color: #fbfbfb;
+}
+
+
+/* ----------------------------------
+    2 - NavBar Styles
+-----------------------------------*/
+.navbar{
+    background-color: #111a2b;
+}
+
+.navbar-brand{
+    font-size:20px;
+    font-weight: 700;
+}
+
+.nav-item a{
+    font-size: 16px;
+    color: #91a0bd !important;
+}
+
+.nav-item a:hover {
+    color: #ffffff !important;
+}
+
+.nav-item a:hover, .nav-item a:focus {
+    color: #ffffff;
+}
+
+
+
+
+
+/* ----------------------------------
+    3 - Main
+-----------------------------------*/
+.main{
+    margin-top: 50px;
+}
+
+
+.tasks h5{
+    color: #5993fa;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.tasks li a{
+    font-size: 14px;
+    color:#13141a !important;
+    font-weight: 700;
+
+}
+
+.tasks li a:hover{
+    color:#111a2b !important;
+}
+
+.task-link{
+    text-decoration: none !important;
+}
+
+.task-description
+{
+    font-weight: 400;
+}
+
+
+.news h1{
+    font-weight: 800;
+}
+
+.new h3{
+    font-weight: 700;
+}
+
+.new p
+{
+    font-size: 16px;
+    color: #13141a;
+}
+
+.help{
+    color:#13141a;
+}
+
+
