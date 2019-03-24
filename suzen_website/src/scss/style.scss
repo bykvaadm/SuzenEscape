@@ -1,14 +1,13 @@
 
-@import url("https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700");
-
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 /* -----------------------------------
     1 - General Styles
 ------------------------------------*/
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
     background-color: #fbfbfb;
 }
 
@@ -57,9 +56,9 @@ body {
 }
 
 .tasks li a{
-    font-size: 14px;
+    font-size: 16px;
     color:#13141a !important;
-    font-weight: 700;
+    font-weight: 500;
 
 }
 
@@ -78,11 +77,11 @@ body {
 
 
 .news h1{
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .new h3{
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .new p
