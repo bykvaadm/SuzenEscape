@@ -44,10 +44,11 @@ body {
 /* ----------------------------------
     3 - Main
 -----------------------------------*/
-.main{
-    margin-top: 50px;
-}
 
+.tasks
+{
+    padding-top: 40px;
+}
 
 .tasks h5{
     color: #5993fa;
@@ -75,19 +76,29 @@ body {
     font-weight: 400;
 }
 
+.news
+{
+    padding-top: 30px;
+}
+
+.news a{
+    font-weight: 400 !important;
+}
 
 .news h1{
     font-weight: 700;
 }
 
-.new h3{
-    font-weight: 600;
+.new h5{
+    font-weight: 400;
 }
 
 .new p
 {
-    font-size: 16px;
+    padding-left: 15px;
+    font-size: 14px;
     color: #13141a;
+    font-weight: 500;
 }
 
 .help{
