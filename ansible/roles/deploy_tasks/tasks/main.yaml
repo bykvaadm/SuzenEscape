@@ -87,13 +87,22 @@
     state : present
   when      : kostyl_stat.stat.exists == false
 
-#- name: upload docker config
-#  copy:
-#    src: daemon.json
-#    dest: /etc/docker/daemon.json
-#    owner: root
-#    group: root
-#    mode: 0755
+- name: upload docker config
+    copy:
+    src: daemon.json
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0755
+  register: docker_daemon_config
+
+- name: restart docker service
+  service:
+    daemon_reload: yes
+    name: docker
+    enabled: yes
+    state: restarted
+  when: docker_daemon_config.changed
 
 - name: upload ssh_config
   copy:
