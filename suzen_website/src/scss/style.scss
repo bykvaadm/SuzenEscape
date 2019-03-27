@@ -1,0 +1,108 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+/* -----------------------------------
+    1 - General Styles
+------------------------------------*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    background-color: #fbfbfb;
+}
+
+
+/* ----------------------------------
+    2 - NavBar Styles
+-----------------------------------*/
+.navbar{
+    background-color: #111a2b;
+}
+
+.navbar-brand{
+    font-size:20px;
+    font-weight: 700;
+}
+
+.nav-item a{
+    font-size: 16px;
+    color: #91a0bd !important;
+}
+
+.nav-item a:hover {
+    color: #ffffff !important;
+}
+
+.nav-item a:hover, .nav-item a:focus {
+    color: #ffffff;
+}
+
+
+
+
+
+/* ----------------------------------
+    3 - Main
+-----------------------------------*/
+
+.tasks
+{
+    padding-top: 40px;
+}
+
+.tasks h5{
+    color: #5993fa;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.tasks li a{
+    font-size: 16px;
+    color:#13141a !important;
+    font-weight: 500;
+
+}
+
+.tasks li a:hover{
+    color:#111a2b !important;
+}
+
+.task-link{
+    text-decoration: none !important;
+}
+
+.task-description
+{
+    font-weight: 400;
+}
+
+.news
+{
+    padding-top: 30px;
+}
+
+.news a{
+    font-weight: 400 !important;
+}
+
+.news h1{
+    font-weight: 700;
+}
+
+.new h5{
+    font-weight: 400;
+}
+
+.new p
+{
+    padding-left: 15px;
+    font-size: 14px;
+    color: #13141a;
+    font-weight: 500;
+}
+
+.help{
+    color:#13141a;
+}
+
+
