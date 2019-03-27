@@ -1,2 +1,3 @@
 FROM nginx
-COPY index.html /usr/share/nginx/html/index.html
+ARG FLAG
+RUN echo ${FLAG} > /usr/share/nginx/html/index.html
