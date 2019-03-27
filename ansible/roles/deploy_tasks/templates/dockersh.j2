@@ -1,25 +1,15 @@
 #!/bin/bash
-if [ ! -f /var/tmp/addr ]; then
-  echo 1 > /var/tmp/addr
-fi
-addr=$(cat /var/tmp/addr)
-if [ "$addr" -gt 254 ] || [[ "$addr" == "" ]]; then
-  addr="1"
-  /etc/cron.hourly/kill-docker.sh 2>&1 1>/dev/null
-fi
 
-NETWORK=$(( RANDOM % 1000000000))
-docker network create --internal --subnet 10.10.${addr}.0/24 ${NETWORK} 2>&1 1>/dev/null
-((addr++))
-echo ${addr} > /var/tmp/addr
+if [[ $(whoami) =~ ^(suzen5|suzen9)$ ]]; then
+  NETWORK=$(whoami)_network_$RANDOM
+  docker network create --internal ${NETWORK} 2>&1 1>/dev/null
 
-if [ "$(whoami)" == "suzen5" ]; then
-  #--storage-opt size=11G
-  /usr/bin/docker run -ti -d --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 {{ registry_url }}/suzenescape/suzen5server 2>/dev/null 1>/dev/null
+  # server
+  /usr/bin/docker run -d --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 {{ registry_url }}/suzenescape/$(whoami)server 2>/dev/null 1>/dev/null
+  # task
+  /usr/bin/docker run -ti --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 {{ registry_url }}/suzenescape/$(whoami) 2>/dev/null
+  docker network rm ${NETWORK} 2>&1 1>/dev/null
+else
+  # task
+  /usr/bin/docker run -ti --rm --network none --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 {{ registry_url }}/suzenescape/$(whoami) 2>/dev/null
 fi
-
-if [ "$(whoami)" == "suzen9" ]; then
-  /usr/bin/docker run -ti -d --rm --network $NETWORK --cpus=".5" --memory=512m --kernel-memory=512m --pids-limit=100 --stop-timeout=3600 {{ registry_url }}/suzenescape/suzen9server 2>/dev/null 1>/dev/null
-fi
-
-/usr/bin/docker run -ti --rm --network $NETWORK --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 {{ registry_url }}/suzenescape/$(whoami) 2>/dev/null
