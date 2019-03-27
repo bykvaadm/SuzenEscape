@@ -1,0 +1,19 @@
+- name: install python pkgs
+  apt :
+    name: ['python3-pip', 'python3-setuptools', 'python-setuptools']
+
+- name: install requirements for builder
+  pip :  executable=pip3 requirements=/vagrant/requirements.txt
+
+- name    : build tasks
+  shell   : cd /vagrant && ./build.py all
+  retries : 3
+  delay   : 3
+  register: result
+  until   : result is not failed
+
+- name : build web
+  shell: |
+    cd /vagrant/suzen_website && \
+    docker build -t 127.0.0.1:5000/suzenescape/web . && \
+    docker push 127.0.0.1:5000/suzenescape/web

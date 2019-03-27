@@ -16,15 +16,17 @@
     register: result
     ignore_errors: yes
 
+  - set_fact: registry="{{ result.status }}"
+  - debug: var=registry
+
   - name: if running first time
     debug:
       msg: "THIS IS FIRST TIME RUNNING. RE-RUN vagrant provision after uploading tasks to registry"
-    when: "result.status == -1"
-  - debug: var=deploy_web
-  - debug: var=result.status
+    when: "registry == -1"
 
   roles       :
     - install_docker
-    - { role: registry,     when: deploy_registry|bool == true }
-    - { role: deploy_web,   when: (result.status != "-1") and (deploy_web|bool == true) }
-    - { role: deploy_tasks, when: result.status != "-1", tags: ["deploy_tasks"] }
+    - { role: registry,         when: deploy_registry|bool == true }
+    - { role: build_containers, when: build_containers|bool == true }
+    - { role: deploy_web,       when: (registry != "-1") and (deploy_web|bool == true) }
+    - { role: deploy_tasks,     when: registry != "-1", tags: ["deploy_tasks"] }

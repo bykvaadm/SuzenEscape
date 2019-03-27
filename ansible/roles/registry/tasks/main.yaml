@@ -1,26 +1,30 @@
-- name: copy docker registry service file
-  copy:
-    src: registry.service
-    dest: /etc/systemd/system/registry.service
+- name    : copy docker registry service file
+  copy    :
+    src  : registry.service
+    dest : /etc/systemd/system/registry.service
     owner: root
     group: root
-    mode: 0644
-  notify: reload systemd
+    mode : 0644
+  notify  : reload systemd
   register: service_file
 
-- name: Restart service
+- name   : Restart service
   service: name=registry state=restarted
-  when: service_file.changed
+  when   : service_file.changed
 
-- name: Start service
+- name   : Start service
   service: name=registry state=started enabled=yes
 
 - set_fact:
     registry_host: "{{ registry_url.split(':')[0] | lower }}"
     registry_port: "{{ registry_url.split(':')[1] | lower }}"
 
-- name: Wait for dockreg port 
+- name    : Wait for dockreg port
   wait_for:
-    port: "{{ registry_port }}"
-    host: "{{ registry_host }}"
+    port : "{{ registry_port }}"
+    host : "{{ registry_host }}"
     delay: 10
+  register: result
+
+- set_fact: registry="up"
+  when    : result.state == "started"
