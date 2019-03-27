@@ -1,0 +1,16 @@
+- name    : copy web service file
+  template:
+    src  : web.service.j2
+    dest : /etc/systemd/system/web.service
+    owner: root
+    group: root
+    mode : 0644
+  notify  : reload systemd
+  register: service_file
+
+- name   : Restart service
+  service: name=web state=restarted
+  when   : service_file.changed
+
+- name   : Start service
+  service: name=web state=started enabled=yes

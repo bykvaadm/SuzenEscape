@@ -1,8 +1,9 @@
 ---
-install_registry: false
-registry_url    : "127.0.0.1:5000"
+deploy_registry: true
+deploy_web     : true
+registry_url   : "127.0.0.1:5000"
 # myctf.ru:5000
-levels          :
+levels         :
   ## Chain 1 (Beginner)
   # read file
   - name    : suzen1
