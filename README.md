@@ -25,6 +25,10 @@
   ```bash
   for i in $(seq 1 29); do ./build.sh $i; done
   ```
+  либо
+  ```bash
+  ./build.py all
+  ```
 * Опционально вы можете собрать веб-интерфейс:
   ```bash
   docker build -t 127.0.0.1:5000/suzenescape/web . && docker push 127.0.0.1:5000/suzenescape/web
