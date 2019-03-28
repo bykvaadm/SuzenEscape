@@ -1,7 +1,8 @@
 FROM debian:latest
 MAINTAINER info@bykvaadm.ru
 
-#ADD sources.list /etc/apt/sources.list
+ARG FLAG
+
 RUN apt update && apt -y install \
     uwsgi-plugin-python3 \
     uwsgi && \
@@ -23,7 +24,8 @@ RUN  apt -y install python3 python3-pip && \
 
 COPY app.ini /etc/uwsgi/apps-enabled/app.ini
 COPY api /var/www/api
-RUN  mkdir /run/uwsgi && chown www-data /run/uwsgi
+RUN  mkdir /run/uwsgi && chown www-data /run/uwsgi && \
+     sed -i "s/FLAG/${FLAG}/g" /var/www/api/templates/key.html
 
 EXPOSE 80
 
