@@ -78,7 +78,7 @@ if __name__ == '__main__':
 
     try:
         with open('ansible/vars.yaml', 'r') as stream:
-            yml = yaml.load(stream)
+            yml = yaml.load(stream, Loader=yaml.BaseLoader)
     except yaml.YAMLError as exc:
         logging.error(exc)
         exit(1)
