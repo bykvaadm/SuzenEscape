@@ -1,13 +1,22 @@
-FROM bash
+FROM bash as bash
 
 ARG FLAG
 
-RUN adduser -D suzen
-ADD flag.tar.gz /home/suzen
+ADD flag.tar.gz /
 
-RUN sed -i "11iFIRST_FLAG_PART: ${FLAG:0:10}" /home/suzen/flag && \
-    sed -i "$(($(wc -l /home/suzen/flag | awk '{print $1}')*3/4))iSECOND_FLAG_PART: ${FLAG:10:10}" /home/suzen/flag && \
-    sed -i "$(($(wc -l /home/suzen/flag | awk '{print $1}')-12))iTHIRD_FLAG_PART: ${FLAG:20:8}" /home/suzen/flag
+RUN sed -i "11iFIRST_FLAG_PART: ${FLAG:0:10}" /flag && \
+    sed -i "$(($(wc -l /flag | awk '{print $1}')*3/4))iSECOND_FLAG_PART: ${FLAG:10:10}" /flag && \
+    sed -i "$(($(wc -l /flag | awk '{print $1}')-12))iTHIRD_FLAG_PART: ${FLAG:20:8}" /flag
+
+FROM bykva/busybinaries
+
+RUN adduser -D suzen
+
+ARG CONFIG
+
+COPY --from=bash /flag /home/suzen
+
+RUN cd /bin && ls | egrep -vw "(${CONFIG})" | xargs rm
 
 ADD hello /bin/hello
 

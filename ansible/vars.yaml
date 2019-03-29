@@ -226,6 +226,7 @@ levels          :
     password: "dGhlZThhcXVpZUNpTGFpdGhlZTkK"
     sault   : "ZWNvaHhl"
     flag    : "WWVpc2gxYWlndXVrZWl5ZWloaWUK"
+    config  : "less|ls|sh"
     chain   : 8
     # tail
   - name    : suzen27
