@@ -38,7 +38,7 @@ def build(level, registry_url, args):
 
     except Exception as exc:
         logging.error('build error:')
-        logging.exception(exc)
+        logging.error(exc)
         exit(1)
 
     return
@@ -55,7 +55,7 @@ def argp():
     parser.add_argument(
         '-b', '--build_only', help='build only, not push images', action='store_true'
     )
-    parser.add_argument('-v', '--verbose', help='log enable', action='store_true')
+    parser.add_argument('-v', '--verbose', help='log enable', action='count')
     # parser.add_argument('-f', '--vars-yaml', help='path to yaml level vars file')
     parser.add_argument('task', nargs='+', help='task to build list')
 
