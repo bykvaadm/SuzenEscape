@@ -3,6 +3,8 @@ echo -e "\n#####################################################################
 echo -e   "#                                                                      #"
 echo -e   "#                       Hello! It's level 19                           #"
 echo -e   "#                                                                      #"
+echo -e   "#  This is external checker type level. Wait for 1 min after solving   #"
+echo -e   "#                                                                      #"
 echo -e   "#                 flag will appear in this directory:                  #"
 echo -e   "#  /home/suzen/Documents/projects/lab19/using/simple/bash/commands     #"
 echo -e   "#                                                                      #"
