@@ -88,7 +88,7 @@
   when      : kostyl_stat.stat.exists == false
 
 - name: upload docker config
-    copy:
+  copy:
     src: daemon.json
     dest: /etc/docker/daemon.json
     owner: root
