@@ -3,12 +3,12 @@ FROM bash
 ARG FLAG
 
 RUN apk add file pwgen && \
-    for i in `seq 1 255`; do
-      echo -e "0\tsearch/1/c\t=$(pwgen 6 1)\t$(pwgen 20 1 | base64)" >> /usr/share/misc/magic
+    for i in `seq 1 255`; do \
+      echo -e "0\tsearch/1/c\t=$(pwgen 6 1)\t$(pwgen 20 1 | base64)" >> /usr/share/misc/magic; \
     done && \
     echo -e "0\tsearch/1/c\t=IDCLIP\${FLAG}" >> /usr/share/misc/magic && \
-    for j in `seq 1 256`; do
-      echo -e "0\tsearch/1/c\t=$(pwgen 6 1)\t$(pwgen 20 1 | base64)" >> /usr/share/misc/magic
+    for j in `seq 1 256`; do \
+      echo -e "0\tsearch/1/c\t=$(pwgen 6 1)\t$(pwgen 20 1 | base64)" >> /usr/share/misc/magic; \
     done && \
     cd /usr/share/misc && \
     file -C -m /usr/share/misc/magic && \
