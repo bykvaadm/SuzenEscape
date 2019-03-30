@@ -62,6 +62,20 @@ def argp():
     return parser.parse_args()
 
 
+def query_add(qtask):
+    build_query[qtask] = levels_map[qtask]
+    build_query[qtask]['level'] = qtask
+    try:
+        servers = levels_map[qtask]['servers']
+    except KeyError:
+        servers = []
+        pass
+    for server in servers:
+        stask = server['name'][len('suzen') :]
+        build_query[stask] = server
+        build_query[stask]['level'] = stask
+
+
 if __name__ == '__main__':
     logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO)
 
@@ -70,6 +84,7 @@ if __name__ == '__main__':
         client.ping()
     except Exception as exc:
         logging.error('docker client not init')
+        logging.error(exc)
         exit(1)
 
     args = argp()
@@ -91,13 +106,11 @@ if __name__ == '__main__':
 
     if args.task[0] == 'all':
         for task in levels_map.keys():
-            build_query[task] = levels_map[task]
-            build_query[task]['level'] = task
+            query_add(task)
     else:
         for task in args.task:
             if task in levels_map.keys():
-                build_query[task] = levels_map[task]
-                build_query[task]['level'] = task
+                query_add(task)
             else:
                 logging.warning('{task} in not available: skipping'.format(task=task))
 
