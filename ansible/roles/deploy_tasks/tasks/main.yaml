@@ -128,3 +128,12 @@
   tags        :
     - pull
     - new_task
+
+- name        : Pull docker server image
+  command     : docker pull {{ registry_url }}/suzenescape/{{ item.1.name }}
+  register    : docker_pull_servers
+  changed_when: "'Status: Downloaded newer image' in docker_pull_servers.stdout"
+  loop: "{{ levels | subelements('servers', skip_missing=True) }}"
+  tags        :
+    - pull
+    - new_task
