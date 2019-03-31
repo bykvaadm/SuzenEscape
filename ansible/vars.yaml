@@ -2,6 +2,7 @@
 deploy_registry : true
 deploy_web      : true
 build_containers: true
+vagrant         : true
 registry_url    : "127.0.0.1:5000"
 # myctf.ru:5000
 levels          :
@@ -46,8 +47,8 @@ levels          :
     rohome  : "false"
     chain   : 2
     servers :
-    - name  : suzen5server
-      flag  : "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
+      - name: suzen5server
+        flag: "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
 
     ## Chain 3 (One line solve)
     # pcap
@@ -76,8 +77,8 @@ levels          :
     sault   :  "UP6ILIjj"
     chain   : 4
     servers :
-    - name  : suzen9server
-      flag  : "aWVyNWVvOGluM21haDBRdWFobTkK"
+      - name: suzen9server
+        flag: "aWVyNWVvOGluM21haDBRdWFobTkK"
 
     ## Chain 5
     # TODO
