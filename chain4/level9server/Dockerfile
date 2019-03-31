@@ -3,24 +3,17 @@ MAINTAINER info@bykvaadm.ru
 
 ARG FLAG
 
-RUN apt update && apt -y install \
-    uwsgi-plugin-python3 \
-    uwsgi && \
-    apt-get autoclean
+RUN apt-get update && \
+        apt-get -y install --no-install-recommends \
+        python3 python3-pip python3-setuptools     \
+        uwsgi uwsgi-plugin-python3    && \
+        apt-get clean                 && \
+        apt-get autoremove --yes      && \
+        rm -rf /var/lib/apt/lists/*
 
-RUN  apt -y install python3 python3-pip && \
-     pip3 install -U --timeout 1000 \
-     pillow                         \
-     pyyaml                         \
-     cent                           \
-     simplejson                     \
-     werkzeug                       \
+RUN  pip3 install -U --timeout 1000 \
      flask                          \
-     bson                           \
-     flask_mail                     \
-     eve                            \
-     flask_bootstrap \
-     routes
+     flask_bootstrap
 
 COPY app.ini /etc/uwsgi/apps-enabled/app.ini
 COPY api /var/www/api
