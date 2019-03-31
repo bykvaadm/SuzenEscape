@@ -23,7 +23,7 @@
   wait_for:
     port : "{{ registry_port }}"
     host : "{{ registry_host }}"
-    delay: 10
+    delay: 2
   register: result
 
 - set_fact: registry="up"

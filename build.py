@@ -36,9 +36,9 @@ def build(level, registry_url, args):
         if not args.build_only:
             push(image_tag)
 
-    except Exception as exc:
+    except (docker.errors.BuildError, docker.errors.APIError, TypeError) as exc:
         logging.error('build error:')
-        logging.exception(exc)
+        logging.error(exc)
         exit(1)
 
     return
@@ -55,11 +55,26 @@ def argp():
     parser.add_argument(
         '-b', '--build_only', help='build only, not push images', action='store_true'
     )
-    parser.add_argument('-v', '--verbose', help='log enable', action='store_true')
+    parser.add_argument('-v', '--verbose', help='log enable', action='count')
     # parser.add_argument('-f', '--vars-yaml', help='path to yaml level vars file')
     parser.add_argument('task', nargs='+', help='task to build list')
 
     return parser.parse_args()
+
+
+def query_add(qtask):
+    build_query[qtask] = levels_map[qtask]
+    build_query[qtask]['level'] = qtask
+    try:
+        servers = levels_map[qtask]['servers']
+    except KeyError:
+        servers = []
+        pass
+    for server in servers:
+        stask = server['name'][len('suzen') :]
+        build_query[stask] = server
+        build_query[stask]['level'] = stask
+        build_query[stask]['chain'] = levels_map[qtask]['chain']
 
 
 if __name__ == '__main__':
@@ -68,8 +83,9 @@ if __name__ == '__main__':
     client = docker.client.from_env()
     try:
         client.ping()
-    except Exception as exc:
+    except docker.errors.APIError as exc:
         logging.error('docker client not init')
+        logging.error(exc)
         exit(1)
 
     args = argp()
@@ -91,13 +107,11 @@ if __name__ == '__main__':
 
     if args.task[0] == 'all':
         for task in levels_map.keys():
-            build_query[task] = levels_map[task]
-            build_query[task]['level'] = task
+            query_add(task)
     else:
         for task in args.task:
             if task in levels_map.keys():
-                build_query[task] = levels_map[task]
-                build_query[task]['level'] = task
+                query_add(task)
             else:
                 logging.warning('{task} in not available: skipping'.format(task=task))
 
