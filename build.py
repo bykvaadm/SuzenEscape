@@ -74,6 +74,7 @@ def query_add(qtask):
         stask = server['name'][len('suzen') :]
         build_query[stask] = server
         build_query[stask]['level'] = stask
+        build_query[stask]['chain'] = levels_map[qtask]['chain']
 
 
 if __name__ == '__main__':
