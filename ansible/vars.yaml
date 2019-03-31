@@ -42,14 +42,12 @@ levels          :
   - name    : suzen5
     password: "suzen5"
     sault   : "Yy9aP4bg"
-    flag    : "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
     config  : "ls|cd|ls|mknod|sh"
     rohome  : "false"
     chain   : 2
     servers :
     - name  : suzen5server
       flag  : "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
-      chain : 2
 
     ## Chain 3 (One line solve)
     # pcap
@@ -76,12 +74,10 @@ levels          :
   - name    : suzen9
     password: "suzen9"
     sault   :  "UP6ILIjj"
-    flag    : aWVyNWVvOGluM21haDBRdWFobTkK
     chain   : 4
     servers :
-    - name  : server
-      flag  : aWVyNWVvOGluM21haDBRdWFobTkK
-      chain : 4
+    - name  : suzen9server
+      flag  : "aWVyNWVvOGluM21haDBRdWFobTkK"
 
     ## Chain 5
     # TODO
