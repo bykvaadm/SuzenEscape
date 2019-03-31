@@ -36,7 +36,7 @@ def build(level, registry_url, args):
         if not args.build_only:
             push(image_tag)
 
-    except Exception as exc:
+    except (docker.errors.BuildError, docker.errors.APIError, TypeError) as exc:
         logging.error('build error:')
         logging.error(exc)
         exit(1)
@@ -83,7 +83,7 @@ if __name__ == '__main__':
     client = docker.client.from_env()
     try:
         client.ping()
-    except Exception as exc:
+    except docker.errors.APIError as exc:
         logging.error('docker client not init')
         logging.error(exc)
         exit(1)
