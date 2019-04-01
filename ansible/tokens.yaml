@@ -1,10 +1,19 @@
 tokens:
-  - 111111111111 # ivanov
-  - 111111111112 # petrov
-  - 111111111113 # sidorov
-  - 111111111114 # pupkin
-  - 111111111115 # vasechkin
-  - 111111111116 # alice
-  - 111111111117 # bob
-  - 111111111118 # john dou
-  - 111111111119 # maria ivanovna
+  - name: ivanov
+    token: 111111111111
+  - name: petrov
+    token: 111111111112
+  - name: sidorov
+    token: 111111111113
+  - name: pupkin
+    token: 111111111114
+  - name: vasechkin
+    token: 111111111115
+  - name: alice
+    token: 111111111116
+  - name: bob
+    token: 111111111117
+  - name: john_dou
+    token: 111111111118
+  - name: maria ivanovna
+    token: 111111111119
