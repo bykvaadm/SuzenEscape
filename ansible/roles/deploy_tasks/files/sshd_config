@@ -128,3 +128,5 @@ Match User suzen*
         GatewayPorts no
         PermitTunnel no
         ForceCommand /sbin/nologin
+        PasswordAuthentication yes
+        AcceptEnv TOKEN
