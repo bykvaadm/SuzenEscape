@@ -1,11 +1,10 @@
 #!/bin/bash
 
 NETWORK="none"
+TAG="latest"
 
-if [ -z ${TOKEN+x} ]; then
-  echo $TOKEN
-else
-  echo "no token"
+if [ ! -z ${TOKEN} ]; then
+  TAG="$TOKEN"
 fi
 
 if [[ $(whoami) =~ ^(suzen5|suzen9)$ ]]; then
@@ -15,10 +14,10 @@ if [[ $(whoami) =~ ^(suzen5|suzen9)$ ]]; then
   # server
   /usr/bin/docker run -d --rm --network $NETWORK \
     --cpus=".5" --memory=512m --kernel-memory=512m --pids-limit=50 --stop-timeout=1 \
-    {{ registry_url }}/suzenescape/$(whoami)server 2>/dev/null 1>/dev/null
+    {{ registry_url }}/suzenescape/$(whoami)server:${TAG} 2>/dev/null 1>/dev/null
 fi
 
 # task
 /usr/bin/docker run -ti --rm --network $NETWORK
   --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=1 \
-  {{ registry_url }}/suzenescape/$(whoami) 2>/dev/null
+  {{ registry_url }}/suzenescape/$(whoami):${TAG} 2>/dev/null
