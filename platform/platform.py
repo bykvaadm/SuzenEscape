@@ -4,6 +4,7 @@
 import os
 import subprocess
 import sys
+import uwsgidecorators
 
 
 ################################################################################
@@ -25,6 +26,7 @@ def run_command(command):
         print(process.communicate()[1].decode())
 
 
+@uwsgidecorators.thread
 def add_user(user, shell='/bin/false'):
     if not user:
         return
