@@ -3,7 +3,7 @@
 ID="$1"
 
 dockerstdout=$(docker exec ${ID} tree /home/suzen/)
-#dockerstdout=$(tr -dc '[[:print:]]' <<< "$dockerstdout")
+
 md5=$(printf "%s\n" "$dockerstdout" | md5sum | awk '{print $1}')
 
 if [ "$md5" = "15d2336c6f0f436f60872e68ec6c7d6c" ]; then
