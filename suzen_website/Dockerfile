@@ -1,5 +1,5 @@
 # ==== Node.js ====
-FROM node:alpine as node
+FROM node:11-alpine as node
 # Install dependencies for imagemin
 RUN apk add --no-cache \
     autoconf \
