@@ -26,6 +26,7 @@
   * virtualbox (https://www.virtualbox.org/wiki/Linux_Downloads)
   * rsync 
   * ansible
+  * ruby
 * Выполнить поднятие виртуальной машины
   ```bash
   vagrant up
