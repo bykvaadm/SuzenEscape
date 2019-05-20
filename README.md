@@ -24,6 +24,8 @@
 * Установить следующий набор ПО:
   * vagrant (https://www.vagrantup.com/downloads.html)
   * virtualbox (https://www.virtualbox.org/wiki/Linux_Downloads)
+  * rsync 
+  * ansible
 * Выполнить поднятие виртуальной машины
   ```bash
   vagrant up
