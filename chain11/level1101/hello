@@ -1,0 +1,13 @@
+#!/bin/sh
+echo -e "\n########################################################################"
+echo -e   "#                                                                      #"
+echo -e   "#                      Hello! It's level 1101                          #"
+echo -e   "#                                                                      #"
+echo -e   "#   At this level, you need to find the password of the person in      #"
+echo -e   "#   the db file, according to the data obtained from the ip_list file. #"
+echo -e   "#   The command from the history will help you find the ip you need.   #"
+echo -e   "#                                                                      #"
+echo -e   "#                                                                      #"           
+echo -e   "########################################################################"
+
+sh
