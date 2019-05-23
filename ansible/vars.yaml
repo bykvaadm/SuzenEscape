@@ -3,8 +3,9 @@ deploy_registry : true
 deploy_web      : true
 build_containers: true
 vagrant         : true
+registry_proto  : https
 registry_url    : "127.0.0.1:5000"
-# myctf.ru:5000
+tasks_to_build  : all
 levels          :
   ## Chain 1 (Beginner)
   # read file

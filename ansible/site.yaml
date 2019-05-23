@@ -10,15 +10,12 @@
     raw: apt -y update && apt install -y python-minimal python-apt
   - name: determine if registry is already installed
     uri:
-      url: "http://{{ registry_url }}"
+      url: "{{ registry_proto }}://{{ registry_url }}"
       return_content: yes
       timeout: 5
     register: result
     ignore_errors: yes
-
   - set_fact: registry="{{ result.status }}"
-  - debug: var=registry
-
   - name: if running first time
     debug:
       msg: "THIS IS FIRST TIME RUNNING. RE-RUN vagrant provision after uploading tasks to registry"

@@ -12,7 +12,7 @@
     name      : "{{ requirements }}"
 
 - name    : build tasks
-  shell   : cd /vagrant && ./build.py all
+  shell   : "cd /vagrant && ./build.py {{ tasks_to_build | default('all') }}"
   retries : 3
   delay   : 3
   register: result
