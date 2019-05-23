@@ -27,16 +27,15 @@ def build(level, registry_url, args):
         )
 
         if args.verbose:
+            build_log_string = ''.join([item.get('stream', '') for item in build_log])[:-1]
             logging.info(
-                '{image_tag} build log:'.format(image_tag=image_tag),
-                *build_log,
-                sep='\n',
+                '{image_tag} build log:\n{build_log}'.format(image_tag=image_tag, build_log=build_log_string)
             )
 
         if not args.build_only:
             push(image_tag)
 
-    except (docker.errors.BuildError, docker.errors.APIError, TypeError) as exc:
+    except (docker.errors.BuildError, docker.errors.APIError) as exc:
         logging.error('build error:')
         logging.error(exc)
         exit(1)
@@ -45,7 +44,9 @@ def build(level, registry_url, args):
 
 
 def push(image):
-    client.images.push(image)
+    result = client.images.push(image)
+    logging.info('push status:')
+    logging.info(result[:-1])
     return
 
 
