@@ -125,15 +125,33 @@
   register    : docker_pull
   changed_when: "'Status: Downloaded newer image' in docker_pull.stdout"
   with_items  : "{{ levels }}"
+  when        : tasks_to_build == "all"
   tags        :
     - pull
     - new_task
+
+- name        : Pull docker image
+  command     : docker pull {{ registry_url }}/suzenescape/suzen{{ item }}
+  register    : docker_pull
+  changed_when: "'Status: Downloaded newer image' in docker_pull.stdout"
+  with_items  : "{{ tasks_to_build.split() }}"
+  when        : tasks_to_build != "all"
 
 - name        : Pull docker server image
   command     : docker pull {{ registry_url }}/suzenescape/{{ item.1.name }}
   register    : docker_pull_servers
   changed_when: "'Status: Downloaded newer image' in docker_pull_servers.stdout"
-  loop: "{{ levels | subelements('servers', skip_missing=True) }}"
+  loop        : "{{ levels | subelements('servers', skip_missing=True) }}"
+  when        : tasks_to_build == "all"
   tags        :
     - pull
     - new_task
+
+- name        : Pull docker server image
+  command     : docker pull {{ registry_url }}/suzenescape/suzen{{ item }}server
+  register    : docker_pull_servers
+  changed_when: "'Status: Downloaded newer image' in docker_pull_servers.stdout"
+  loop        : "{{ tasks_to_build.split() }}"
+  when        :
+  - tasks_to_build != "all"
+  - levels | selectattr('name', 'equalto', "suzen" + item ) | selectattr('servers', 'defined')|list|length>0
