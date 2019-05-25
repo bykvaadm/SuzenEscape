@@ -1,0 +1,15 @@
+#!/bin/sh
+echo -e "\n###########################################################################"
+echo -e   "#                                                                         #"
+echo -e   "#                         Hello! It's level 1102                          #"
+echo -e   "#    Help me find the phone number, if you can do it, you will get the    #"
+echo -e   "#    right key. I'll tell you what I remember: the number consists of     #"
+echo -e   "#    11 digits (example: 7-(777)-777-7777), it starts with seven,         #"
+echo -e   "#    then there are three digits that I forgot, then there was a two,     #"
+echo -e   "#    and after it 2 digits that do not exceed 2, then 1 figure, which     #"
+echo -e   "#    flew out of my head, then one, then six or nine, and at the end      #"
+echo -e   "#    there was exactly nine.                                              #"
+echo -e   "#                                                                         #"           
+echo -e   "###########################################################################"
+
+sh

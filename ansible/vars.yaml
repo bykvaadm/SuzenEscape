@@ -214,6 +214,20 @@ levels          :
     config  : "sh"
     chain   : 8
 
+    ## Chain 11 (grep challenge)
+    # grep -c
+  - name    : suzen1101
+    password: "suzen1101"
+    sault   : "eiGohC9k"
+    flag    : "aid5looch4Auth1vig5eye8Zoh0t"
+    chain   : 11
+    # grep -r
+  - name    : suzen1102
+    password: "aid5looch4Auth1vig5eye8Zoh0t"
+    sault   : "Zijuo2Mo"
+    flag    : "Q2hhaHdldm9vd2llM0FhaG9vM2EK"
+    chain   : 11
+
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
 #    password: ""
