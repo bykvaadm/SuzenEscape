@@ -5,6 +5,7 @@ build_containers: true
 install_docker  : true
 vagrant         : true
 registry_proto  : http
+is_online       : "yes"
 registry_url    : "127.0.0.1:5000"
 tasks_to_build  : "all"
 levels          :

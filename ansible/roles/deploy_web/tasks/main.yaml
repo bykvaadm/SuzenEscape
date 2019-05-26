@@ -3,7 +3,9 @@
     cd /vagrant/suzen_website && \
     docker build -t 127.0.0.1:5000/suzenescape/web . && \
     docker push 127.0.0.1:5000/suzenescape/web
-  when: vagrant|bool == true
+  when:
+  - vagrant|bool == true
+  - is_online == "yes"
 
 - name    : copy web service file
   template:
