@@ -119,6 +119,13 @@
     owner: root
     group: root
     mode : 0644
+  register: sshd_config
+
+- name: restart sshd
+  systemd:
+    name: sshd
+    state: restarted
+  when: sshd_config.changed
 
 - name        : Pull docker image
   command     : docker pull {{ registry_url }}/suzenescape/{{ item.name }}
