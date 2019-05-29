@@ -229,6 +229,14 @@ levels          :
     flag    : "Q2hhaHdldm9vd2llM0FhaG9vM2EK"
     chain   : 11
 
+    ## Chain 14 (sort)
+    # sort -u
+  - name    : suzen1401
+    password: suzen1401
+    sault   : "vsKnvJak"
+    flag    : "GHsdgidAOJFEIJfdsknvajkfajbK"
+    chain   : 14
+
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
 #    password: ""
