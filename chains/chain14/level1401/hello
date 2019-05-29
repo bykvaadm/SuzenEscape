@@ -1,0 +1,8 @@
+#!/bin/sh
+echo -e "\n####################################"
+echo -e   "#                                  #"
+echo -e   "#       Hello! It's level 1401     #"
+echo -e   "#             Try uniq             #"
+echo -e   "#                                  #"
+echo -e   "####################################"
+sh

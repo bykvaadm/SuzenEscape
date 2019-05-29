@@ -229,6 +229,15 @@ levels          :
     flag    : "Q2hhaHdldm9vd2llM0FhaG9vM2EK"
     chain   : 11
 
+    ## Chain 14 (uniq)
+    # read file
+  - name    : suzen1401
+    password: suzen1401
+    sault   : "vsKnvJak"
+    flag    : "GHsdgidAOJFEIJfdsknvajkfajbK"
+    config  : "ls|cd|cat|sort|uniq"
+    chain   : 14
+
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
 #    password: ""
