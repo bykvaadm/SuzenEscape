@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
 
-import argparse
-import docker
-import logging
-import yaml
+try:
+    import argparse
+    import docker
+    import logging
+    import yaml
+except ImportError:
+    print('Import error.',
+        'You need to install requirements.',
+        'pip3 install -r requirements.txt',
+        sep='\n'
+    )
+    raise SystemExit(1)
 
 
 def build(level, registry_url, args):
@@ -38,7 +46,7 @@ def build(level, registry_url, args):
     except (docker.errors.BuildError, docker.errors.APIError) as exc:
         logging.error('build error:')
         logging.error(exc)
-        exit(1)
+        raise SystemExit(1)
 
     return
 
@@ -87,7 +95,7 @@ if __name__ == '__main__':
     except docker.errors.APIError as exc:
         logging.error('docker client not init')
         logging.error(exc)
-        exit(1)
+        raise SystemExit(1)
 
     args = argp()
 
@@ -98,7 +106,7 @@ if __name__ == '__main__':
             yml = yaml.load(stream, Loader=yaml.BaseLoader)
     except yaml.YAMLError as exc:
         logging.error(exc)
-        exit(1)
+        raise SystemExit(1)
 
     registry_url = yml['registry_url']
 
