@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ $(whoami) =~ ^(suzen5|suzen9)$ ]]; then
+if [[ $(whoami) =~ ^(suzen5|suzen9|suzen901)$ ]]; then
   NETWORK=$(whoami)_network_$RANDOM
   docker network create --internal ${NETWORK} 2>&1 1>/dev/null
 

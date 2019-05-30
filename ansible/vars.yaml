@@ -215,6 +215,16 @@ levels          :
     config  : "sh"
     chain   : 8
 
+    ## Chain 9
+    # base64 + curl
+  - name    : suzen901
+    password: "suzen901"
+    sault   : "HuvDAeWs"
+    chain   : 9
+    servers :
+      - name: suzen901server
+        flag: "hFYhnDBGmSsfDltJnkkNgYGUnwdK"
+
     ## Chain 11 (grep challenge)
     # grep -c
   - name    : suzen1101
