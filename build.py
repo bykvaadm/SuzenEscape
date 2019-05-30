@@ -20,8 +20,8 @@ def build(level, registry_url, args):
             registry_url=registry_url, level_name=level['name']
         )
         _, build_log = client.images.build(
-            path='chain{level_chain}/level{level_vl}'.format(
-                level_chain=level['chain'], level_vl=level['level']
+            path='chains/chain{level_chain}/level{level_vl}'.format(
+                level_chain=level['chain'].zfill(2), level_vl=level['level']
             ),
             tag=image_tag,
             buildargs={
