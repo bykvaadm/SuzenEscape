@@ -229,6 +229,26 @@ levels          :
     flag    : "Q2hhaHdldm9vd2llM0FhaG9vM2EK"
     chain   : 11
 
+## Chain 2309 (Tambek)
+    # grep -c
+  - name    : suzen2309
+    password: "suzen2309"
+    sault   : "eiGohC9k"
+    flag    : "SWVwb292NU9obmdpNm9vamFoQ2gK"
+    chain   : 2309
+    # grep -r
+  - name    : suzen2310
+    password: "SWVwb292NU9obmdpNm9vamFoQ2gK"
+    sault   : "Zijuo2Mo"
+    flag    : "ZXmtNFewOlmqVnGqcnGqd2imNVtL"
+    chain   : 2309
+    # grep -r
+  - name    : suzen2311
+    password: "ZXmtNFewOlmqVnGqcnGqd2imNVtL"
+    sault   : "Zijuo2Mo"
+    flag    : "MKzgASrjByzdIaTdpaTdq2vzAIgY"
+    chain   : 2309
+
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
 #    password: ""
