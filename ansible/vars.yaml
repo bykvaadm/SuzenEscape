@@ -228,7 +228,18 @@ levels          :
     sault   : "Zijuo2Mo"
     flag    : "Q2hhaHdldm9vd2llM0FhaG9vM2EK"
     chain   : 11
-
+    # grep
+  - name    : suzen1103
+    password: "Q2hhaHdldm9vd2llM0FhaG9vM2EK"
+    sault   : "hue8ahQu"
+    flag    : "RWZhZTBhaVc2eXVhcGg3ZGVlcnUK"
+    chain   : 11
+    # grep -L
+  - name    : suzen1104
+    password: "RWZhZTBhaVc2eXVhcGg3ZGVlcnUK"
+    sault   : "DaoW7gai"
+    flag    : "cG9vd29oNHViMVZpdzBCZWFqb28K"
+    chain   : 11
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
 #    password: ""
