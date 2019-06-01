@@ -14,3 +14,4 @@ USER suzen
 
 ENTRYPOINT ["/bin/hello"]
 
+RUN sed -i "s/INSERT_FLAG_HERE/${FLAG}/g" Director.txt
