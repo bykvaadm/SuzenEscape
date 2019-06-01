@@ -1,0 +1,18 @@
+#!/bin/sh
+echo -e "\n#########################################################################"
+echo -e   "#                                                                       #"
+echo -e   "#                       Hello! It's level 1103                          #"
+echo -e   "#  At this level you need:                                              #"
+echo -e   "#  1) Find the command in history,  which will display a line of text,  #"
+echo -e   "#  in this case ip adress.                                              #"
+echo -e   "#  2) Find the name of person in the ip_list file using the previously  #"
+echo -e   "#  found ip address.                                                    #"
+echo -e   "#  3) Find the password of person in the db file, according to data     #"
+echo -e   "#  obtained in the previous step.                                       #"
+echo -e   "#                                                                       #"
+echo -e   "#  Hint:   You will have the opportunity to use the hint at the level.  #"
+echo -e   "#  To do this, enter 'hint' in the terminal (hint refers to the  first  #"
+echo -e   "#  task).                                                               #"         
+echo -e   "#########################################################################"
+
+sh

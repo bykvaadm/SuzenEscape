@@ -1,0 +1,17 @@
+#!/bin/sh
+echo -e "\n###########################################################################"
+echo -e   "#                                                                         #"
+echo -e   "#                          Hello! It's level 1104                         #"
+echo -e   "#  At this level,  each text file should start with word START  and  end  #"
+echo -e   "#  with word END (START and END can be written in any case).              #"
+echo -e   "#  Names of files that don't satisfy these conditions are parts of flag,  #"
+echo -e   "#  parts will need to be sorted in ascending order.    INSERT_SEQ_HERE  -  These  #"
+echo -e   "#  numbers were generated automatically,   they will help you to make  a  #"
+echo -e   "#  correct key from found parts. To collect key from file names:take the  #"
+echo -e   "#  first number of automatically generated - it'll tell you place of the  #"
+echo -e   "#  first part in flag, take the second digit,   it'll tell you place  of  #"
+echo -e   "#  the second part in flag, and so on.                                    #"
+echo -e   "#                                                                         #"           
+echo -e   "###########################################################################"
+
+sh
