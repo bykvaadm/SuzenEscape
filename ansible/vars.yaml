@@ -229,6 +229,14 @@ levels          :
     flag    : "Q2hhaHdldm9vd2llM0FhaG9vM2EK"
     chain   : 11
 
+    ## Chain 16
+    # find
+  - name    : suzen1601
+    password: "suzen1601"
+    sault   : "Rc6uI4vD"
+    flag    : "cjs60vS8vl3nfieCuvNal0fV74en"
+    chain   : 16
+
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
 #    password: ""
