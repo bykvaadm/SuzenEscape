@@ -1,0 +1,10 @@
+#!/bin/sh
+while true; do
+    read -p "Do you want to see a hint? " yn
+    case $yn in
+        [Yy]* ) echo -e "The shell allows arithmetic to be performed by expansion.\nThis allows us to use the shell prompt as a calculator.\n"'echo $((2 + 2))'"\n4\nArithmetic expansion uses the following form:\n"'$((expression))'; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
+sh
