@@ -8,6 +8,8 @@
 [21:43] <tentacleTherapist> А вдруг он там и лежит?
 [21:43] <tentacleTherapist> Не интересно?
 [21:43] <tentacleTherapist> Через base64 можно вообще много чего отправить...
+[21:44] <tentacleTherapist> Надеюсь, ты мой айпи не забыл?
+[21:44] <tentacleTherapist> Он находится по соседству с твоим локальным.
 [21:45] <turntechGodhead> сложно не понятно до свидания
 
 -------
