@@ -23,6 +23,7 @@
 
   roles       :
     - { role: install_docker,   when: install_docker|bool == true }
+    - { role: rabbitmq,         when: use_tokens|bool == true }
     - { role: registry,         when: deploy_registry|bool == true }
     - { role: build_containers, when: [ build_containers|bool == true, is_online == "yes" ]}
     - { role: deploy_web,       when: (registry != "-1") and (deploy_web|bool == true) }

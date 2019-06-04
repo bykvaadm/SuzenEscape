@@ -1,0 +1,15 @@
+-------
+
+[21:32] <tentacleTherapist> Смотри, что есть.
+[21:33] <tentacleTherapist> WzMxL01heS8yMDE5OjEzOjAxOjQyICswMDAwXSAiR0VUIC9jb29sL2hhY2tlcnMvbGl2ZS9oZXJlLyBIVFRQLzEuMSIgMzA0IDAgIi0iICJNb3ppbGxhLzUuMCAoWDExOyBMaW51eCB4ODZfNjQ7IHJ2OjY4LjApIEdlY2tvLzIwMTAwMTAxIEZpcmVmb3gvNjguMCIgIi0iCg==
+[21:40] <turntechGodhead> да надоели вы уже со своими кракозябрами
+[21:40] <turntechGodhead> никому вообще не надо их расшифровывать
+[21:41] <turntechGodhead> лучше бы кинула ключик из стима
+[21:43] <tentacleTherapist> А вдруг он там и лежит?
+[21:43] <tentacleTherapist> Не интересно?
+[21:43] <tentacleTherapist> Через base64 можно вообще много чего отправить...
+[21:44] <tentacleTherapist> Надеюсь, ты мой айпи не забыл?
+[21:44] <tentacleTherapist> Он находится по соседству с твоим локальным.
+[21:45] <turntechGodhead> сложно не понятно до свидания
+
+-------

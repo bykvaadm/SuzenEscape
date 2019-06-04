@@ -6,5 +6,5 @@ echo -e   "#                                   #"
 echo -e   "#    determine current directory    #"
 echo -e   "#                                   #"
 echo -e   "####################################"
-export PS1="~"
+export PS1="~ "
 sh

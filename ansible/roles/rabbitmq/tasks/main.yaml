@@ -1,0 +1,75 @@
+- name: install python pkgs
+  apt :
+    name: ['python3-pip', 'python3-setuptools', 'python-setuptools']
+
+- name: install requirements for sender
+  pip :
+    executable: pip3
+    name      : pika
+
+- name    : upload sender
+  template:
+    src  : sender.py.j2
+    dest : /usr/local/bin/sender.py
+    owner: root
+    group: root
+    mode : 0755
+
+- name    : copy docker registry service file
+  template:
+    src  : rabbitmq.service.j2
+    dest : /etc/systemd/system/rabbitmq.service
+    owner: root
+    group: root
+    mode : 0644
+  notify  : reload systemd
+  register: service_file
+
+- name: Create a directory if it does not exist
+  file:
+    path: /etc/rabbitmq
+    state: directory
+    mode: '0777'
+
+- name    : copy rabbitmq definitions file
+  copy    :
+    src  : definitions.json
+    dest : /etc/rabbitmq/definitions.json
+    mode : 0644
+  register: definitions_file
+  notify  : restart rabbitmq
+
+- name   : Restart service
+  service: name=rabbitmq state=restarted
+  when   : definitions_file.changed
+
+- name    : copy rabbitmq config file
+  copy    :
+    src  : rabbitmq.conf
+    dest : /etc/rabbitmq/rabbitmq.conf
+    mode : 0644
+  register: rabbitmq_conf_file
+  notify  : restart rabbitmq
+
+- name   : Restart service
+  service: name=rabbitmq state=restarted
+  when   : rabbitmq_conf_file.changed
+
+- name    : copy rabbitmq plugins file
+  copy    :
+    src  : enabled_plugins
+    dest : /etc/rabbitmq/enabled_plugins
+    mode : 0644
+  register: enabled_plugins_file
+  notify  : restart rabbitmq
+
+- name   : Restart service
+  service: name=rabbitmq state=restarted
+  when   : enabled_plugins_file.changed
+
+- name: set permissions
+  shell: docker run -v /etc/rabbitmq/:/etc/rabbitmq/ rabbitmq:management-alpine sh -c 'chown -R rabbitmq:rabbitmq /etc/rabbitmq && chmod 777 /etc/rabbitmq'
+
+- name   : Start service
+  service: name=rabbitmq state=started enabled=yes
+

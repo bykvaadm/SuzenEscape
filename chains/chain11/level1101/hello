@@ -6,7 +6,7 @@ echo -e   "#                                                                    
 echo -e   "#  It's very simple, you just need to count the number of words: 'suzen'  #"
 echo -e   "#  in the word_list, this value will be the name of the file that you     #"
 echo -e   "#  need. (Notice: all files, except word_list, contain only one line, the #"
-echo -e   "#  length of the line is 28 characters)                                   #"
+echo -e   "#  length of the line is 60 characters)                                   #"
 echo -e   "#                                                                         #"           
 echo -e   "###########################################################################"
 

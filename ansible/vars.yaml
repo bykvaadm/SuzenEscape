@@ -1,13 +1,21 @@
 ---
 deploy_registry : true
 deploy_web      : true
+use_tokens      : true
 build_containers: true
 install_docker  : true
 vagrant         : true
+
 registry_proto  : http
-is_online       : "yes"
 registry_url    : "127.0.0.1:5000"
+
+is_online       : "yes"
 tasks_to_build  : "all"
+
+rabbitmq_pass   : "password"
+rabbitmq_user   : "user"
+pika_addr       : "127.0.0.1"
+
 levels          :
   ## Chain 1 (Beginner)
   # read file
@@ -49,6 +57,7 @@ levels          :
     config  : "ls|cd|ls|mknod|sh"
     rohome  : "false"
     chain   : 2
+    flag: "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
     servers :
       - name: suzen5server
         flag: "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
@@ -79,6 +88,7 @@ levels          :
     password: "suzen9"
     sault   :  "UP6ILIjj"
     chain   : 4
+    flag: "aWVyNWVvOGluM21haDBRdWFobTkK"
     servers :
       - name: suzen9server
         flag: "aWVyNWVvOGluM21haDBRdWFobTkK"
@@ -215,6 +225,17 @@ levels          :
     config  : "sh"
     chain   : 8
 
+    ## Chain 9
+    # base64 + curl
+  - name    : suzen901
+    password: "suzen901"
+    sault   : "HuvDAeWs"
+    chain   : 9
+    flag: "hFYhnDBGmSsfDltJnkkNgYGUnwdK"
+    servers :
+      - name: suzen901server
+        flag: "hFYhnDBGmSsfDltJnkkNgYGUnwdK"
+
     ## Chain 11 (grep challenge)
     # grep -c
   - name    : suzen1101
@@ -240,6 +261,56 @@ levels          :
     sault   : "DaoW7gai"
     flag    : "cG9vd29oNHViMVZpdzBCZWFqb28K"
     chain   : 11
+
+    ## Chain 16
+    # find
+  - name    : suzen1601
+    password: "suzen1601"
+    sault   : "Rc6uI4vD"
+    flag    : "cjs60vS8vl3nfieCuvNal0fV74en"
+    chain   : 16
+    # find
+  - name    : suzen1602
+    password: "cjs60vS8vl3nfieCuvNal0fV74en"
+    sault   : "eiGohC9k"
+    flag    : "SWVwb292NU9obmdpNm9vamFoQ2gK"
+    chain   : 16
+    # find
+  - name    : suzen1603
+    password: "SWVwb292NU9obmdpNm9vamFoQ2gK"
+    sault   : "Zijuo2Mo"
+    flag    : "MKzgASrjByzdIaTdpaTdq2vzAIgY"
+    chain   : 16
+    # find
+  - name    : suzen1604
+    password: "MKzgASrjByzdIaTdpaTdq2vzAIgY"
+    sault   : "Zijuo2Mo"
+    flag    : "K82T5UWZjlWYzUnal9mS2g2cpFGb"
+    chain   : 16
+
+    ## Chain 14 (sort)
+    # sort -u
+  - name    : suzen1401
+    password: suzen1401
+    sault   : "vsKnvJak"
+    flag    : "GHsdgidAOJFEIJfdsknvajkfajbK"
+    chain   : 14
+
+    ## Chain 15 
+    # tar
+  - name    : suzen1501
+    password: "suzen1501"
+    sault   : "vsiuyTqw"
+    flag    : "4bf47e277be11d43b6817748359b"
+    chain   : 15
+    # 
+  - name    : suzen1502
+    password: "4bf47e277be11d43b6817748359b"
+    sault   : "3dsai45d"
+    flag    : "217e09Qff7cd34c44f37cd17f347"
+    chain   : 15
+
+
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
 #    password: ""
