@@ -267,6 +267,21 @@ levels          :
     flag    : "GHsdgidAOJFEIJfdsknvajkfajbK"
     chain   : 14
 
+    ## Chain 15 
+    # tar
+  - name    : suzen1501
+    password: "suzen1501"
+    sault   : "vsiuyTqw"
+    flag    : "4bf47e277be11d43b6817748359b"
+    chain   : 15
+    # 
+  - name    : suzen1502
+    password: "4bf47e277be11d43b6817748359b"
+    sault   : "3dsai45d"
+    flag    : "217e09Qff7cd34c44f37cd17f347"
+    chain   : 15
+
+
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
 #    password: ""
