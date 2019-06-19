@@ -1,0 +1,9 @@
+#!/bin/sh
+echo -e "\n###########################################################################"
+echo -e   "#                                                                         #"
+echo -e   "#                         Hello! It's level 1                             #"
+echo -e   "#    Have you ever hear about git? Try to find flag in commits.           #"
+echo -e   "#                                                                         #"           
+echo -e   "###########################################################################"
+
+sh

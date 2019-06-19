@@ -1,0 +1,11 @@
+#!/bin/sh
+echo -e "\n###########################################################################"
+echo -e   "#                                                                         #"
+echo -e   "#                         Hello! It's level 3                             #"
+echo -e   "#    In this task you should merge brances to start the scrypt.           #"
+echo -e   "#    The decrypted file will give you flag. Good luck                     #"
+echo -e   "#    P.S use 'python decrypto.py' to run script, flag will appear...      #"
+echo -e   "#                                                                         #"           
+echo -e   "###########################################################################"
+
+sh
