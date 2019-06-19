@@ -1,10 +1,16 @@
 #!/bin/bash
 
 ID="$1"
+TAG="$2"
+if [ "$TAG" == "latest" ]; then
+  TAG="latest:1234567890"
+fi
 
 dockerstdout=$(docker exec ${ID} sh -c 'find "/home/john" -mindepth 1 -print 2>/dev/null')
 dockerstdout=$(tr -dc '[[:print:]]' <<< "$dockerstdout")
 
 if [ "$dockerstdout" = "" ]; then
-  docker exec ${ID} mkdir "/home/suzen/{{ levels | selectattr('name', 'equalto', 'suzen20') | map(attribute='flag') | join(',') }}"
+  FLAG="{{ levels | selectattr('name', 'equalto', 'suzen20') | map(attribute='flag') | join(',') }}"
+  FLAG_ENC=$(echo ${TAG} | openssl enc -aes-256-cbc -nosalt -k ${FLAG} -a | base64)
+  docker exec ${ID} mkdir "/home/suzen/${FLAG_ENC}"
 fi

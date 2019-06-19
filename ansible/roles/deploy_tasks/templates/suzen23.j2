@@ -1,6 +1,10 @@
 #!/bin/bash
 
 ID="$1"
+TAG="$2"
+if [ "$TAG" == "latest" ]; then
+  TAG="latest:1234567890"
+fi
 
 dockerstdout1=$(docker exec ${ID} ls /home/suzen/source/)
 dockerstdout2=$(docker exec ${ID} ls /home/suzen/destination/)
@@ -8,6 +12,8 @@ md52=$(printf "%s\n" "$dockerstdout2" | md5sum | awk '{print $1}')
 
 if [ "$dockerstdout1" = "" ]; then
   if [ "$md52" = "39b9bbe2ab9839d463a44843e2ad8234" ]; then
-    docker exec ${ID} mkdir "/home/suzen/dmVlc2VpQzVBb2dlaXI1cmVlM2YK"
+    FLAG="{{ levels | selectattr('name', 'equalto', 'suzen23') | map(attribute='flag') | join(',') }}"
+    FLAG_ENC=$(echo ${TAG} | openssl enc -aes-256-cbc -nosalt -k ${FLAG} -a | base64)
+    docker exec ${ID} mkdir "/home/suzen/${FLAG_ENC}"
   fi
 fi

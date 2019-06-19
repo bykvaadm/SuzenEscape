@@ -6,5 +6,5 @@ echo -e   "#                                   #"
 echo -e   "#        i forgot who i am          #"
 echo -e   "#                                   #"
 echo -e   "####################################"
-export PS1="#"
+export PS1="# "
 sh
