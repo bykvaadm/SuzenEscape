@@ -2,13 +2,13 @@ FROM bash
 
 ARG FLAG
 
-ADD folder_builder /bin
-ADD hello /bin
+RUN adduser -D suzen
 
-RUN mkdir /home/suzen && \
-    cd /home/suzen && \
-    folder_builder -filename diary.txt -str "$FLAG" -subdirs_count 1500 && \
+COPY folder_builder hello /bin/
+WORKDIR /home/suzen
+
+RUN folder_builder -filename diary.txt -str "$FLAG" -subdirs_count 1000 && \
     cd /sbin && ls | xargs rm && cd /bin && ls | grep -v hello | xargs rm
 
-WORKDIR /home/suzen
-ENTRYPOINT ["bash"]
+ENTRYPOINT ["/bin/hello"]
+USER suzen
