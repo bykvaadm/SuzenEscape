@@ -1,8 +1,8 @@
 #!/bin/sh
 echo -e "\n###########################################################################"
 echo -e   "#                                                                         #"
-echo -e   "#                         Hello! It's level 4                             #"
-echo -e   "#  Try to find flag using commit message.The flag is in file readme.txt   #"
+echo -e   "#                         Hello! It's level 5                             #"
+echo -e   "#  Try to find flag using commit changes.The flag is in file readme.txt   #"
 echo -e   "#                                                                         #"           
 echo -e   "###########################################################################"
 
