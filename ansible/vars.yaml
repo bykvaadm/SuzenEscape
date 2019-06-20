@@ -1,13 +1,21 @@
 ---
 deploy_registry : true
-deploy_web      : false
+deploy_web      : true
+use_tokens      : true
 build_containers: true
 install_docker  : true
 vagrant         : true
+
 registry_proto  : http
-is_online       : "yes"
 registry_url    : "127.0.0.1:5000"
+
+is_online       : "yes"
 tasks_to_build  : "all"
+
+rabbitmq_pass   : "password"
+rabbitmq_user   : "user"
+pika_addr       : "127.0.0.1"
+
 levels          :
   ## Chain 1 (Beginner)
   # read file
@@ -49,6 +57,7 @@ levels          :
     config  : "ls|cd|ls|mknod|sh"
     rohome  : "false"
     chain   : 2
+    flag: "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
     servers :
       - name: suzen5server
         flag: "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
@@ -79,6 +88,7 @@ levels          :
     password: "suzen9"
     sault   :  "UP6ILIjj"
     chain   : 4
+    flag: "aWVyNWVvOGluM21haDBRdWFobTkK"
     servers :
       - name: suzen9server
         flag: "aWVyNWVvOGluM21haDBRdWFobTkK"
@@ -221,6 +231,7 @@ levels          :
     password: "suzen901"
     sault   : "HuvDAeWs"
     chain   : 9
+    flag: "hFYhnDBGmSsfDltJnkkNgYGUnwdK"
     servers :
       - name: suzen901server
         flag: "hFYhnDBGmSsfDltJnkkNgYGUnwdK"
