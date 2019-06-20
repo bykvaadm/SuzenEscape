@@ -1,7 +1,6 @@
 
 FROM debian
 
-ARG CONFIG
 ARG FLAG
 
 SHELL ["/bin/bash", "-c"]
