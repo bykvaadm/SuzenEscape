@@ -292,6 +292,20 @@ levels          :
     flag    : "217e09Qff7cd34c44f37cd17f347"
     chain   : 15
 
+    ## Chain 12
+    # crypto 
+  - name : suzen1201
+    password: "suzen1201"
+    sault : "GTsqPcRa"
+    flag : "KjOWjwhoaJwWnWWIIQnnaFPPZWQK"
+    chain : 12
+    #hex
+  - name : suzen1202
+    password: "KjOWjwhoaJwWnWWIIQnnaFPPZWQK"
+    sault : "eTsarRQC"
+    flag : "gLnlxmcEAgQIEcoezhWQClTbIEns"
+    chain : 12
+
 
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
