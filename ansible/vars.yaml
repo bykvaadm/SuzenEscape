@@ -280,7 +280,20 @@ levels          :
     sault   : "3dsai45d"
     flag    : "217e09Qff7cd34c44f37cd17f347"
     chain   : 15
-
+    
+    ## Chain 40
+    # crypto  
+  - name    : suzen40
+    password: "suzen40"
+    sault   : "GTsqPcRa"
+    flag    : "KjOWjwhoaJwWnWWIIQnnaFPPZWQK"
+    chain   : 40
+    #hex
+  - name    : suzen41
+    password: "KjOWjwhoaJwWnWWIIQnnaFPPZWQK"
+    sault   : "eTsarRQC"
+    flag    : "gLnlxmcEAgQIEcoezhWQClTbIEns"
+    chain   : 40
 
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
