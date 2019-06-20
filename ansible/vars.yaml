@@ -1,13 +1,15 @@
 ---
-deploy_registry : false
-deploy_web      : false
+deploy_registry : true
+deploy_web      : true
 use_tokens      : true
 build_containers: true
-install_docker  : false
+install_docker  : true
 vagrant         : true
+
 registry_proto  : http
-is_online       : "yes"
 registry_url    : "127.0.0.1:5000"
+
+is_online       : "yes"
 tasks_to_build  : "all"
 
 rabbitmq_pass   : "password"
