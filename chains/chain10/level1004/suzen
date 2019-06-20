@@ -1,0 +1,31 @@
+#!/bin/sh
+echo 'bykva_suzen1' $i > .gitignore
+echo 'I inadvertently removed the Flag, the BOSS says I have to revert to the commit where I created flag. The commit is called " feat(Task): adds a flag"' >diary.txt
+for i in `seq 1 56`;
+do
+echo $i
+if [[ $i/2 = 1 ]]
+then
+echo 'LVM is an additional layer of abstraction from iron, allowing us to collect heaps of dissimilar disks into one, and then again break this one exactly as we want.' $i > readme.txt
+else
+echo 'LVM is an additional layer of abstraction from iron, allowing us to collect heaps of dissimilar disks into one, and then again break this one exactly as we want.' $i > readme.txt
+fi
+git add .
+git commit -m "Index"
+done
+    echo $1 > readme.txt 
+    git add . 
+    git commit -m "feat(Task): adds a flag"
+for i in `seq 1 78`;
+do
+echo $i
+if [[ $i/2 = 1 ]]
+then
+echo 'LVM is an additional layer of abstraction from iron, allowing us to collect heaps of dissimilar disks into one, and then again break this one exactly as we want.' $i > readme.txt
+else
+echo 'LVM is an additional layer of abstraction from iron, allowing us to collect heaps of dissimilar disks into one, and then again break this one exactly as we want.' $i > readme.txt
+fi
+git add .
+git commit -m "Index"
+done
+

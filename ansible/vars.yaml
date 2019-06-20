@@ -1,6 +1,6 @@
 ---
 deploy_registry : true
-deploy_web      : true
+deploy_web      : false
 build_containers: true
 install_docker  : true
 vagrant         : true
@@ -231,6 +231,7 @@ levels          :
     password: "suzen1001"
     sault   : "eidohC9k"
     flag    : "fWmPMTzAqk8M6Q2BBHjsZcIpXuV3"
+    config  : "sh|ls|cat|git"
     chain   : 10
 
     # branch
@@ -238,6 +239,7 @@ levels          :
     password: "fWmPMTzAqk8M6Q2BBHjsZcIpXuV3"
     sault   : "dfhohC9k"
     flag    : "aoHOYITavdRvrg7SyeajObYI96YP"
+    config  : "sh|ls|cat|git"
     chain   : 10
 
     # merge
@@ -252,6 +254,7 @@ levels          :
     password: "9Jen8gixfrYH5ZU4ANC4IF5Est27"
     sault   : "eiGahC9k"
     flag    : "pP26eObmpUVsabj69GN8V4Kn8RpN"
+    config  : "sh|ls|cat|git"
     chain   : 10
 
     # git log -S'FLAG IS' -p | grep 'FLAG IS'

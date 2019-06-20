@@ -9,7 +9,7 @@ RUN  git config --global user.email "den@example.com" && \
 ADD hello /bin/hello
 RUN git init && \
     git checkout -b flag_is_here && \
-    echo "Now you are on another branch, this changes wont affect your develop until you merge it. Flag is $FLAG" > diary.txt && \
+    echo "Now you are on another branch, this changes wont affect your develop until you merge it. Flag is ${FLAG:0:5}(/)${FLAG:5:12}(!)${FLAG:17:11}" > diary.txt && \
     git add . && git commit -m 'FLAG is here' && \
     git checkout -b master && \
     echo 'Your task is to select the branch with flag, there you will find the flag.' > diary.txt && \
