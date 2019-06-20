@@ -236,6 +236,42 @@ levels          :
       - name: suzen901server
         flag: "hFYhnDBGmSsfDltJnkkNgYGUnwdK"
 
+    ## Chain 10 (git challenge)
+    # checkout
+  - name    : suzen1001
+    password: "suzen1001"
+    sault   : "eidohC9k"
+    flag    : "fWmPMTzAqk8M6Q2BBHjsZcIpXuV3"
+    config  : "sh|ls|cat|git"
+    chain   : 10
+    # branch
+  - name    : suzen1002
+    password: "fWmPMTzAqk8M6Q2BBHjsZcIpXuV3"
+    sault   : "dfhohC9k"
+    flag    : "aoHOYITavdRvrg7SyeajObYI96YP"
+    config  : "sh|ls|cat|git"
+    chain   : 10
+    # merge
+  - name    : suzen1003
+    password: "aoHOYITavdRvrg7SyeajObYI96YP"
+    sault   : "eidhhC9k"
+    flag    : "9Jen8gixfrYH5ZU4ANC4IF5Est27"
+    chain   : 10
+    # log
+  - name    : suzen1004
+    password: "9Jen8gixfrYH5ZU4ANC4IF5Est27"
+    sault   : "eiGahC9k"
+    flag    : "pP26eObmpUVsabj69GN8V4Kn8RpN"
+    config  : "sh|ls|cat|git"
+    chain   : 10
+    # git log -S'FLAG IS' -p | grep 'FLAG IS'
+  - name    : suzen1005
+    password: "pP26eObmpUVsabj69GN8V4Kn8RpN"
+    sault   : "eiGahC9k"
+    flag    : "1Kju8UV4WS6dhEuXEt2jtIm9P6Gf"
+    chain   : 10
+
+
     ## Chain 11 (grep challenge)
     # grep -c
   - name    : suzen1101

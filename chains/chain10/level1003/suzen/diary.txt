@@ -1,0 +1,2 @@
+Merge all brenches and start the scrypt. Flag will be in encrypted file. Also I changed the same files in different branches, so try to resolve conflicts.
+
