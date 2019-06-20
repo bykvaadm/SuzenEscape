@@ -1,13 +1,27 @@
-- name      : create users
-  user      :
-    name       : "{{ item.name }}"
-    password   : "{{ item.password | password_hash('sha512', item.sault) }}"
-    shell      : /usr/local/bin/dockersh
-    groups     : docker
-    create_home: yes
-  with_items: "{{ levels }}"
-  tags      :
-    - new_task
+- name: install pkgs
+  apt:
+    update_cache: "{{ is_online | default('yes') }}"
+    name        :
+      - bc
+  tags:
+    - test
+
+- name: create users
+  include: create_users.yaml levels_item={{ item }}
+  with_items: '{{ levels }}'
+#  block:
+#  - name: generate password
+#    shell: "echo latest | openssl enc -aes-256-cbc -salt -k {{ item.password }} -a | base64"
+#    register: password_encrypted
+#
+#  - name      : create users
+#    user      :
+#      name       : "{{ item.name }}"
+#      password   : "{{ password_encrypted | password_hash('sha512', item.sault) }}"
+#      shell      : /usr/local/bin/dockersh
+#      groups     : docker
+#      create_home: yes
+#  with_items: "{{ levels }}"
 
 - name      : add custom shell in list
   lineinfile:

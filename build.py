@@ -5,6 +5,7 @@ try:
     import docker
     import logging
     import yaml
+    import subprocess
 except ImportError:
     print('Import error.',
         'You need to install requirements.',
@@ -16,9 +17,22 @@ except ImportError:
 
 def build(level, registry_url, args):
     try:
-        image_tag = '{registry_url}/suzenescape/{level_name}'.format(
-            registry_url=registry_url, level_name=level['name']
+        if args.token:
+            token = args.token
+        else:
+            token = "latest"
+        image_tag = '{registry_url}/suzenescape/{level_name}:{tag}'.format(
+            registry_url=registry_url, level_name=level['name'], tag=token
         )
+        flag = level.get("flag", "NONE")
+        print(token)
+        if token is "latest":
+            token = "latest:1234567890"
+        print(token)
+        encrypted_flag = subprocess.getoutput(
+            ["echo "+token+" | openssl enc -aes-256-cbc -nosalt -k "+flag+" -a | base64"]
+        )
+        print(encrypted_flag)
         _, build_log = client.images.build(
             path='chains/chain{level_chain}/level{level_vl}'.format(
                 level_chain=level['chain'].zfill(2), level_vl=level['level']
@@ -28,7 +42,7 @@ def build(level, registry_url, args):
                 'USERNAME': level['name'],
                 'CONFIG': level.get("config", "NONE"),
                 'USERHOME': "root" if level.get("rohome") else level["name"],
-                'FLAG': level.get("flag", "NONE"),
+                'FLAG': str(encrypted_flag),
             },
             rm=True,
             forcerm=True,
@@ -64,6 +78,7 @@ def argp():
     parser.add_argument(
         '-b', '--build_only', help='build only, not push images', action='store_true'
     )
+    parser.add_argument('-t', '--token', help='token, used as message to encrypt')
     parser.add_argument('-v', '--verbose', help='log enable', action='count')
     # parser.add_argument('-f', '--vars-yaml', help='path to yaml level vars file')
     parser.add_argument('task', nargs='+', help='task to build list')
