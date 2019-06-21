@@ -1,0 +1,12 @@
+#!/bin/bash
+echo -e "\n####################################"
+echo -e   "#                                  #"
+echo -e   "#       Hello! It's level 1202     #"
+echo -e   "#        try something of          #"
+echo -e   "#         md5sum|xxd|vim           #"
+echo -e   "#                                  #"
+echo -e   "#                                  #"
+echo -e   "# Read Suzen diary for the details #"
+echo -e   "#                                  #"
+echo -e   "####################################\n"
+bash
