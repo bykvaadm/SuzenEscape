@@ -290,19 +290,21 @@ levels          :
     password: "4bf47e277be11d43b6817748359b"
     sault   : "3dsai45d"
     flag    : "217e09Qff7cd34c44f37cd17f347"
+               KhBKgncNZhhbHdAxPQMAuNiOhKKm 
     chain   : 15
 
+    ## Chain 12
   - name    : suzen1201
     password: "suzen1202"
     sault   : "GTsqPcRa"
-    flag    : "nVWyifzngQZGYZfMdwsGNeVtKZbnvQRxgqfRoJeqsDFBbUMGAydyZeaELecb"
+    flag    : "nVWyifzngQZGYZfMdwsGNeVtKZbn"
     chain   : 12
      
     #hex 
   - name    : suzen1202
-    password: "nVWyifzngQZGYZfMdwsGNeVtKZbnvQRxgqfRoJeqsDFBbUMGAydyZeaELecb"
+    password: "nVWyifzngQZGYZfMdwsGNeVtKZbn"
     sault   : "eTsarRQC"
-    flag    : "KhBKgncNZhhbHdAxPQMAuNiOhKKmTxpXpMVkVNibNosdCvVcxrpKGsTWTJQp"
+    flag    : "KhBKgncNZhhbHdAxPQMAuNiOhKKm"
     chain   : 12
 
 
