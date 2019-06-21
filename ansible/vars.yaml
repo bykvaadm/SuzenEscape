@@ -292,6 +292,19 @@ levels          :
     flag    : "217e09Qff7cd34c44f37cd17f347"
     chain   : 15
 
+  - name    : suzen1201
+    password: "suzen1202"
+    sault   : "GTsqPcRa"
+    flag    : "nVWyifzngQZGYZfMdwsGNeVtKZbnvQRxgqfRoJeqsDFBbUMGAydyZeaELecb"
+    chain   : 12
+     
+    #hex 
+  - name    : suzen1202
+    password: "nVWyifzngQZGYZfMdwsGNeVtKZbnvQRxgqfRoJeqsDFBbUMGAydyZeaELecb"
+    sault   : "eTsarRQC"
+    flag    : "KhBKgncNZhhbHdAxPQMAuNiOhKKmTxpXpMVkVNibNosdCvVcxrpKGsTWTJQp"
+    chain   : 12
+
 
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
