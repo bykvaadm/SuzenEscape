@@ -291,7 +291,27 @@ levels          :
     sault   : "3dsai45d"
     flag    : "217e09Qff7cd34c44f37cd17f347"
     chain   : 15
-    #ivan
+
+    #Vlada, Sveta    
+  - name    : suzen1801
+    password: "suzen1801"
+    sault   : "tCY.XnoD"
+    flag    : "yvBaOx7BI8m0RbNbo6Nx0HD2lsjR"
+    chain   : 18
+
+  - name    : suzen1802
+    password: "yvBaOx7BI8m0RbNbo6Nx0HD2lsjR"
+    sault   : "tCY.XnoD"
+    flag    : "8BmxXWXXyl5hVLOCEPFUWVztRz4o"
+    chain   : 18
+
+  - name    : suzen1803
+    password: "8BmxXWXXyl5hVLOCEPFUWVztRz4o"
+    sault   : "tCY.XnoD"
+    flag    : "SyzSxwkEdjLiHxPl4ATcnRPGWYeE"
+    chain   : 18
+
+    #Ivan
   - name    : suzen1901
     password: "suzen1901"
     sault   : "3dsai45d"
