@@ -291,7 +291,12 @@ levels          :
     sault   : "3dsai45d"
     flag    : "217e09Qff7cd34c44f37cd17f347"
     chain   : 15
-
+    #ivan
+  - name    : suzen1901
+    password: "suzen1901"
+    sault   : "3dsai45d"
+    flag    : "48TKtaXRVifeQm36d7aNr7QKU3BL"
+    chain   : 19
 
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
