@@ -292,6 +292,18 @@ levels          :
     flag    : "217e09Qff7cd34c44f37cd17f347"
     chain   : 15
 
+    ## Chain 17
+  - name : suzen1701
+    password: "suzen1701"
+    sault : "vsiuyTer"
+    flag : "QWVsNHF1dU5nb2hZNW1lZG9vY2gK"
+    chain : 17
+
+  - name : suzen1702
+    password: "QWVsNHF1dU5nb2hZNW1lZG9vY2gK"
+    sault : "vsiuyTeq"
+    flag : "YWlzaGFlbW9YZWl4ZWVxdTBOaWEK"
+    chain : 17
 
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
