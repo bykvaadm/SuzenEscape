@@ -1,13 +1,13 @@
 ---
-deploy_registry : true
-deploy_web      : true
-use_tokens      : true
-build_containers: true
-install_docker  : true
-vagrant         : true
+deploy_registry : false
+deploy_web      : false
+use_tokens      : false
+build_containers: false
+install_docker  : false
+vagrant         : false
 
-registry_proto  : http
-registry_url    : "127.0.0.1:5000"
+registry_proto  : https
+registry_url    : "myctf.ru:5000"
 
 is_online       : "yes"
 tasks_to_build  : "all"
@@ -292,6 +292,25 @@ levels          :
     flag    : "217e09Qff7cd34c44f37cd17f347"
     chain   : 15
 
+    ## Chain 17
+    # apt-get
+  - name    : suzen1701
+    password: "suzen1701"
+    sault   : "vsiuyTqw"
+    flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
+    chain   : 17
+    # find
+  - name    : suzen1702
+    password: "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
+    sault   : "vsiuyTqw"
+    flag    : "bWFlZm82WnUxeWFxdWlla2lldGkK"
+    chain   : 17
+    # nmap
+  - name    : suzen1703
+    password: "bWFlZm82WnUxeWFxdWlla2lldGkK"
+    sault   : "vsiuyTqw"
+    flag    : "bG90aDdpZUZlNWNoaTRpZWs4bGEK"
+    chain   : 17
 
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
