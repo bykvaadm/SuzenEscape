@@ -80,7 +80,7 @@ if [ ! -z ${TOKEN} ]; then
   fi
 fi
 
-if [[ $(whoami) =~ ^(suzen5|suzen9|suzen901)$ ]]; then
+if [[ $(whoami) =~ ^suzen(5|9|901)$ ]]; then
   NETWORK=$(whoami)_network_$RANDOM
   docker network create --internal ${NETWORK} 2>&1 1>/dev/null
 
@@ -93,6 +93,19 @@ if [[ $(whoami) =~ ^(suzen5|suzen9|suzen901)$ ]]; then
     --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 \
     {{ registry_url }}/suzenescape/$(whoami):${TAG} 2>/dev/null
   docker network rm ${NETWORK} 2>&1 1>/dev/null
+
+elif [[ $(whoami) =~ nnnginx ]]; then
+  PORT=$(( ( RANDOM % 30000 ) + 30000))
+
+  /usr/bin/docker run --rm --network none \
+    --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 \
+    {{ registry_url }}/suzenescape/nnnginx$(whoami):${TAG} -- 2>/dev/null | sed "s/%PORTA%/$PORT/g"
+
+  # task
+  /usr/bin/docker run --rm -p $PORT:80
+    --cpus=".2" --memory=50m --kernel-memory=50m --pids-limit=50 --stop-timeout=3600 \
+    {{ registry_url }}/suzenescape/$(whoami):${TAG} 2>/dev/null
+
 else
   # task
   /usr/bin/docker run -ti --rm --network none \
