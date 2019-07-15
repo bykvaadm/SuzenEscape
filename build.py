@@ -7,32 +7,32 @@ try:
     import yaml
     import subprocess
 except ImportError:
-    print('Import error.',
+    print(
+        'Import error.',
         'You need to install requirements.',
         'pip3 install -r requirements.txt',
-        sep='\n'
+        sep='\n',
     )
-    raise SystemExit(1)
+    exit(1)
 
 
 def build(level, registry_url, args):
     try:
-        if args.token:
-            token = args.token
-        else:
-            token = "latest"
+        token = args.token if args.token else "latest"
+
         image_tag = '{registry_url}/suzenescape/{level_name}:{tag}'.format(
             registry_url=registry_url, level_name=level['name'], tag=token
         )
         flag = level.get("flag", "NONE")
-        print(token)
-        if token is "latest":
-            token = "latest:1234567890"
-        print(token)
+
+        token = "latest:1234567890" if token == "latest" else token
+
         encrypted_flag = subprocess.getoutput(
-            ["echo "+token+" | openssl enc -aes-256-cbc -nosalt -k "+flag+" -a | base64"]
+            'echo {token} | openssl enc -aes-256-cbc -nosalt -k {flag} -a | base64'.format(
+                token=token, flag=flag
+            )
         )
-        print(encrypted_flag)
+
         _, build_log = client.images.build(
             path='chains/chain{level_chain}/level{level_vl}'.format(
                 level_chain=level['chain'].zfill(2), level_vl=level['level']
@@ -51,7 +51,9 @@ def build(level, registry_url, args):
         if args.verbose:
             build_log_string = ''.join([item.get('stream', '') for item in build_log])[:-1]
             logging.info(
-                '{image_tag} build log:\n{build_log}'.format(image_tag=image_tag, build_log=build_log_string)
+                '{image_tag} build log:\n{build_log}'.format(
+                    image_tag=image_tag, build_log=build_log_string
+                )
             )
 
         if not args.build_only:
@@ -60,7 +62,7 @@ def build(level, registry_url, args):
     except (docker.errors.BuildError, docker.errors.APIError) as exc:
         logging.error('build error:')
         logging.error(exc)
-        raise SystemExit(1)
+        exit(1)
 
     return
 
@@ -110,7 +112,7 @@ if __name__ == '__main__':
     except docker.errors.APIError as exc:
         logging.error('docker client not init')
         logging.error(exc)
-        raise SystemExit(1)
+        exit(1)
 
     args = argp()
 
@@ -121,7 +123,7 @@ if __name__ == '__main__':
             yml = yaml.load(stream, Loader=yaml.BaseLoader)
     except yaml.YAMLError as exc:
         logging.error(exc)
-        raise SystemExit(1)
+        exit(1)
 
     registry_url = yml['registry_url']
 
