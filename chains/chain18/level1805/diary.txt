@@ -1,0 +1,1 @@
+Setup mask to /home/suzen/{shop,parking} so all users can only read files

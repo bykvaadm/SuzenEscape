@@ -1,13 +1,14 @@
 ---
-deploy_registry : false
+deploy_registry : yes
 deploy_web      : false
 use_tokens      : false
 build_containers: false
-install_docker  : false
+install_docker  : yes
 vagrant         : false
 
-registry_proto  : https
-registry_url    : "myctf.ru:5000"
+registry_proto  : http
+registry_url    : "18.219.150.49:5000"
+#"myctf.ru:5000"
 
 is_online       : "yes"
 tasks_to_build  : "all"
@@ -311,6 +312,54 @@ levels          :
     sault   : "vsiuyTqw"
     flag    : "bG90aDdpZUZlNWNoaTRpZWs4bGEK"
     chain   : 17
+
+    ## Chain 18
+    # getfacl
+  - name    : suzen1801
+    password: "suzen1801"
+    sault   : "vsiuyTqw"
+    flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
+    chain   : 18
+    #
+  - name    : suzen1802
+    password: "suzen1802"
+    sault   : "vsiuyTqw"
+    flag    : "bWFlZm82WnUxeWFxdWlla2lldGkK"
+    chain   : 18
+  - name    : suzen1803
+    password: "suzen1803"
+    sault   : "vsiuyTqw"
+    flag    : "bWFlZm82WnUxeWFxdWlla2lldGkK"
+    chain   : 18
+  - name    : suzen1804
+    password: "suzen1804"
+    sault   : "vsiuyTqw"
+    flag    : "bWFlZm82WnUxeWFxdWlla2lldGkK"
+    chain   : 18
+  - name    : suzen1805
+    password: "suzen1805"
+    sault   : "vsiuyTqw"
+    flag    : "bWFlZm82WnUxeWFxdWlla2lldGkK"
+    chain   : 18
+  - name    : suzen1806
+    password: "suzen1806"
+    sault   : "vsiuyTqw"
+    flag    : "bWFlZm82WnUxeWFxdWlla2lldGkK"
+    chain   : 18
+
+    ## Chain 19
+    # build-essentials for ostep lab2
+  - name    : suzen1901
+    password: "suzen1901"
+    sault   : "vsiuyTqw"
+    flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
+    chain   : 19
+    # build-essentials for ostep lab1
+  - name    : suzen1902
+    password: "suzen1902"
+    sault   : "vsiuyTqw"
+    flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
+    chain   : 19
 
 ## EXAMPLE TEMPLATE
 #  - name    : suzen

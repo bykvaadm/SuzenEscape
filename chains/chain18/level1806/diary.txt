@@ -1,0 +1,25 @@
+1) Create users:
+apple
+pineapple
+nissan
+toyota
+orange
+red
+
+2) Create groups:
+cars
+fruits
+
+3) Assign users to groups:
+"cars" users to cars group
+"fruits" users to cars fruits
+
+4) create default acl on /home/suzen/parking:
+"cars" users can read and write
+
+5) create default acl on /home/suzen/shop:
+"fruits" users can read and execute
+
+6) create some files inside /home/suzen/{parking,shop}
+
+7) verify that default acl was applied

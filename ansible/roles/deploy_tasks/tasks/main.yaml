@@ -102,8 +102,8 @@
   when      : kostyl_stat.stat.exists == false
 
 - name: upload docker config
-  copy:
-    src: daemon.json
+  template:
+    src: daemon.json.j2
     dest: /etc/docker/daemon.json
     owner: root
     group: root

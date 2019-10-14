@@ -1,0 +1,21 @@
+1) Create users:
+apple
+pineapple
+nissan
+toyota
+orange
+red
+
+2) Create groups:
+cars
+fruits
+
+3) Assign users to groups:
+"cars" users to cars group
+"fruits" users to cars fruits
+
+4) Setup acl to all files and folders inside parking and shop directories
+
+- parking dir: allow read, write, execute to parking group
+- shop dir: allow read, write, execute to fruits group
+- deny all access to parking, shop for users orange and red
