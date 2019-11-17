@@ -8,6 +8,7 @@
   pre_tasks:
   - name: intall python
     raw: if [ "{{ is_online | default('yes') }}" == "yes" ]; then apt -y update; fi; apt install -y python-minimal python-apt
+    changed_when: false
   - name: determine if registry is already installed
     uri:
       url: "{{ registry_proto }}://{{ registry_url }}"
