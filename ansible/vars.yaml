@@ -2,13 +2,12 @@
 deploy_registry : yes
 deploy_web      : false
 use_tokens      : false
-build_containers: false
+build_containers: true
 install_docker  : yes
 vagrant         : false
 
 registry_proto  : http
-registry_url    : "18.219.150.49:5000"
-#"myctf.ru:5000"
+registry_url    : "127.0.0.1:5000"
 
 is_online       : "yes"
 tasks_to_build  : "all"
@@ -357,6 +356,11 @@ levels          :
     # build-essentials for ostep lab1
   - name    : suzen1902
     password: "suzen1902"
+    sault   : "vsiuyTqw"
+    flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
+    chain   : 19
+  - name    : suzen1903
+    password: "suzen1903"
     sault   : "vsiuyTqw"
     flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
     chain   : 19
