@@ -4,7 +4,7 @@ deploy_web      : false
 use_tokens      : false
 build_containers: true
 install_docker  : yes
-vagrant         : false
+vagrant         : true
 
 registry_proto  : http
 registry_url    : "127.0.0.1:5000"
