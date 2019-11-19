@@ -5,7 +5,6 @@ try:
     import docker
     import logging
     import yaml
-    import subprocess
 except ImportError:
     print(
         'Import error.',
@@ -15,22 +14,10 @@ except ImportError:
     )
     exit(1)
 
-
 def build(level, registry_url, args):
     try:
-        token = args.token if args.token else "latest"
-
-        image_tag = '{registry_url}/suzenescape/{level_name}:{tag}'.format(
-            registry_url=registry_url, level_name=level['name'], tag=token
-        )
-        flag = level.get("flag", "NONE")
-
-        token = "latest:1234567890" if token == "latest" else token
-
-        encrypted_flag = subprocess.getoutput(
-            'echo {token} | openssl enc -aes-256-cbc -nosalt -k {flag} -a | base64'.format(
-                token=token, flag=flag
-            )
+        image_tag = '{registry_url}/suzenescape/{level_name}'.format(
+        registry_url = registry_url, level_name = level['name']
         )
 
         _, build_log = client.images.build(
@@ -42,7 +29,7 @@ def build(level, registry_url, args):
                 'USERNAME': level['name'],
                 'CONFIG': level.get("config", "NONE"),
                 'USERHOME': "root" if level.get("rohome") else level["name"],
-                'FLAG': str(encrypted_flag),
+                'FLAG': level.get("flag", "NONE"),
             },
             rm=True,
             forcerm=True,
@@ -51,9 +38,7 @@ def build(level, registry_url, args):
         if args.verbose:
             build_log_string = ''.join([item.get('stream', '') for item in build_log])[:-1]
             logging.info(
-                '{image_tag} build log:\n{build_log}'.format(
-                    image_tag=image_tag, build_log=build_log_string
-                )
+                '{image_tag} build log:\n{build_log}'.format(image_tag=image_tag, build_log=build_log_string)
             )
 
         if not args.build_only:
@@ -80,7 +65,7 @@ def argp():
     parser.add_argument(
         '-b', '--build_only', help='build only, not push images', action='store_true'
     )
-    parser.add_argument('-t', '--token', help='token, used as message to encrypt')
+    #parser.add_argument('-t', '--token', help='token, used as message to encrypt')
     parser.add_argument('-v', '--verbose', help='log enable', action='count')
     # parser.add_argument('-f', '--vars-yaml', help='path to yaml level vars file')
     parser.add_argument('task', nargs='+', help='task to build list')
