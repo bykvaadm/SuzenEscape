@@ -8,7 +8,7 @@
 - name      : create users
   user      :
     name       : "{{ item.name }}"
-    password   : "{{ password_encrypted | password_hash('sha512', item.sault) }}"
+    password   : "{{ item.password | password_hash('sha512', item.sault) }}"
     shell      : /usr/local/bin/dockersh
     groups     : docker
     create_home: yes
