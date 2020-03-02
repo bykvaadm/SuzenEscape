@@ -10,6 +10,5 @@ dockerstdout=$(docker exec ${ID} ps aux)
 
 if $(printf "%s\n" "$dockerstdout" | grep '\-f' | grep diary | grep -q tail); then
   FLAG="{{ levels | selectattr('name', 'equalto', 'suzen27') | map(attribute='flag') | join(',') }}"
-  FLAG_ENC=$(echo ${TAG} | openssl enc -aes-256-cbc -nosalt -k ${FLAG} -a | base64)
-  docker exec ${ID} sh -c "echo FLAG: ${FLAG_ENC} >> /home/suzen/diary"
+  docker exec ${ID} sh -c "echo FLAG: ${FLAG} >> /home/suzen/diary"
 fi

@@ -7,11 +7,9 @@ if [ "$TAG" == "latest" ]; then
 fi
 
 dockerstdout=$(docker exec ${ID} ls /home/suzen)
-#dockerstdout=$(tr -dc '[[:print:]]' <<< "$dockerstdout")
 md5=$(printf "%s\n" "$dockerstdout" | md5sum | awk '{print $1}')
 
 if [ "$md5" = "0e1e388f75e27c33748cdfc1185cc2ec" ]; then
   FLAG="{{ levels | selectattr('name', 'equalto', 'suzen22') | map(attribute='flag') | join(',') }}"
-  FLAG_ENC=$(echo ${TAG} | openssl enc -aes-256-cbc -nosalt -k ${FLAG} -a | base64)
-  docker exec ${ID} mkdir "/home/suzen/${FLAG_ENC}"
+  docker exec ${ID} mkdir "/home/suzen/${FLAG}"
 fi

@@ -1,20 +1,28 @@
 ---
-deploy_registry : yes
-deploy_web      : false
-use_tokens      : false
+deploy_registry : true
+deploy_web      : true
 build_containers: true
-install_docker  : yes
-vagrant         : true
+install_docker  : true
+use_tokens      : false # do not touch
 
+# CHANGE THIS TO TRUE TO DEPLOY LOCALLY IN VBOX
+vagrant         : false
+
+# change this to url of your registry (127.0.0.1 if vagrant)
 registry_proto  : http
-registry_url    : "127.0.0.1:5000"
+registry_url    : "52.15.198.119:5000"
 
+# change this to no if u are in aeroplane =)
+# use this flag when u can deploy once with internet and then you want to redeploy N times,
+# but u don't have internet at this time
 is_online       : "yes"
+
+# change this to level number to
 tasks_to_build  : "all"
 
-rabbitmq_pass   : "password"
-rabbitmq_user   : "user"
-pika_addr       : "127.0.0.1"
+#rabbitmq_pass   : "password"
+#rabbitmq_user   : "user"
+#pika_addr       : "127.0.0.1"
 
 levels          :
   ## Chain 1 (Beginner)
@@ -166,6 +174,7 @@ levels          :
     flag    : "YW1pZWhpaW0yb2h5NW9vRjZlaXcK"
     chain   : 7
     # rm with filters
+    # ls | egrep --color '(.*[[:digit:]]+.*\.txt|[a-z]+\.png|test-.*\.log)' | xargs rm
   - name    : suzen21
     password: "YW1pZWhpaW0yb2h5NW9vRjZlaXcK"
     sault   : "DggOP112d"

@@ -1,25 +1,40 @@
-- name : build web
+- name: build web
   shell: |
     cd /vagrant/suzen_website && \
     docker build -t 127.0.0.1:5000/suzenescape/web . && \
     docker push 127.0.0.1:5000/suzenescape/web
   when:
-  - vagrant|bool == true
-  - is_online == "yes"
+    - vagrant|bool == true
+    - is_online == "yes"
 
-- name    : copy web service file
+- name: build'n'deploy web
+  shell: |
+    cd ../suzen_website && \
+    docker build -t {{ registry_url }}/suzenescape/web . && \
+    docker push {{ registry_url }}/suzenescape/web
+  retries: 3
+  delay: 3
+  register: result
+  until: result is not failed
+  when:
+    - vagrant|bool == false
+    - is_online == "yes"
+  connection: local
+  become: no
+
+- name: copy web service file
   template:
-    src  : web.service.j2
-    dest : /etc/systemd/system/web.service
+    src: web.service.j2
+    dest: /etc/systemd/system/web.service
     owner: root
     group: root
-    mode : 0644
-  notify  : reload systemd
+    mode: 0644
+  notify: reload systemd
   register: service_file
 
-- name   : Restart service
+- name: Restart service
   service: name=web state=restarted
-  when   : service_file.changed
+  when: service_file.changed
 
-- name   : Start service
+- name: Start service
   service: name=web state=started enabled=yes

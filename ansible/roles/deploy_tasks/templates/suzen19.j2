@@ -12,6 +12,5 @@ dockerstdout=$(tr -dc '[[:print:]]' <<< "$dockerstdout")
 
 if [ "$dockerstdout" = "yep" ]; then
   FLAG="{{ levels | selectattr('name', 'equalto', 'suzen19') | map(attribute='flag') | join(',') }}"
-  FLAG_ENC=$(echo ${TAG} | openssl enc -aes-256-cbc -nosalt -k ${FLAG} -a | base64)
-  docker exec ${ID} mkdir "/home/suzen/Documents/projects/lab19/using/simple/bash/commands/${FLAG_ENC}"
+  docker exec ${ID} mkdir "/home/suzen/Documents/projects/lab19/using/simple/bash/commands/${FLAG}"
 fi
