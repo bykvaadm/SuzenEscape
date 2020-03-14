@@ -1,20 +1,28 @@
 ---
-deploy_registry : yes
+deploy_registry : true
 deploy_web      : false
-use_tokens      : false
 build_containers: true
-install_docker  : yes
-vagrant         : true
+install_docker  : true
+use_tokens      : false # do not touch
 
+# CHANGE THIS TO TRUE TO DEPLOY LOCALLY IN VBOX
+vagrant         : false
+
+# change this to url of your registry (127.0.0.1 if vagrant)
 registry_proto  : http
 registry_url    : "127.0.0.1:5000"
 
+# change this to no if u are in aeroplane =)
+# use this flag when u can deploy once with internet and then you want to redeploy N times,
+# but u don't have internet at this time
 is_online       : "yes"
-tasks_to_build  : "all"
 
-rabbitmq_pass   : "password"
-rabbitmq_user   : "user"
-pika_addr       : "127.0.0.1"
+# change this to level number to
+tasks_to_build  : "2004"
+
+#rabbitmq_pass   : "password"
+#rabbitmq_user   : "user"
+#pika_addr       : "127.0.0.1"
 
 levels          :
   ## Chain 1 (Beginner)
@@ -166,6 +174,7 @@ levels          :
     flag    : "YW1pZWhpaW0yb2h5NW9vRjZlaXcK"
     chain   : 7
     # rm with filters
+    # ls | egrep --color '(.*[[:digit:]]+.*\.txt|[a-z]+\.png|test-.*\.log)' | xargs rm
   - name    : suzen21
     password: "YW1pZWhpaW0yb2h5NW9vRjZlaXcK"
     sault   : "DggOP112d"
@@ -364,6 +373,33 @@ levels          :
     sault   : "vsiuyTqw"
     flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
     chain   : 19
+
+    ## Chain 20
+    #zip+chmod
+  - name    : suzen2001
+    password: "suzen2001"
+    sault   : "oh3Rh950"
+    flag    : "emF1Tm8yamVjaGF6YXJhcmFpa2EK"
+    chain   : 20
+    #tar+ccrypt
+  - name    : suzen2002
+    password: "emF1Tm8yamVjaGF6YXJhcmFpa2EK"
+    sault   : "vsiuyTqw"
+    flag    : "bW9vdGllaG9ocDNhaUg1aGVla28K"
+    chain   : 20
+    #fcrackzip
+  - name    : suzen2003
+    password: "bW9vdGllaG9ocDNhaUg1aGVla28K"
+    sault   : "vsiuyTqw"
+    flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
+    chain   : 20
+    #42.zip
+  - name    : suzen2004
+    password: "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
+    sault   : "dsefafgt"
+    flag    : "aG9ocG9odjlBbzZvaG44cXVlOFUK"
+    chain   : 20
+
 
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
