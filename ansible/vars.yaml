@@ -1,6 +1,6 @@
 ---
 deploy_registry : true
-deploy_web      : false
+deploy_web      : true
 build_containers: true
 install_docker  : true
 use_tokens      : false # do not touch
@@ -10,7 +10,7 @@ vagrant         : false
 
 # change this to url of your registry (127.0.0.1 if vagrant)
 registry_proto  : http
-registry_url    : "127.0.0.1:5000"
+registry_url    : "52.15.198.119:5000"
 
 # change this to no if u are in aeroplane =)
 # use this flag when u can deploy once with internet and then you want to redeploy N times,
@@ -18,7 +18,7 @@ registry_url    : "127.0.0.1:5000"
 is_online       : "yes"
 
 # change this to level number to
-tasks_to_build  : "2004"
+tasks_to_build  : "all"
 
 #rabbitmq_pass   : "password"
 #rabbitmq_user   : "user"
@@ -300,6 +300,31 @@ levels          :
     sault   : "3dsai45d"
     flag    : "217e09Qff7cd34c44f37cd17f347"
     chain   : 15
+    #
+  - name    : suzen1503
+    password: "217e09Qff7cd34c44f37cd17f347"
+    sault   : "3dsai45d"
+    flag    : "emFoVm9vNmNhaThva2FpNU1haXoK"
+    chain   : 15
+    #
+  - name    : suzen1504
+    password: "emFoVm9vNmNhaThva2FpNU1haXoK"
+    sault   : "3dsai45d"
+    flag    : "dmFpaGVlMWllUm91bGFlYzZsb3UK"
+    chain   : 15
+    #
+  - name    : suzen1505
+    password: "dmFpaGVlMWllUm91bGFlYzZsb3UK"
+    sault   : "3dsai45d"
+    flag    : "S2E1Y2Foc2hlZXJvb3lhaTBkaWkK"
+    chain   : 15
+    #
+  - name    : suzen1506
+    password: "S2E1Y2Foc2hlZXJvb3lhaTBkaWkK"
+    sault   : "3dsai45d"
+    flag    : "QWlodW1laWJhVGhhdTNnYWVwaHUK"
+    chain   : 15
+
 
     ## Chain 17
     # apt-get
@@ -373,32 +398,6 @@ levels          :
     sault   : "vsiuyTqw"
     flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
     chain   : 19
-
-    ## Chain 20
-    #zip+chmod
-  - name    : suzen2001
-    password: "suzen2001"
-    sault   : "oh3Rh950"
-    flag    : "emF1Tm8yamVjaGF6YXJhcmFpa2EK"
-    chain   : 20
-    #tar+ccrypt
-  - name    : suzen2002
-    password: "emF1Tm8yamVjaGF6YXJhcmFpa2EK"
-    sault   : "vsiuyTqw"
-    flag    : "bW9vdGllaG9ocDNhaUg1aGVla28K"
-    chain   : 20
-    #fcrackzip
-  - name    : suzen2003
-    password: "bW9vdGllaG9ocDNhaUg1aGVla28K"
-    sault   : "vsiuyTqw"
-    flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
-    chain   : 20
-    #42.zip
-  - name    : suzen2004
-    password: "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
-    sault   : "dsefafgt"
-    flag    : "aG9ocG9odjlBbzZvaG44cXVlOFUK"
-    chain   : 20
 
 
 ## EXAMPLE TEMPLATE
