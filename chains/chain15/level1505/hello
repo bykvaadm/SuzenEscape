@@ -1,0 +1,10 @@
+#!/bin/bash
+echo -e "\n####################################"
+echo -e   "#                                   #"
+echo -e   "#       Hello! It's level 1505      #"
+echo -e   "#                                   #"
+echo -e   "#      	I lose pw? oh? no!         #"
+echo -e   "#       but he like... '49163'      #"
+echo -e   "#                                   #"
+echo -e   "####################################\n"
+bash

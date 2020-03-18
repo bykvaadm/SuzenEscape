@@ -300,6 +300,31 @@ levels          :
     sault   : "3dsai45d"
     flag    : "217e09Qff7cd34c44f37cd17f347"
     chain   : 15
+    #
+  - name    : suzen1503
+    password: "217e09Qff7cd34c44f37cd17f347"
+    sault   : "3dsai45d"
+    flag    : "emFoVm9vNmNhaThva2FpNU1haXoK"
+    chain   : 15
+    #
+  - name    : suzen1504
+    password: "emFoVm9vNmNhaThva2FpNU1haXoK"
+    sault   : "3dsai45d"
+    flag    : "dmFpaGVlMWllUm91bGFlYzZsb3UK"
+    chain   : 15
+    #
+  - name    : suzen1505
+    password: "dmFpaGVlMWllUm91bGFlYzZsb3UK"
+    sault   : "3dsai45d"
+    flag    : "S2E1Y2Foc2hlZXJvb3lhaTBkaWkK"
+    chain   : 15
+    #
+  - name    : suzen1506
+    password: "S2E1Y2Foc2hlZXJvb3lhaTBkaWkK"
+    sault   : "3dsai45d"
+    flag    : "QWlodW1laWJhVGhhdTNnYWVwaHUK"
+    chain   : 15
+
 
     ## Chain 17
     # apt-get
@@ -373,6 +398,7 @@ levels          :
     sault   : "vsiuyTqw"
     flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
     chain   : 19
+
 
 ## EXAMPLE TEMPLATE
 #  - name    : suzen

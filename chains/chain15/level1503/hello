@@ -1,0 +1,9 @@
+#!/bin/bash
+echo -e "\n####################################"
+echo -e   "#                                  #"
+echo -e   "#       Hello! It's level 1503     #"
+echo -e   "#                                  #"
+echo -e   "#      encryption is your friend!  #"
+echo -e   "#                                  #"
+echo -e   "####################################\n"
+bash
