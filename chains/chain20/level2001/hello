@@ -1,0 +1,10 @@
+#!/bin/sh
+echo -e "\n####################################"
+echo -e   "#                                  #"
+echo -e   "#     Hello! It's level 2002       #"
+echo -e   "#                                  #"
+echo -e   "#       These variable are         #"
+echo -e   "#        still in memory!          #"
+echo -e   "#                                  #"
+echo -e   "####################################"
+sh

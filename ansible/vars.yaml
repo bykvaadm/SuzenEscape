@@ -1,16 +1,16 @@
 ---
 deploy_registry : true
-deploy_web      : true
+deploy_web      : false
 build_containers: true
 install_docker  : true
 use_tokens      : false # do not touch
 
 # CHANGE THIS TO TRUE TO DEPLOY LOCALLY IN VBOX
-vagrant         : false
+vagrant         : true
 
 # change this to url of your registry (127.0.0.1 if vagrant)
 registry_proto  : http
-registry_url    : "52.15.198.119:5000"
+registry_url    : "127.0.0.1:5000"
 
 # change this to no if u are in aeroplane =)
 # use this flag when u can deploy once with internet and then you want to redeploy N times,
@@ -18,7 +18,7 @@ registry_url    : "52.15.198.119:5000"
 is_online       : "yes"
 
 # change this to level number to
-tasks_to_build  : "all"
+tasks_to_build  : "2001"
 
 #rabbitmq_pass   : "password"
 #rabbitmq_user   : "user"
@@ -287,14 +287,14 @@ levels          :
     flag    : "GHsdgidAOJFEIJfdsknvajkfajbK"
     chain   : 14
 
-    ## Chain 15 
+    ## Chain 15
     # tar
   - name    : suzen1501
     password: "suzen1501"
     sault   : "vsiuyTqw"
     flag    : "4bf47e277be11d43b6817748359b"
     chain   : 15
-    # 
+    #
   - name    : suzen1502
     password: "4bf47e277be11d43b6817748359b"
     sault   : "3dsai45d"
@@ -373,6 +373,16 @@ levels          :
     sault   : "vsiuyTqw"
     flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
     chain   : 19
+
+
+    # My Chain
+  - name    : suzen2001
+    password: "suzen2001"
+    sault   : "kBspmKSa"
+    flag    : "cXVlWWFpOXhvcGgyemFpdm9oZ2gK"
+    config  : "sh|ls|cat"
+    chain   : 20
+
 
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
