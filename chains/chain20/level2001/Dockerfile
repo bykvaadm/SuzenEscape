@@ -2,10 +2,10 @@ FROM bykva/busybinaries
 
 ARG FLAG
 
-ADD hello /bin
+COPY hello /bin
 RUN adduser -D suzen
-ADD diary.txt /home/suzen
-ENV flag="${FLAG}"
+COPY diary.txt /home/suzen
+ENV SmthImportant="${FLAG}"
 WORKDIR /home/suzen
 
-CMD ["/bin/hello"]
+ENtRYPOINT ["/bin/hello"]
