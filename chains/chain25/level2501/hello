@@ -1,0 +1,9 @@
+#!/bin/bash
+echo -e "\n#############################################"
+echo -e   "#                                           #"
+echo -e   "#       Hello! It's level 2501              #"
+echo -e   "#                                           #"
+echo -e   "#        Read file with the FLAG            #"
+echo -e   "#                                           #"
+echo -e   "#############################################"
+bash

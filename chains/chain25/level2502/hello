@@ -1,0 +1,9 @@
+#!/bin/bash
+echo -e "\n#############################################"
+echo -e   "#                                           #"
+echo -e   "#       Hello! It's level 2502              #"
+echo -e   "#                                           #"
+echo -e   "#     Write "SuzenEscape" to diary.txt      #"
+echo -e   "# Wait for 1 minute and the flag will appear#"
+echo -e   "#############################################"
+bash

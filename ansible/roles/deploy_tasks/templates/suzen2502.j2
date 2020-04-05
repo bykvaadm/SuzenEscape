@@ -1,0 +1,18 @@
+#!/bin/bash
+
+ID="$1"
+TAG="$2"
+if [ "$TAG" == "latest" ]; then
+  TAG="latest:1234567890"
+fi
+
+dockerstdout=$(docker exec ${ID} md5sum /home/suzen/diary.txt)
+echo $dockerstdout
+dockerstdout=$(tr -dc '[[:print:]]' <<< "$dockerstdout")
+md5=$(echo ${dockerstdout} | awk '{print $1}')
+echo $md5
+
+if [ "$md5" = "c00f9a27ecb962c76600167ebc3e2dc7" ]; then
+  FLAG="{{ levels | selectattr('name', 'equalto', 'suzen2502') | map(attribute='flag') | join(',') }}"
+  docker exec ${ID} mkdir "/home/suzen/${FLAG}"
+fi
