@@ -1,0 +1,9 @@
+#!/bin/bash
+echo -e "\n#############################################"
+echo -e   "#                                           #"
+echo -e   "#       Hello! It's level 2503              #"
+echo -e   "#                                           #"
+echo -e   "#        I won't help you. You can do it.   #"
+echo -e   "#                                           #"
+echo -e   "#############################################"
+bash

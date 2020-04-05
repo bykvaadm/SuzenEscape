@@ -374,6 +374,29 @@ levels          :
     flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
     chain   : 19
 
+    #Chain25
+    #chmod W
+  - name    : suzen2501
+    password: "suzen2501"
+    sault   : "vsiuyTqw"
+    flag    : "Gj5DjtFMvw59AlcmwTh6Hd6bAyhR"
+    chain   : 25
+
+  # chmod R
+  - name    : suzen2502
+    password: "Gj5DjtFMvw59AlcmwTh6Hd6bAyhR"
+    sault   : "vsiuyTqw"
+    flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
+    chain   : 25
+
+  #chmod X, R + find
+  - name    : suzen2503
+    password: "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
+    sault   : "vsiuyTqw"
+    flag    : "YWVnaGdTanVvejd2b5760HNvaEwK"
+    chain   : 25
+
+
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
 #    password: ""

@@ -69,6 +69,7 @@
     - 24
     - 27
     - 28
+    - 2502
 
 - name: upload cleanup docker script
   copy:
