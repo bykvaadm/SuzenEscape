@@ -1,5 +1,7 @@
 FROM bykva/busybinaries
 
+# export
+
 ARG FLAG
 
 COPY hello /bin
@@ -8,4 +10,4 @@ COPY diary.txt /home/suzen
 ENV SmthImportant="${FLAG}"
 WORKDIR /home/suzen
 
-ENtRYPOINT ["/bin/hello"]
+ENTRYPOINT ["/bin/hello"]
