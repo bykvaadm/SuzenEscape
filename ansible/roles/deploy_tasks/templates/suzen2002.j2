@@ -9,17 +9,17 @@ then
   TAG="latest:1234567890"
 fi
 
-dockerstdout1="$(docker exec ${ID} ls /home/suzen)"
-md5="did not"
+dockerstdout=$(docker exec ${ID} ls /home/suzen)
 
-if [[ "$dockerstdout1" == *"$pattern"* ]]
+if [[ "$dockerstdout" == *"$pattern"* ]]
 then
-  dockerstdout2=$(docker exec ${ID} md5sum answer.py)
-  md5=$(echo "$dockerstdout2" | awk '{print $1}')
-fi
+  dockerstdout=$(docker exec ${ID} md5sum answer.py)
+  md5=$(echo "$dockerstdout" | awk '{print $1}')
 
-if [ "$md5" == "92f1dac7af2ed520857de8a492abc670" ]
-then
-  FLAG="{{ levels | selectattr('name', 'equalto', 'suzen2002') | map(attribute='flag') | join(',') }}"
-  docker exec ${ID} mkdir "/home/suzen/${FLAG}"
+  if [ "$md5" == "92f1dac7af2ed520857de8a492abc670" ]
+  then
+    FLAG="{{ levels | selectattr('name', 'equalto', 'suzen2002') | map(attribute='flag') | join(',') }}"
+    docker exec ${ID} mkdir "/home/suzen/${FLAG}"
+  fi
+
 fi
