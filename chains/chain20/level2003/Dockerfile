@@ -4,7 +4,10 @@ ARG FLAG
 
 COPY hello /bin
 
-RUN adduser -D suzen && cd /home/suzen/ \
+RUN adduser -D suzen \
+    && cd /bin \
+    && ls | egrep -v "hello" | egrep -vw "(${CONFIG})" | xargs rm \
+    && cd /home/suzen/ \
     && echo "${FLAG}" \
     | sed "s/Y/\&\&/g" \
     | sed "s/a/@/g" \

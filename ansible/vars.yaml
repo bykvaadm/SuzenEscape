@@ -392,6 +392,7 @@ levels          :
     password: "bW9oUXVlZTNmZWlnaGVpYmVpM3UK"
     sault   : "kBspmKSa"
     flag    : "YWhhZWthaG5naXBodWhhZXk5VXYK"
+    config  : "ls|cd|cat|sed|sh"
     chain   : 20
 
 
