@@ -1,7 +1,5 @@
 FROM bykva/busybinaries
 
-# export
-
 ARG FLAG
 
 COPY hello /bin
