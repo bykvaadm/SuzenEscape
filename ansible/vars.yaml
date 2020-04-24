@@ -18,7 +18,7 @@ registry_url    : "127.0.0.1:5000"
 is_online       : "yes"
 
 # change this to level number to
-tasks_to_build  : '2004'
+tasks_to_build  : 'all'
 
 #rabbitmq_pass   : "password"
 #rabbitmq_user   : "user"
