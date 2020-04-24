@@ -1,4 +1,6 @@
 FROM bykva/busybinaries
+
+ARG CONFIG
 ARG FLAG
 
 

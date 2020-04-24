@@ -18,7 +18,7 @@ registry_url    : "127.0.0.1:5000"
 is_online       : "yes"
 
 # change this to level number to
-tasks_to_build  : '2003'
+tasks_to_build  : '2004'
 
 #rabbitmq_pass   : "password"
 #rabbitmq_user   : "user"
@@ -394,6 +394,14 @@ levels          :
     flag    : "YWhhZWthaG5naXBodWhhZXk5VXYK"
     config  : "ls|cd|cat|sed|sh"
     chain   : 20
+
+  - name    : suzen2004
+    password: "YWhhZWthaG5naXBodWhhZXk5VXYK"
+    sault   : "kBspmKSa"
+    flag    : "YWhuNnBoYWliNk5pbmk0Y2FiMGUK"
+    config  : "ls|cd|cat|sed|tr|awk|sh"
+    chain   : 20
+
 
 
 
