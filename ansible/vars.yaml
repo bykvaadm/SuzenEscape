@@ -374,6 +374,26 @@ levels          :
     flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
     chain   : 19
 
+    ## Chain 23
+    # find
+  - name    : suzen2301
+    password: "suzen2301"
+    sault   : "asdasdasd"
+    flag    : "CrXos4h3LbjofccUE7Vgkbu2dkBt"
+    chain   : 23
+    # ls
+  - name    : suzen2302
+    password: "CrXos4h3LbjofccUE7Vgkbu2dkBt"
+    sault   : "asdasdasd"
+    flag    : "1Rs28SPKtRCnkwWLaU42NH8PO6tf"
+    chain   : 23
+    # mv from Trash dir + rm
+  - name    : suzen2303
+    password: "1Rs28SPKtRCnkwWLaU42NH8PO6tf"
+    sault   : "asdasdasd"
+    flag    : "ApBDAPsu20JPCgKXYi22eRJxc85J"
+    chain   : 23
+
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
 #    password: ""
