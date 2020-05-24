@@ -1,0 +1,13 @@
+#!/bin/sh
+echo -e "\n########################################################################"
+echo -e   "#                                                                      #"
+echo -e   "#                       Hello! It's level 2303                         #"
+echo -e   "#                                                                      #"
+echo -e   "#  This is external checker type level. Wait for 1 min after solving   #"
+echo -e   "#                                                                      #"
+echo -e   "#                             Read diary                               #"
+echo -e   "#                 Flag will appear in this directory:                  #"
+echo -e   "#                             /home/suzen/                             #"
+echo -e   "#                                                                      #"
+echo -e   "########################################################################"
+sh

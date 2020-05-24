@@ -1,0 +1,37 @@
+#!/bin/bash
+
+ID="$1"
+TAG="$2"
+if [ "$TAG" == "latest" ]; then
+  TAG="latest:1234567890"
+fi
+
+dockerstdout1=$(docker exec ${ID} ls /home/suzen/veryimportantdir/)	#не пустая
+dockerstdout2=$(docker exec ${ID} ls /home/suzen/Desktop/)		#не пустая
+dockerstdout3=$(docker exec ${ID} ls /home/suzen/Music/)		#не пустая
+dockerstdout4=$(docker exec ${ID} ls /home/suzen/Pictures/)		#не пустая
+dockerstdout5=$(docker exec ${ID} ls /home/suzen/Videos/)		#не пустая
+dockerstdout6=$(docker exec ${ID} ls /home/suzen/.local/share/Trash/files/)	#пустая
+dockerstdout7=$(docker exec ${ID} ls /home/suzen/.local/share/Trash/info/)	#пустая
+md51=$(printf "%s\n" "$dockerstdout1" | md5sum | awk '{print $1}')
+md52=$(printf "%s\n" "$dockerstdout2" | md5sum | awk '{print $1}')
+md53=$(printf "%s\n" "$dockerstdout3" | md5sum | awk '{print $1}')
+md54=$(printf "%s\n" "$dockerstdout4" | md5sum | awk '{print $1}')
+md55=$(printf "%s\n" "$dockerstdout5" | md5sum | awk '{print $1}')
+
+if [ "$md51" = "6953cb93819773d3f24cb9a7733e7e06" ]; then
+  if [ "$md52" = "b5b0e08bba2655ba2ab5e4353e858c3a" ]; then
+    if [ "$md53" = "d6402c91063c5a2837931ed0ace2a647" ]; then
+      if [ "$md54" = "9496de5850d668ce231177e5258d59fe" ]; then
+        if [ "$md55" = "60b1541e575b6a5105039461488668e0" ]; then
+          if [ "$dockerstdout6" = "" ]; then
+            if [ "$dockerstdout7" = "" ]; then
+              FLAG="{{ levels | selectattr('name', 'equalto', 'suzen2303') | map(attribute='flag') | join(',') }}"
+              docker exec ${ID} sh -c "echo >> /home/suzen/${FLAG}"
+            fi
+          fi
+        fi
+      fi
+    fi
+  fi
+fi
