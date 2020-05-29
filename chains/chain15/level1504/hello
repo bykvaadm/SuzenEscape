@@ -1,0 +1,10 @@
+#!/bin/bash
+echo -e "\n####################################"
+echo -e   "#                                   #"
+echo -e   "#       Hello! It's level 1504      #"
+echo -e   "#                                   #"
+echo -e   "#      you can sort out everyone    #"
+echo -e   "#        but some are different     #"
+echo -e   "#                                   #"
+echo -e   "####################################\n"
+bash
