@@ -12,7 +12,7 @@ dockerstdout=$(tr -dc '[[:print:]]' <<< "$dockerstdout")
 md5=$(echo ${dockerstdout} | awk '{print $1}')
 echo $md5
 
-if [ "$md5" = "c00f9a27ecb962c76600167ebc3e2dc7" ]; then
+if [[ "$md5"="c00f9a27ecb962c76600167ebc3e2dc7" && 'stat -c %A /home/suzen/diary.txt'="--w-r--rw-" ]]; then
   FLAG="{{ levels | selectattr('name', 'equalto', 'suzen2502') | map(attribute='flag') | join(',') }}"
   docker exec ${ID} mkdir "/home/suzen/${FLAG}"
 fi
