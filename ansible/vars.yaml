@@ -394,6 +394,26 @@ levels          :
     flag    : "ApBDAPsu20JPCgKXYi22eRJxc85J"
     chain   : 23
 
+    ##Chain 59 git challenge
+    # git log
+  - name    : suzen5901
+    password: "suzen5901"
+    sault   : "eeSahReg"
+    flag    : "Neiqui7taelipoo4Di0aeSohfeeK"
+    chain   : "59"
+    # git commit
+  - name    : suzen5902
+    password: "Neiqui7taelipoo4Di0aeSohfeeK"
+    sault   : "eeSahReg"
+    flag    : "ahZaekaeGee7oovuingiexae1aeh"
+    chain   : "59"
+    # git checkout
+  - name    : suzen5903
+    password: "ahZaekaeGee7oovuingiexae1aeh"
+    sault   : "eeSahReg"
+    flag    : "kaeghaj7naiJaequa8zoo8oc0shi"
+    chain   : "59"
+
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
 #    password: ""

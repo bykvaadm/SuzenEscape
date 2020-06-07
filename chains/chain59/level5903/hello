@@ -1,0 +1,9 @@
+#!/bin/bash
+echo -e "\n#############################################"
+echo -e   "#                                           #"
+echo -e   "#          Hello! It's level 5903           #"
+echo -e   "#                                           #"
+echo -e   "#         Try cat diary.txt and git         #"
+echo -e   "#                                           #"
+echo -e   "#############################################"
+bash
