@@ -69,6 +69,7 @@
     - 24
     - 27
     - 28
+    - 2002
     - 2303
 
 - name: upload cleanup docker script
