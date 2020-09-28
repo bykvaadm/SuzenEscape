@@ -10,7 +10,7 @@ vagrant         : false
 
 # change this to url of your registry (127.0.0.1 if vagrant)
 registry_proto  : http
-registry_url    : "52.15.198.119:5000"
+registry_url    : "135.181.100.223:5000"
 
 # change this to no if u are in aeroplane =)
 # use this flag when u can deploy once with internet and then you want to redeploy N times,

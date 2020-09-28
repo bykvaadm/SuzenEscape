@@ -13,9 +13,9 @@ RUN 	adduser -D suzen && \
 	truncate -s 996 kinder201 && \
 	echo ${FLAG} >> /home/suzen/chest/kinder201 && \
 	echo ИХИИХИИХИИХИИХИ >> /home/suzen/chest/kinder666 && \
-	for i in `seq 0 100`; do cat /dev/urandom | tr -dc ‘a-zA-Z0-9′ | head -c 28 >> kinder$i; echo >> kinder$i; done && \
-	for i in `seq 101 200`; do cat /dev/urandom | tr -dc ‘a-zA-Z0-9′ | head -c 24 >> kinder$i; echo >> kinder$i; done && \
-	for i in `seq 202 300`; do cat /dev/urandom | tr -dc ‘a-zA-Z0-9′ | head -c 28 >> kinder$i; echo >> kinder$i; done
+	for i in `seq 0 100`; do cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 28 >> kinder$i; echo >> kinder$i; done && \
+	for i in `seq 101 200`; do cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 24 >> kinder$i; echo >> kinder$i; done && \
+	for i in `seq 202 300`; do cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head -c 28 >> kinder$i; echo >> kinder$i; done
 
 ADD diary.txt /home/suzen/
 ADD hello /bin/hello
