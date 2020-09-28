@@ -374,6 +374,36 @@ levels          :
     flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
     chain   : 19
 
+    ## Chain 20
+    # Using sed
+  - name    : suzen2001
+    password: "suzen2001"
+    sault   : "kBspmKSa"
+    flag    : "cXVlWWFpOXhvcGgyemFpdm9oZ2gK"
+    config  : "ls|cd|cat|sed|sh"
+    chain   : 20
+
+  - name    : suzen2002
+    password: "cXVlWWFpOXhvcGgyemFpdm9oZ2gK"
+    sault   : "kBspmKSa"
+    flag    : "bW9oUXVlZTNmZWlnaGVpYmVpM3UK"
+    config  : "ls|cd|cat|sed|awk|exec|echo|mkdir|md5sum|sh"
+    chain   : 20
+
+  - name    : suzen2003
+    password: "bW9oUXVlZTNmZWlnaGVpYmVpM3UK"
+    sault   : "kBspmKSa"
+    flag    : "YWhhZWthaG5naXBodWhhZXk5VXYK"
+    config  : "ls|cd|cat|sed|sh"
+    chain   : 20
+
+  - name    : suzen2004
+    password: "YWhhZWthaG5naXBodWhhZXk5VXYK"
+    sault   : "kBspmKSa"
+    flag    : "YWhuNnBoYWliNk5pbmk0Y2FiMGUK"
+    config  : "ls|cd|cat|sed|tr|awk|sh"
+    chain   : 20
+
     ## Chain 23
     # find
   - name    : suzen2301

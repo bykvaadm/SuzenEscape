@@ -1,0 +1,9 @@
+#!/bin/sh
+echo -e "\n#############################################"
+echo -e   "#                                           #"
+echo -e   "#          Hello! It's level 2001           #"
+echo -e   "#                                           #"
+echo -e   "#          Use sed to get flag              #"
+echo -e   "#                                           #"
+echo -e   "#############################################"
+sh

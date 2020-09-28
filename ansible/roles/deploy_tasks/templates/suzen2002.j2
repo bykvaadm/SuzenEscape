@@ -1,0 +1,25 @@
+#!/bin/bash
+
+ID="$1"
+TAG="$2"
+pattern="answer.py"
+
+if [ "$TAG" == "latest" ]
+then
+  TAG="latest:1234567890"
+fi
+
+dockerstdout=$(docker exec ${ID} ls /home/suzen)
+
+if [[ "$dockerstdout" == *"$pattern"* ]]
+then
+  dockerstdout=$(docker exec ${ID} md5sum answer.py)
+  md5=$(echo "$dockerstdout" | awk '{print $1}')
+
+  if [ "$md5" == "fcaea3cd197f30930b210acd45a75eae" ]
+  then
+    FLAG="{{ levels | selectattr('name', 'equalto', 'suzen2002') | map(attribute='flag') | join(',') }}"
+    docker exec ${ID} mkdir "/home/suzen/${FLAG}"
+  fi
+
+fi
