@@ -1,0 +1,17 @@
+#!/bin/bash
+
+ID="$1"
+TAG="$2"
+if [ "$TAG" == "latest" ]; then
+  TAG="latest:1234567890"
+fi
+
+dockerstdout=$(docker exec ${ID} \
+  sh -c 'echo $(if grep -q xyzzy /home/suzen/.git/logs/HEAD; then echo yep; fi)')
+dockerstdout=$(tr -dc '[[:print:]]' <<< "$dockerstdout")
+
+if [ "$dockerstdout" = "yep" ]; then
+  FLAG="{{ levels | selectattr('name', 'equalto', 'suzen5902') | map(attribute='flag') | join(',') }}"
+#  docker exec ${ID} sh -c 'rm flag.txt && touch flag.txt && echo ${FLAG} >> /home/suzen/flag.txt'
+  docker exec ${ID} sh -c "echo FLAG: ${FLAG} >> /home/suzen/flag.txt"
+fi
