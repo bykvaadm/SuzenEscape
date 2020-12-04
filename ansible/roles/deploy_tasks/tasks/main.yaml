@@ -1,7 +1,10 @@
 - name: install pkgs
   apt:
     update_cache: "{{ is_online | default('yes') }}"
-    name: bc
+    name:
+    - bc
+    - python3-passlib
+    - python-passlib
   tags:
     - test
 
@@ -57,20 +60,11 @@
 
 - name      : upload checker scripts
   template  :
-    src : "suzen{{ item }}.j2"
-    dest: "/opt/susenescape/suzen{{ item }}"
+    src : "{{ item }}"
+    dest: "/opt/susenescape/{{ item | basename | regex_replace('\.j2$', '') }}"
     mode: 0755
-  with_items:
-    - 19
-    - 20
-    - 21
-    - 22
-    - 23
-    - 24
-    - 27
-    - 28
-    - 2002
-    - 2303
+  with_fileglob:
+  - ../templates/suzen*.j2
 
 - name: upload cleanup docker script
   copy:

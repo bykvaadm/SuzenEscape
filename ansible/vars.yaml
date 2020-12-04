@@ -320,6 +320,11 @@ levels          :
     sault   : "vsiuyTqw"
     flag    : "bG90aDdpZUZlNWNoaTRpZWs4bGEK"
     chain   : 17
+  - name    : suzen1704
+    password: "IJBuOIqUqpfPLfgNef"
+    sault   : "vsiuyTqw"
+    flag    : "SuDO_is_dangeruzzzzz"
+    chain   : 17
 
     ## Chain 18
     # getfacl
