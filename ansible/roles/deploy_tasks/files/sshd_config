@@ -129,3 +129,4 @@ Match User suzen*
         PermitTunnel no
         ForceCommand /sbin/nologin
         AcceptEnv TOKEN
+        MaxAuthTries 100

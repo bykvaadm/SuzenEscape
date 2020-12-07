@@ -1,11 +1,10 @@
 FROM bykva/busybinaries
-SHELL ["/bin/bash", "-c"]
 ARG CONFIG
 ARG FLAG
 COPY hello /bin
 RUN adduser -D suzen \
     && cd /home/suzen \
-    && echo "Flag is @#*@*##%*#${FLAG:0:9}**##%&*@&*${FLAG:9:10}**&#@&#@%*${FLAG:19:9}*#&@%%#*&@" > flag \
+    && echo "Flag is @#*@*##%*#$(echo $FLAG | cut -c1-9)**##%&*@&*$(echo $FLAG | cut -c10-19)**&#@&#@%*$(echo $FLAG | cut -c20-28)*#&@%%#*&@" > flag \
     && cd /bin \
     && ls | egrep -v "hello" | egrep -vw "(${CONFIG})" | xargs rm
 
