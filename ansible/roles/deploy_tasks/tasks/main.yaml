@@ -61,7 +61,7 @@
 - name      : upload checker scripts
   template  :
     src : "{{ item }}"
-    dest: "/opt/susenescape/{{ item | basename | regex_replace('\.j2$', '') }}"
+    dest: "/opt/susenescape/{{ item | basename | replace('.j2', '' ) }}"
     mode: 0755
   with_fileglob:
   - ../templates/suzen*.j2
