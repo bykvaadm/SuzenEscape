@@ -1,0 +1,9 @@
+#!/bin/sh
+echo -e "\n########################################"
+echo -e   "#                                      #"
+echo -e   "#       Hello! It's level 2401         #"
+echo -e   "#            Very easy!                #"
+echo -e   "#            ShellShock                #"
+echo -e   "#                                      #"
+echo -e   "########################################"
+sh
