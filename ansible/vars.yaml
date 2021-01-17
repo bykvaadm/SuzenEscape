@@ -428,6 +428,14 @@ levels          :
     sault   : "asdasdasd"
     flag    : "ApBDAPsu20JPCgKXYi22eRJxc85J"
     chain   : 23
+    
+    ## Chain 24
+    # find
+  - name    : suzen2401
+    password: "suzen2401"
+    sault   : "asdasdasd"
+    flag    : "d3fRsdf44redRtAq3u5nfsfEs8sd"
+    chain   : 24
 
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
