@@ -1,0 +1,11 @@
+#!/bin/sh
+echo -e "\n###########################################"
+echo -e   "#                                          #"
+echo -e   "#         Hello! It's level 0805           #"
+echo -e   "#                                          #"
+echo -e   "#      It was a long story to tell...      #"
+echo -e   "#      ... so read it by yourself          #"
+echo -e   "#                                          #"
+echo -e   "###########################################"
+
+sh

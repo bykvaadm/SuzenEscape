@@ -1,5 +1,5 @@
 - name: install python pkgs
-  apt :
+  apt:
     name: ['python3-pip', 'python3-setuptools', 'python-setuptools']
 
 - set_fact:
@@ -7,25 +7,25 @@
 - debug: var=requirements
 
 - name: install requirements for builder
-  pip :
+  pip:
     executable: pip3
-    name      : "{{ requirements }}"
+    name: "{{ requirements }}"
 
-- name    : build tasks
-  shell   : "cd /vagrant && ./build.py {{ tasks_to_build | default('all') }}"
-  retries : 3
-  delay   : 3
+- name: build tasks
+  shell: "cd /vagrant && ./build.py {{ tasks_to_build | default('all') }}"
+  retries: 3
+  delay: 3
   register: result
-  until   : result is not failed
-  when    : vagrant|bool == true
+  until: result is not failed
+  when: vagrant|bool == true
 
-- name      : build tasks
-  shell     : "cd ../; ./build.py {{ tasks_to_build | default('all') }}"
-  retries   : 3
-  delay     : 3
-  register  : result
-  until     : result is not failed
-  when      : vagrant|bool == false
+- name: build tasks
+  shell: "cd ../; ./build.py {{ tasks_to_build | default('all') }}"
+  retries: 3
+  delay: 3
+  register: result
+  until: result is not failed
+  when: vagrant|bool == false
   connection: local
-  tags      : test
-  become    : no
+  tags: test
+  become: no

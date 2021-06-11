@@ -1,0 +1,10 @@
+#!/bin/sh
+echo -e "\n###########################################################################"
+echo -e   "#                                                                         #"
+echo -e   "#                         Hello! It's level 1005                          #"
+echo -e   "#                                                                         #"
+echo -e   "#  Find hidden file in a directory that diary.txt refers.                 #"
+echo -e   "#                                                                         #"           
+echo -e   "###########################################################################"
+
+sh

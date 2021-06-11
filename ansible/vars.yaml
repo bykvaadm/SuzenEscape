@@ -1,433 +1,338 @@
 ---
-deploy_registry : true
-deploy_web      : true
+deploy_registry: true
+deploy_web: true
 build_containers: true
-install_docker  : true
-use_tokens      : false # do not touch
+install_docker: true
 
 # CHANGE THIS TO TRUE TO DEPLOY LOCALLY IN VBOX
-vagrant         : false
+vagrant: false
 
 # change this to url of your registry (127.0.0.1 if vagrant)
-registry_proto  : http
-registry_url    : "135.181.100.223:5000"
+registry_proto: http
+registry_url: "135.181.100.223:5000"
 
 # change this to no if u are in aeroplane =)
 # use this flag when u can deploy once with internet and then you want to redeploy N times,
 # but u don't have internet at this time
-is_online       : "yes"
+is_online: "yes"
 
-# change this to level number to
-tasks_to_build  : "all"
+# comma-separated string of tasks to build or "all"
+tasks_to_build: "all"
 
-#rabbitmq_pass   : "password"
-#rabbitmq_user   : "user"
-#pika_addr       : "127.0.0.1"
-
-levels          :
-  ## Chain 1 (Beginner)
+levels:
+## Chain 1 (Beginner)
+# read file
+- name: suzen0101
+  password: suzen0101
+  flag: &suzen0101flag ZGFpejZhaFJhZVNhZXhhaWJ1YWYK
+  config: ls|cd|cat|file|du|find|sh
+  chain: 1
   # read file
-  - name    : suzen1
-    password: suzen1
-    sault   : "tCY.XnoD"
-    flag    : "ZGFpejZhaFJhZVNhZXhhaWJ1YWYK"
-    config  : "ls|cd|cat|file|du|find|sh"
-    chain   : 1
-    # read file
-  - name    : suzen2
-    password: "ZGFpejZhaFJhZVNhZXhhaWJ1YWYK"
-    sault   : "3c9OnFo/"
-    flag    : "dGhlaWxpM2FoWm9odGFpM2VldzMK"
-    config  : "ls|cd|sh|cat|less|more|head|tail"
-    chain   : 1
-    # read file
-  - name    : suzen3
-    password: "dGhlaWxpM2FoWm9odGFpM2VldzMK"
-    sault   : "oh3Rh950"
-    flag    : "Y284ZWlxdXVlMmllTDNpZXBoNWUK"
-    config  : "sh|ls"
-    rohome  : "true"
-    chain   : 1
-    # read file
-  - name    : suzen4
-    password: "Y284ZWlxdXVlMmllTDNpZXBoNWUK"
-    sault   : "rKQAVmA9"
-    flag    : "C2HLBODHAER1ZMLLBNV1AGFPOW4K"
-    config  : "sh|ls|awk|sed|sort|uniq|cat|find|grep|fold|rm|mv|split|cut|tr|less"
-    rohome  : "false"
-    chain   : 1
+- name: suzen0102
+  password: *suzen0101flag
+  flag: &suzen0102flag dGhlaWxpM2FoWm9odGFpM2VldzMK
+  config: ls|cd|sh|cat|less|more|head|tail
+  chain: 1
+  # read file
+- name: suzen0103
+  password: *suzen0102flag
+  flag: &suzen0103flag Y284ZWlxdXVlMmllTDNpZXBoNWUK
+  config: sh|ls
+  rohome: true
+  chain: 1
+  # read file
+- name: suzen0104
+  password: *suzen0103flag
+  flag: C2HLBODHAER1ZMLLBNV1AGFPOW4K
+  config: sh|ls|awk|sed|sort|uniq|cat|find|grep|fold|rm|mv|split|cut|tr|less
+  rohome: false
+  chain: 1
 
-    ## Chain 2 (Talk to nginx)
-    # /dev/tcp to nginx
-  - name    : suzen5
-    password: "suzen5"
-    sault   : "Yy9aP4bg"
-    config  : "ls|cd|ls|mknod|sh"
-    rohome  : "false"
-    chain   : 2
-    flag: "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
-    servers :
-      - name: suzen5server
-        flag: "dmVlNFdvaE42ZWVoMFpvN3dhcGgK"
+  ## Chain 2 (Talk to nginx)
+  # /dev/tcp to nginx
+- name: suzen0201
+  password: suzen0201
+  flag: dmVlNFdvaE42ZWVoMFpvN3dhcGgK
+  config: ls|cd|ls|mknod|sh
+  rohome: false
+  chain: 2
+  servers:
+  - name: suzen0201server
+    flag: dmVlNFdvaE42ZWVoMFpvN3dhcGgK
 
-    ## Chain 3 (One line solve)
-    # pcap
-  - name    : suzen6
-    password: "suzen6"
-    sault   : "wC41kJyn"
-    flag    : "YmllMWVraUQ0YWlxdWU5a2VpcGgK"
-    chain   : 3
-    # magic
-  - name    : suzen7
-    password: "YmllMWVraUQ0YWlxdWU5a2VpcGgK"
-    sault   : "XJ.z5hxy"
-    flag    : "b2hmZWFiZW9HYWl2YWVidThnYWUK"
-    chain   : 3
-    # process name
-  - name    : suzen8
-    password: "b2hmZWFiZW9HYWl2YWVidThnYWUK"
-    sault   : "PoZ3KIT4"
-    flag    : "dmFlSmFpcGhvaGI4Y29oZ2gxeWEK"
-    chain   : 3
+  ## Chain 3 (One line solve)
+  # pcap
+- name: suzen0301
+  password: suzen0301
+  flag: &suzen0301flag YmllMWVraUQ0YWlxdWU5a2VpcGgK
+  chain: 3
+  # magic
+- name: suzen0302
+  password: *suzen0301flag
+  flag: &suzen0302flag b2hmZWFiZW9HYWl2YWVidThnYWUK
+  chain: 3
+  # process name
+- name: suzen0303
+  password: *suzen0302flag
+  flag: dmFlSmFpcGhvaGI4Y29oZ2gxeWEK
+  chain: 3
 
-    ## Chain 4 (maze)
-    # maze
-  - name    : suzen9
-    password: "suzen9"
-    sault   :  "UP6ILIjj"
-    chain   : 4
-    flag: "aWVyNWVvOGluM21haDBRdWFobTkK"
-    servers :
-      - name: suzen9server
-        flag: "aWVyNWVvOGluM21haDBRdWFobTkK"
+  ## Chain 4 (maze)
+  # maze
+- name: suzen0401
+  password: suzen0401
+  chain: 4
+  flag:  &suzen0401flag aWVyNWVvOGluM21haDBRdWFobTkK
+  servers:
+  - name: suzen0401server
+    flag: *suzen0401flag
 
-    ## Chain 5
-    # TODO
-  - name    : suzen10
-    password: "aWVyNWVvOGluM21haDBRdWFobTkK"
-    sault   : "uiQs3XQL"
-    chain   : 5
-    # Recursive folders
-  - name    : suzen11
-    password: "suzen11"
-    sault   : "tCY.XnoD"
-    flag    : "aXY3ZWlqZWl5ZWlQaG9vczlhSmEK"
-    config  : "ls|cd|cat|file|du|find|sh"
-    chain   : 5
-    # TODO
-  - name    : suzen12
-    password: "aXY3ZWlqZWl5ZWlQaG9vczlhSmEK"
-    sault   : "tHnyJhTd"
-    flag    : "eWFlMEhpZTByYWVwYXRoZWUwYWEK"
-    config  : "ls|sh|cd"
-    chain   : 5
-    # vim
-  - name    : suzen13
-    password: "suzen13"
-    sault   : "tHnyJhTd"
-    flag    : "Sm9vbmVlOGVlYzRFaXNob294ZWsK"
-    chain   : 5
+  ## Chain 5
+- name: suzen0501
+  password: suzen0501
+  flag: &suzen0501flag aXY3ZWlqZWl5ZWlQaG9vczlhSmEK
+  config: ls|cd|cat|file|du|find|sh
+  chain: 5
+  # vim
+- name: suzen0502
+  password: *suzen0501flag
+  flag: &suzen0502flag Sm9vbmVlOGVlYzRFaXNob294ZWsK
+  chain: 5
+  # sort -u
+- name: suzen0503
+  password: *suzen0502flag
+  flag: &suzen0503flag GHsdgidAOJFEIJfdsknvajkfajbK
+  chain: 5
+  # tar
+- name: suzen0504
+  password: *suzen0503flag
+  flag: &suzen0504flag cm9vdGFocmFoc3U4a296dU5vaEcK
+  chain: 5
+  # tar
+- name: suzen0505
+  password: *suzen0504flag
+  flag: bmFpNW5haGdlaTF4dVQ3ZWExcmEK
+  chain: 5
 
-    ## Chain 6 (basic bash commands)
-    # cd
-  - name    : suzen14
-    password: "suzen14"
-    sault   : "DnnfL1Td"
-    flag    : "d2FodmFoMWFlV2FpYmVlaG9vMmIK"
-    chain   : 6
-    # pwd
-  - name    : suzen15
-    password: "d2FodmFoMWFlV2FpYmVlaG9vMmIK"
-    sault   : "DKrmO1xd"
-    flag    : "TWVlMXdvaDJ6YWVoZWoyamllNm8K"
-    chain   : 6
-    # id
-  - name    : suzen16
-    password: "TWVlMXdvaDJ6YWVoZWoyamllNm8K"
-    sault   : "DKr8Jh13"
-    flag    : "ZXVsb29naG91MFBob2g4T2hkYWkK"
-    chain   : 6
-    # ls
-  - name    : suzen17
-    password: "ZXVsb29naG91MFBob2g4T2hkYWkK"
-    sault   : "dcdcUI13"
-    flag    : "bmVlNm1lMEhhaU11M2thaGVpNmEK"
-    chain   : 6
-    # man
-  - name    : suzen18
-    password: "bmVlNm1lMEhhaU11M2thaGVpNmEK"
-    sault   : "KKr8POR3"
-    flag    : "Y2hpZWNoM2VpRzRJZWtlaXNlbGUK"
-    chain   : 6
+  ## Chain 6 (basic bash commands)
+  # cd
+- name: suzen0601
+  password: suzen0601
+  flag: &suzen0601flag d2FodmFoMWFlV2FpYmVlaG9vMmIK
+  chain: 6
+  # pwd
+- name: suzen0602
+  password: *suzen0601flag
+  flag: &suzen0602flag TWVlMXdvaDJ6YWVoZWoyamllNm8K
+  chain: 6
+  # id
+- name: suzen0603
+  password: *suzen0602flag
+  flag: &suzen0603flag ZXVsb29naG91MFBob2g4T2hkYWkK
+  chain: 6
+  # ls
+- name: suzen0604
+  password: *suzen0603flag
+  flag: &suzen0604flag bmVlNm1lMEhhaU11M2thaGVpNmEK
+  chain: 6
+  # man
+- name: suzen0605
+  password: *suzen0604flag
+  flag: Y2hpZWNoM2VpRzRJZWtlaXNlbGUK
+  chain: 6
 
-    ## Chain 7 (basic bash commands2)
-    # mkdir
-  - name    : suzen19
-    password: "suzen19"
-    sault   : "DkOlP1Td"
-    flag    : "V2VpMGNvaHNoZWlxdWE0YWhnaG8K"
-    chain   : 7
-    # rm
-  - name    : suzen20
-    password: "V2VpMGNvaHNoZWlxdWE0YWhnaG8K"
-    sault   : "D2fwe44d"
-    flag    : "YW1pZWhpaW0yb2h5NW9vRjZlaXcK"
-    chain   : 7
-    # rm with filters
-    # ls | egrep --color '(.*[[:digit:]]+.*\.txt|[a-z]+\.png|test-.*\.log)' | xargs rm
-  - name    : suzen21
-    password: "YW1pZWhpaW0yb2h5NW9vRjZlaXcK"
-    sault   : "DggOP112d"
-    flag    : "aWU0b29XdWxlaXBodXBpZWZveW8K"
-    chain   : 7
-    # touch
-  - name    : suzen22
-    password: "aWU0b29XdWxlaXBodXBpZWZveW8K"
-    sault   : "2hvOWpvb"
-    flag    : "dXI2dXNhaDNvaFQxaWV2MGNobzgK"
-    chain   : 7
-    # mv
-  - name    : suzen23
-    password: "dXI2dXNhaDNvaFQxaWV2MGNobzgK"
-    sault   : "cXV1bmcK"
-    flag    : "dmVlc2VpQzVBb2dlaXI1cmVlM2YK"
-    chain   : 7
-    # cp
-  - name    : suzen24
-    password: "dmVlc2VpQzVBb2dlaXI1cmVlM2YK"
-    sault   : "1YXRvaHp"
-    flag    : "YWVnaG9venVvejd2b292OHNvaEwK"
-    chain   : 7
+  ## Chain 7 (basic bash commands2)
+  # mkdir
+- name: suzen0701
+  password: suzen0701
+  flag: &suzen0701flag V2VpMGNvaHNoZWlxdWE0YWhnaG8K
+  chain: 7
+  # rm
+- name: suzen0702
+  password: *suzen0701flag
+  flag: &suzen0702flag YW1pZWhpaW0yb2h5NW9vRjZlaXcK
+  chain: 7
+  # rm with filters
+  # ls | egrep --color '(.*[[:digit:]]+.*\.txt|[a-z]+\.png|test-.*\.log)' | xargs rm
+- name: suzen0703
+  password: *suzen0702flag
+  flag: &suzen0703flag aWU0b29XdWxlaXBodXBpZWZveW8K
+  chain: 7
+  # touch
+- name: suzen0704
+  password: *suzen0703flag
+  flag: &suzen0704flag dXI2dXNhaDNvaFQxaWV2MGNobzgK
+  chain: 7
+  # mv
+- name: suzen0705
+  password: *suzen0704flag
+  flag: &suzen0705flag dmVlc2VpQzVBb2dlaXI1cmVlM2YK
+  chain: 7
+  # cp
+- name: suzen0706
+  password: *suzen0705flag
+  flag: WVnaG9venVvejd2b292OHNvaEwK
+  chain: 7
 
-    ## Chain 8 (basic bash commands3)
-    # cat
-  - name    : suzen25
-    password: "suzen25"
-    sault   : "aWJ1YzIK"
-    flag    : "dGhlZThhcXVpZUNpTGFpdGhlZTkK"
-    chain   : 8
-    # less
-  - name    : suzen26
-    password: "dGhlZThhcXVpZUNpTGFpdGhlZTkK"
-    sault   : "ZWNvaHhl"
-    flag    : "WWVpc2gxYWlndXVrZWl5ZWloaWUK"
-    config  : "less|ls|sh"
-    chain   : 8
-    # tail
-  - name    : suzen27
-    password: "WWVpc2gxYWlndXVrZWl5ZWloaWUK"
-    sault   : "GE0ZWlQ"
-    flag    : "dGVlMUtleThhUXVvaDFnZTFiaWkK"
-    chain   : 8
-    # cat eof + echo
-  - name    : suzen28
-    password: "dGVlMUtleThhUXVvaDFnZTFiaWkK"
-    sault   : "V5YWVUaW"
-    flag    : "ZWV4b1g1WnVkMm9oZnVjYWhkdTMK"
-    config  : "sh|ls|cd|cat|md5sum|mkdir"
-    chain   : 8
-    # echo -e
-  - name    : suzen29
-    password: "ZWV4b1g1WnVkMm9oZnVjYWhkdTMK"
-    sault   : "Glldm9vO"
-    flag    : "dmFvbmcwcGFlMWlodUJvaFppZWQK"
-    config  : "sh"
-    chain   : 8
+  ## Chain 8 (basic bash commands3)
+  # cat
+- name: suzen0801
+  password: suzen0801
+  flag: &suzen0801flag dGhlZThhcXVpZUNpTGFpdGhlZTkK
+  chain: 8
+  # less
+- name: suzen0802
+  password: *suzen0801flag
+  flag: &suzen0802flag WWVpc2gxYWlndXVrZWl5ZWloaWUK
+  config: less|ls|sh
+  chain: 8
+  # tail
+- name: suzen0803
+  password: *suzen0802flag
+  flag: &suzen0803flag dGVlMUtleThhUXVvaDFnZTFiaWkK
+  chain: 8
+  # cat eof + echo
+- name: suzen0804
+  password: *suzen0803flag
+  flag: &suzen0804flag ZWV4b1g1WnVkMm9oZnVjYWhkdTMK
+  config: sh|ls|cd|cat|md5sum|mkdir
+  chain: 8
+  # echo -e
+- name: suzen0805
+  password: *suzen0804flag
+  flag: dmFvbmcwcGFlMWlodUJvaFppZWQK
+  config: sh
+  chain: 8
 
-    ## Chain 9
-    # base64 + curl
-  - name    : suzen901
-    password: "suzen901"
-    sault   : "HuvDAeWs"
-    chain   : 9
-    flag: "hFYhnDBGmSsfDltJnkkNgYGUnwdK"
-    servers :
-      - name: suzen901server
-        flag: "hFYhnDBGmSsfDltJnkkNgYGUnwdK"
+  ## Chain 9
+  # base64 + curl
+- name: suzen0901
+  password: suzen0901
+  chain: 9
+  flag: &suzen0901flag hFYhnDBGmSsfDltJnkkNgYGUnwdK
+  servers:
+  - name: suzen0901server
+    flag: *suzen0901flag
 
-    ## Chain 11 (grep challenge)
-    # grep -c
-  - name    : suzen1101
-    password: "suzen1101"
-    sault   : "eiGohC9k"
-    flag    : "aid5looch4Auth1vig5eye8Zoh0t"
-    chain   : 11
-    # grep -r
-  - name    : suzen1102
-    password: "aid5looch4Auth1vig5eye8Zoh0t"
-    sault   : "Zijuo2Mo"
-    flag    : "Q2hhaHdldm9vd2llM0FhaG9vM2EK"
-    chain   : 11
-    # grep
-  - name    : suzen1103
-    password: "Q2hhaHdldm9vd2llM0FhaG9vM2EK"
-    sault   : "hue8ahQu"
-    flag    : "RWZhZTBhaVc2eXVhcGg3ZGVlcnUK"
-    chain   : 11
-    # grep -L
-  - name    : suzen1104
-    password: "RWZhZTBhaVc2eXVhcGg3ZGVlcnUK"
-    sault   : "DaoW7gai"
-    flag    : "cG9vd29oNHViMVZpdzBCZWFqb28K"
-    chain   : 11
+  ## Chain 10
+  # find
+- name: suzen1001
+  password: suzen1001
+  flag: &suzen1001flag CrXos4h3LbjofccUE7Vgkbu2dkBt
+  chain: 10
+  # ls
+- name: suzen1002
+  password: *suzen1001flag
+  flag: &suzen1002flag 1Rs28SPKtRCnkwWLaU42NH8PO6tf
+  chain: 10
+  # mv from Trash dir + rm
+- name: suzen1003
+  password: *suzen1002flag
+  flag: &suzen1003flag ApBDAPsu20JPCgKXYi22eRJxc85J
+  chain: 10
+  # find
+- name: suzen1004
+  password: *suzen1003flag
+  flag: &suzen1004flag cjs60vS8vl3nfieCuvNal0fV74en
+  chain: 10
+- name: suzen1005
+  password: *suzen1004flag
+  flag: cjs60vS8vl3nfieCuvNal0fV74en
+  chain: 10
 
-    ## Chain 16
-    # find
-  - name    : suzen1601
-    password: "suzen1601"
-    sault   : "Rc6uI4vD"
-    flag    : "cjs60vS8vl3nfieCuvNal0fV74en"
-    chain   : 16
+  ## Chain 11 (grep challenge)
+  # grep -c
+- name: suzen1101
+  password: suzen1101
+  flag: &suzen1101flag aid5looch4Auth1vig5eye8Zoh0t
+  chain: 11
+  # grep -r
+- name: suzen1102
+  password: *suzen1101flag
+  flag: &suzen1102flag Q2hhaHdldm9vd2llM0FhaG9vM2EK
+  chain: 11
+  # grep
+- name: suzen1103
+  password: *suzen1102flag
+  flag: &suzen1103flag RWZhZTBhaVc2eXVhcGg3ZGVlcnUK
+  chain: 11
+  # grep -L
+- name: suzen1104
+  password: *suzen1103flag
+  flag: cG9vd29oNHViMVZpdzBCZWFqb28K
+  chain: 11
 
-    ## Chain 14 (sort)
-    # sort -u
-  - name    : suzen1401
-    password: suzen1401
-    sault   : "vsKnvJak"
-    flag    : "GHsdgidAOJFEIJfdsknvajkfajbK"
-    chain   : 14
+  ## Chain 12 SED
+- name: suzen1201
+  password: suzen1201
+  flag: &suzen1201flag cXVlWWFpOXhvcGgyemFpdm9oZ2gK
+  config: ls|cd|cat|sed|sh
+  chain: 12
+- name: suzen1202
+  password: *suzen1201flag
+  flag: &suzen1202flag bW9oUXVlZTNmZWlnaGVpYmVpM3UK
+  config: ls|cd|cat|sed|awk|exec|echo|mkdir|md5sum|sh
+  chain: 12
+- name: suzen1203
+  password: *suzen1202flag
+  flag: &suzen1203flag YWhhZWthaG5naXBodWhhZXk5VXYK
+  config: ls|cd|cat|sed|sh
+  chain: 12
+- name: suzen1204
+  password: *suzen1203flag
+  flag: YWhuNnBoYWliNk5pbmk0Y2FiMGUK
+  config: ls|cd|cat|sed|tr|awk|sh
+  chain: 12
 
-    ## Chain 15 
-    # tar
-  - name    : suzen1501
-    password: "suzen1501"
-    sault   : "vsiuyTqw"
-    flag    : "4bf47e277be11d43b6817748359b"
-    chain   : 15
-    # 
-  - name    : suzen1502
-    password: "4bf47e277be11d43b6817748359b"
-    sault   : "3dsai45d"
-    flag    : "217e09Qff7cd34c44f37cd17f347"
-    chain   : 15
+  ## Chain 13 getfacl
+- name: suzen1301
+  password: suzen1301
+  flag: &suzen1301flag V2kwTGFlN0FwaGllTmd1OWVlc2gK
+  chain: 13
+- name: suzen1302
+  password: *suzen1301flag
+  flag: &suzen1302flag bWFlZm82WnUxeWFxdWlla2lldGkK
+  chain: 13
+- name: suzen1303
+  password: *suzen1302flag
+  flag: &suzen1303flag bWFlZm82WnUxeWFxdWlla2lldGkK
+  chain: 13
+- name: suzen1304
+  password: *suzen1303flag
+  flag: &suzen1304flag bWFlZm82WnUxeWFxdWlla2lldGkK
+  chain: 13
+- name: suzen1305
+  password: *suzen1304flag
+  flag: &suzen1305flag bWFlZm82WnUxeWFxdWlla2lldGkK
+  chain: 13
+- name: suzen1306
+  password: *suzen1305flag
+  flag: bWFlZm82WnUxeWFxdWlla2lldGkK
+  chain: 13
 
-    ## Chain 17
-    # apt-get
-  - name    : suzen1701
-    password: "suzen1701"
-    sault   : "vsiuyTqw"
-    flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
-    chain   : 17
-    # find
-  - name    : suzen1702
-    password: "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
-    sault   : "vsiuyTqw"
-    flag    : "bWFlZm82WnUxeWFxdWlla2lldGkK"
-    chain   : 17
-    # nmap
-  - name    : suzen1703
-    password: "bWFlZm82WnUxeWFxdWlla2lldGkK"
-    sault   : "vsiuyTqw"
-    flag    : "bG90aDdpZUZlNWNoaTRpZWs4bGEK"
-    chain   : 17
-  - name    : suzen1704
-    password: "bG90aDdpZUZlNWNoaTRpZWs4bGEK"
-    sault   : "vsiuyTqw"
-    flag    : "bG1gHfgjq091NWJTRpZjqe4wfEJJ"
-    chain   : 17
+  ## Chain 14 LPE
+  # apt-get
+- name: suzen1401
+  password: suzen1401
+  flag: &suzen1401flag V2kwTGFlN0FwaGllTmd1OWVlc2gK
+  chain: 14
+  # find
+- name: suzen1402
+  password: *suzen1401flag
+  flag: &suzen1402flag bWFlZm82WnUxeWFxdWlla2lldGkK
+  chain: 14
+  # nmap
+- name: suzen1403
+  password: *suzen1402flag
+  flag: &suzen1403flag bG90aDdpZUZlNWNoaTRpZWs4bGEK
+  chain: 14
+  # cowsay
+- name: suzen1404
+  password: *suzen1403flag
+  flag: bG1gHfgjq091NWJTRpZjqe4wfEJJ
+  chain: 14
 
-    ## Chain 18
-    # getfacl
-  - name    : suzen1801
-    password: "suzen1801"
-    sault   : "vsiuyTqw"
-    flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
-    chain   : 18
-    #
-  - name    : suzen1802
-    password: "suzen1802"
-    sault   : "vsiuyTqw"
-    flag    : "bWFlZm82WnUxeWFxdWlla2lldGkK"
-    chain   : 18
-  - name    : suzen1803
-    password: "suzen1803"
-    sault   : "vsiuyTqw"
-    flag    : "bWFlZm82WnUxeWFxdWlla2lldGkK"
-    chain   : 18
-  - name    : suzen1804
-    password: "suzen1804"
-    sault   : "vsiuyTqw"
-    flag    : "bWFlZm82WnUxeWFxdWlla2lldGkK"
-    chain   : 18
-  - name    : suzen1805
-    password: "suzen1805"
-    sault   : "vsiuyTqw"
-    flag    : "bWFlZm82WnUxeWFxdWlla2lldGkK"
-    chain   : 18
-  - name    : suzen1806
-    password: "suzen1806"
-    sault   : "vsiuyTqw"
-    flag    : "bWFlZm82WnUxeWFxdWlla2lldGkK"
-    chain   : 18
 
-    ## Chain 19
-    # build-essentials for ostep lab2
-  - name    : suzen1901
-    password: "suzen1901"
-    sault   : "vsiuyTqw"
-    flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
-    chain   : 19
-    # build-essentials for ostep lab1
-  - name    : suzen1902
-    password: "suzen1902"
-    sault   : "vsiuyTqw"
-    flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
-    chain   : 19
-  - name    : suzen1903
-    password: "suzen1903"
-    sault   : "vsiuyTqw"
-    flag    : "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
-    chain   : 19
-
-    ## Chain 20
-    # Using sed
-  - name    : suzen2001
-    password: "suzen2001"
-    sault   : "kBspmKSa"
-    flag    : "cXVlWWFpOXhvcGgyemFpdm9oZ2gK"
-    config  : "ls|cd|cat|sed|sh"
-    chain   : 20
-
-  - name    : suzen2002
-    password: "cXVlWWFpOXhvcGgyemFpdm9oZ2gK"
-    sault   : "kBspmKSa"
-    flag    : "bW9oUXVlZTNmZWlnaGVpYmVpM3UK"
-    config  : "ls|cd|cat|sed|awk|exec|echo|mkdir|md5sum|sh"
-    chain   : 20
-
-  - name    : suzen2003
-    password: "bW9oUXVlZTNmZWlnaGVpYmVpM3UK"
-    sault   : "kBspmKSa"
-    flag    : "YWhhZWthaG5naXBodWhhZXk5VXYK"
-    config  : "ls|cd|cat|sed|sh"
-    chain   : 20
-
-  - name    : suzen2004
-    password: "YWhhZWthaG5naXBodWhhZXk5VXYK"
-    sault   : "kBspmKSa"
-    flag    : "YWhuNnBoYWliNk5pbmk0Y2FiMGUK"
-    config  : "ls|cd|cat|sed|tr|awk|sh"
-    chain   : 20
-
-    ## Chain 23
-    # find
-  - name    : suzen2301
-    password: "suzen2301"
-    sault   : "asdasdasd"
-    flag    : "CrXos4h3LbjofccUE7Vgkbu2dkBt"
-    chain   : 23
-    # ls
-  - name    : suzen2302
-    password: "CrXos4h3LbjofccUE7Vgkbu2dkBt"
-    sault   : "asdasdasd"
-    flag    : "1Rs28SPKtRCnkwWLaU42NH8PO6tf"
-    chain   : 23
-    # mv from Trash dir + rm
-  - name    : suzen2303
-    password: "1Rs28SPKtRCnkwWLaU42NH8PO6tf"
-    sault   : "asdasdasd"
-    flag    : "ApBDAPsu20JPCgKXYi22eRJxc85J"
-    chain   : 23
 
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
@@ -436,3 +341,20 @@ levels          :
 #    flag    : ""
 #    config  : ""
 #    chain   : ""
+
+# WTF
+#  # NOT FOR GAMING
+#  # build-essentials for ostep lab2
+#- name: suzen1901
+#  password: "suzen1901"
+#  flag: "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
+#  chain: 19
+#  # build-essentials for ostep lab1
+#- name: suzen1902
+#  password: "suzen1902"
+#  flag: "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
+#  chain: 19
+#- name: suzen1903
+#  password: "suzen1903"
+#  flag: "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
+#  chain: 19

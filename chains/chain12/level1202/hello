@@ -1,0 +1,11 @@
+#!/bin/sh
+echo -e "\n########################################"
+echo -e   "#                                      #"
+echo -e   "#       Hello! It's level 1202         #"
+echo -e   "#                                      #"
+echo -e   "#        Save the code without         #"
+echo -e   "#         comments in a file:          #"
+echo -e   "#             'answer.py'              #"
+echo -e   "#                                      #"
+echo -e   "########################################"
+sh

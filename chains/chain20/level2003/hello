@@ -1,9 +1,0 @@
-#!/bin/sh
-echo -e "\n########################################"
-echo -e   "#                                      #"
-echo -e   "#       Hello! It's level 2003         #"
-echo -e   "#         You need to decode           #"
-echo -e   "#             the flag!                #"
-echo -e   "#                                      #"
-echo -e   "########################################"
-sh

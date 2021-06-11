@@ -1,12 +1,12 @@
-FROM alpine
-
+FROM debian
 ARG FLAG
+RUN useradd -s /bin/bash -m suzen && apt update && apt -y install sudo && \
+    echo "suzen ALL=NOPASSWD: /usr/bin/apt-get *" >> /etc/sudoers
+ADD hello /bin/hello
 
-ADD hello /bin
-RUN adduser -D suzen && rm /bin/egrep /bin/grep
-ADD mail.txt /home/suzen    
-ADD diary.txt /home/suzen
-RUN cd /home/suzen && sed -i "s/INSERT_FLAG_HERE/${FLAG}/g" mail.txt
+RUN echo "${FLAG}" >> /home/suzen/diary.txt && chmod 640 /home/suzen/diary.txt
+WORKDIR /home/suzen
+
+USER suzen
 
 ENTRYPOINT ["/bin/hello"]
-WORKDIR /home/suzen

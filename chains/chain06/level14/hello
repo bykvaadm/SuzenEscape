@@ -1,9 +1,0 @@
-#!/bin/sh
-echo -e "\n####################################"
-echo -e   "#                                   #"
-echo -e   "#       Hello! It's level 14        #"
-echo -e   "#                                   #"
-echo -e   "#      u will need cd and ls        #"
-echo -e   "#                                   #"
-echo -e   "####################################"
-sh

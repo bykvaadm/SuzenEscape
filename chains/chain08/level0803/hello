@@ -1,0 +1,16 @@
+#!/bin/sh
+echo -e "\n###########################################"
+echo -e   "#                                          #"
+echo -e   "#         Hello! It's level 0803           #"
+echo -e   "#                                          #"
+echo -e   "#   This is external checker type level.   #"
+echo -e   "#      Wait for 1 min after solving        #"
+echo -e   "#                                          #"
+echo -e   "#   that's so easy! print file contents    #"
+echo -e   "#             (continuously)               #"
+echo -e   "#                                          #"
+echo -e   "###########################################"
+
+/bin/init & 2>/dev/null
+
+sh

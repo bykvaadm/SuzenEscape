@@ -1,9 +1,0 @@
-#!/bin/bash
-echo -e "\n######################################"
-echo -e   "#                                    #"
-echo -e   "#     Hello! It's level 1802         #"
-echo -e   "#                                    #"
-echo -e   "#   THIS IS ACL LEVEL. READ DIARY    #"
-echo -e   "#                                    #"
-echo -e   "######################################"
-bash

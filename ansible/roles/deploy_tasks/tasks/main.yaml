@@ -6,61 +6,61 @@
     - python3-passlib
     - python-passlib
   tags:
-    - test
+  - test
 
-- name      : create users
-  user      :
-    name       : "{{ item.name }}"
-    password   : "{{ item.password | password_hash('sha512', item.sault) }}"
-    shell      : /usr/local/bin/dockersh
-    groups     : docker
+- name: create users
+  user:
+    name: "{{ item.name }}"
+    password: "{{ item.password | password_hash('sha512', 'sault') }}"
+    shell: /usr/local/bin/dockersh
+    groups: docker
     create_home: yes
   with_items: "{{ levels }}"
 
-- name      : add custom shell in list
+- name: add custom shell in list
   lineinfile:
     path: /etc/shells
     line: /usr/local/bin/dockersh
 
-- name    : upload custom shell
+- name: upload custom shell
   template:
-    src  : dockersh.j2
-    dest : /usr/local/bin/dockersh
+    src: dockersh.j2
+    dest: /usr/local/bin/dockersh
     owner: root
     group: root
-    mode : 0755
+    mode: 0755
 
 - name: Create kill docker cron job
   cron:
-    name     : docker cleanup
-    user     : root
-    job      : "/usr/local/bin/kill-docker.sh"
+    name: docker cleanup
+    user: root
+    job: "/usr/local/bin/kill-docker.sh"
     cron_file: docker
 
 - name: Create external checker cron job
   cron:
-    name     : external checker
-    user     : root
-    job      : "/usr/local/bin/checker.sh"
+    name: external checker
+    user: root
+    job: "/usr/local/bin/checker.sh"
     cron_file: checker
 
 - name: upload external checker wrapper
   copy:
-    src  : checker.sh
-    dest : /usr/local/bin/checker.sh
+    src: checker.sh
+    dest: /usr/local/bin/checker.sh
     owner: root
     group: root
-    mode : 0755
+    mode: 0755
 
 - name: create directory for scripts
   file:
-    path : /opt/susenescape
+    path: /opt/susenescape
     state: directory
-    mode : 0755
+    mode: 0755
 
-- name      : upload checker scripts
-  template  :
-    src : "{{ item }}"
+- name: upload checker scripts
+  template:
+    src: "{{ item }}"
     dest: "/opt/susenescape/{{ item | basename | replace('.j2', '' ) }}"
     mode: 0755
   with_fileglob:
@@ -68,25 +68,25 @@
 
 - name: upload cleanup docker script
   template:
-    src  : kill-docker.sh
-    dest : /usr/local/bin/kill-docker.sh
+    src: kill-docker.sh
+    dest: /usr/local/bin/kill-docker.sh
     owner: root
     group: root
-    mode : 0755
+    mode: 0755
 
-- name    : check if rules file exists
-  stat    :
+- name: check if rules file exists
+  stat:
     path: /var/tmp/addr
   register: kostyl_stat
 
-- name      : create kostyl file
+- name: create kostyl file
   lineinfile:
-    path  : /var/tmp/addr
-    line  : '1'
+    path: /var/tmp/addr
+    line: '1'
     create: yes
-    mode  : 0777
-    state : present
-  when      : kostyl_stat.stat.exists == false
+    mode: 0777
+    state: present
+  when: kostyl_stat.stat.exists == false
 
 - name: upload docker config
   template:
@@ -107,19 +107,19 @@
 
 - name: upload ssh_config
   copy:
-    src  : ssh_config
-    dest : /etc/ssh/ssh_config
+    src: ssh_config
+    dest: /etc/ssh/ssh_config
     owner: root
     group: root
-    mode : 0644
+    mode: 0644
 
 - name: upload sshd_config
   copy:
-    src  : sshd_config
-    dest : /etc/ssh/sshd_config
+    src: sshd_config
+    dest: /etc/ssh/sshd_config
     owner: root
     group: root
-    mode : 0644
+    mode: 0644
   register: sshd_config
 
 - name: restart sshd
@@ -128,38 +128,38 @@
     state: restarted
   when: sshd_config.changed
 
-- name        : Pull docker image
-  command     : docker pull {{ registry_url }}/suzenescape/{{ item.name }}
-  register    : docker_pull
+- name: Pull docker image
+  command: docker pull {{ registry_url }}/suzenescape/{{ item.name }}
+  register: docker_pull
   changed_when: "'Status: Downloaded newer image' in docker_pull.stdout"
-  with_items  : "{{ levels }}"
-  when        : tasks_to_build == "all"
-  tags        :
-    - pull
-    - new_task
+  with_items: "{{ levels }}"
+  when: tasks_to_build == "all"
+  tags:
+  - pull
+  - new_task
 
-- name        : Pull docker image
-  command     : docker pull {{ registry_url }}/suzenescape/suzen{{ item }}
-  register    : docker_pull
+- name: Pull docker image
+  command: docker pull {{ registry_url }}/suzenescape/suzen{{ item }}
+  register: docker_pull
   changed_when: "'Status: Downloaded newer image' in docker_pull.stdout"
-  with_items  : "{{ tasks_to_build.split() }}"
-  when        : tasks_to_build != "all"
+  with_items: "{{ tasks_to_build.split() }}"
+  when: tasks_to_build != "all"
 
-- name        : Pull docker server image
-  command     : docker pull {{ registry_url }}/suzenescape/{{ item.1.name }}
-  register    : docker_pull_servers
+- name: Pull docker server image
+  command: docker pull {{ registry_url }}/suzenescape/{{ item.1.name }}
+  register: docker_pull_servers
   changed_when: "'Status: Downloaded newer image' in docker_pull_servers.stdout"
-  loop        : "{{ levels | subelements('servers', skip_missing=True) }}"
-  when        : tasks_to_build == "all"
-  tags        :
-    - pull
-    - new_task
+  loop: "{{ levels | subelements('servers', skip_missing=True) }}"
+  when: tasks_to_build == "all"
+  tags:
+  - pull
+  - new_task
 
-- name        : Pull docker server image
-  command     : docker pull {{ registry_url }}/suzenescape/suzen{{ item }}server
-  register    : docker_pull_servers
+- name: Pull docker server image
+  command: docker pull {{ registry_url }}/suzenescape/suzen{{ item }}server
+  register: docker_pull_servers
   changed_when: "'Status: Downloaded newer image' in docker_pull_servers.stdout"
-  loop        : "{{ tasks_to_build.split() }}"
-  when        :
+  loop: "{{ tasks_to_build.split() }}"
+  when:
   - tasks_to_build != "all"
   - levels | selectattr('name', 'equalto', "suzen" + item ) | selectattr('servers', 'defined')|list|length>0

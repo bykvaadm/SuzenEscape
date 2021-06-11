@@ -1,0 +1,8 @@
+#!/bin/sh
+echo -e "\n########################################"
+echo -e   "#                                      #"
+echo -e   "#       Hello! It's level 1404         #"
+echo -e   "#                                      #"
+echo -e   "########################################\n"
+/usr/games/cowsay PSSSST! Use me to get real cow force
+bash

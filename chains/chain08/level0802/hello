@@ -1,0 +1,11 @@
+#!/bin/sh
+echo -e "\n###########################################"
+echo -e   "#                                       #"
+echo -e   "#       Hello! It's level 0802          #"
+echo -e   "#                                       #"
+echo -e   "#       micro less challenge:           #"
+echo -e   "#       flag parts are at the top,      #"
+echo -e   "#       center and bottom of file.      #"
+echo -e   "#                                       #"
+echo -e   "###########################################"
+sh

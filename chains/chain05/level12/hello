@@ -1,8 +1,0 @@
-#!/usr/local/bin/bash
-echo -e "\n####################################"
-echo -e   "#                                  #"
-echo -e   "#       Hello! It's level 12       #"
-echo -e   "#           read diary.txt         #"
-echo -e   "#                                  #"
-echo -e   "####################################"
-bash

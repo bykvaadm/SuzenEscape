@@ -4,8 +4,8 @@
     docker build -t 127.0.0.1:5000/suzenescape/web . && \
     docker push 127.0.0.1:5000/suzenescape/web
   when:
-    - vagrant|bool == true
-    - is_online == "yes"
+  - vagrant|bool == true
+  - is_online == "yes"
 
 - name: build'n'deploy web
   shell: |
@@ -17,8 +17,8 @@
   register: result
   until: result is not failed
   when:
-    - vagrant|bool == false
-    - is_online == "yes"
+  - vagrant|bool == false
+  - is_online == "yes"
   connection: local
   become: no
 

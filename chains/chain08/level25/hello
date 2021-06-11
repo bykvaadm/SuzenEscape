@@ -1,9 +1,0 @@
-#!/bin/sh
-echo -e "\n###########################################"
-echo -e   "#                                         #"
-echo -e   "#         Hello! It's level 25            #"
-echo -e   "#                                         #"
-echo -e   "#   that's so easy! print file contents   #"
-echo -e   "#                                         #"
-echo -e   "###########################################"
-sh

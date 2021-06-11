@@ -1,0 +1,10 @@
+#!/bin/sh
+echo -e "\n####################################"
+echo -e   "#                                   #"
+echo -e   "#       Hello! It's level 0603      #"
+echo -e   "#                                   #"
+echo -e   "#        i forgot who i am          #"
+echo -e   "#                                   #"
+echo -e   "####################################"
+export PS1="# "
+sh

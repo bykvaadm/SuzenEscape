@@ -1,0 +1,9 @@
+#!/bin/sh
+echo -e "\n####################################"
+echo -e   "#                                   #"
+echo -e   "#       Hello! It's level 0605      #"
+echo -e   "#                                   #"
+echo -e   "#           RTFM diary!             #"
+echo -e   "#                                   #"
+echo -e   "####################################"
+sh

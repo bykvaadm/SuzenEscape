@@ -1,26 +1,29 @@
 - name: install pkgs
   apt:
     update_cache: "{{ is_online | default('yes') }}"
-    name        :
-      - apt-transport-https
-      - ca-certificates
-      - curl
-      - gnupg2
-      - software-properties-common
-      - htop
-- name   : Add an Apt signing key, uses whichever key is at the URL
+    name:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg2
+    - software-properties-common
+    - htop
+
+- name: Add an Apt signing key, uses whichever key is at the URL
   apt_key:
-    url  : https://download.docker.com/linux/debian/gpg
+    url: https://download.docker.com/linux/debian/gpg
     state: present
   when: is_online == "yes"
+
 - name: add docker repo
   apt_repository:
-    repo : deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
     state: present
+
 - name: install pkgs
-  apt :
+  apt:
     update_cache: "{{ is_online | default('yes') }}"
-    name        :
+    name:
     - docker-ce
     - docker-ce-cli
     - containerd.io

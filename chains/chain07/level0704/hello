@@ -1,0 +1,12 @@
+#!/bin/sh
+echo -e "\n########################################################################"
+echo -e   "#                                                                      #"
+echo -e   "#                       Hello! It's level 0704                         #"
+echo -e   "#                                                                      #"
+echo -e   "#  This is external checker type level. Wait for 1 min after solving   #"
+echo -e   "#                                                                      #"
+echo -e   "#               create 999 txt files (1.txt~999.txt)                   #"
+echo -e   "#             flag will appear in this directory:   ~suzen             #"
+echo -e   "#                                                                      #"
+echo -e   "########################################################################"
+sh

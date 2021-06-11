@@ -1,0 +1,8 @@
+#!/bin/bash
+echo -e "\n####################################"
+echo -e   "#                                  #"
+echo -e   "#       Hello! It's level 0401     #"
+echo -e   "#     READ MY DIARY IN HOMEDIR     #"
+echo -e   "#                                  #"
+echo -e   "####################################"
+bash

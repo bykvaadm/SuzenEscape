@@ -1,8 +1,0 @@
-#!/bin/bash
-echo -e "\n####################################"
-echo -e   "#                                  #"
-echo -e   "#       Hello! It's level 8        #"
-echo -e   "# I'm suzen and this is my diary.. #"
-echo -e   "#                                  #"
-echo -e   "####################################"
-rm /bin/hello

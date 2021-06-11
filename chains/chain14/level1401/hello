@@ -1,7 +1,10 @@
-#!/bin/sh
-echo -e "\n####################################"
-echo -e   "#                                  #"
-echo -e   "#       Hello! It's level 1401     #"
-echo -e   "#                                  #"
-echo -e   "####################################"
-sh
+#!/bin/bash
+echo -e "\n######################################"
+echo -e   "#                                    #"
+echo -e   "#     Hello! It's level 1401         #"
+echo -e   "#                                    #"
+echo -e   "#   THIS IS LPE LEVEL. READ DIARY    #"
+echo -e   "#                                    #"
+echo -e   "######################################"
+
+bash
