@@ -429,6 +429,31 @@ levels          :
     flag    : "ApBDAPsu20JPCgKXYi22eRJxc85J"
     chain   : 23
 
+  ## Chain 24
+    # su + base64
+  - name    : suzen2401
+    password: "suzen2401"
+    sault   : "kBspmKSa"
+    flag    : "cGFocXUzZWlTaGVpMGlsZW01QWUK"
+    config  : "ls|cd|cat|su"
+    chain   : 24
+    # curl + exec
+  - name    : suzen2402
+    password: "cGFocXUzZWlTaGVpMGlsZW01QWUK"
+    sault   : "kBspmKSa
+    flag    : "ZWVRdTFhaXMyb3B1eGFrb2htZWkK"
+    chain   : 24
+    servers :
+      - name: suzen2402server
+        flag: "ZWVRdTFhaXMyb3B1eGFrb2htZWkK"
+
+    # alias
+  - name    : suzen2403
+    password: "ZWVRdTFhaXMyb3B1eGFrb2htZWkK"
+    sault   : "kBspmKSa"
+    flag    : "ApBDAPsu20JPCgKXYi22eRJxc85J"
+    chain   : 24
+
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
 #    password: ""
