@@ -1,0 +1,75 @@
+#!/bin/sh
+echo 'bykva_suzen1' $i > .gitignore
+echo 'My BOSS sent me parts of the flag at different times, so I commented on them as they arrived. Nobody told me why it was important to name commits differently, so I called them the same. now I can not find 4 commits where I added flags. I just remember that they start with "FLAG IS 1(2, 3, 4)" , and further 7 symbols flag. The flag consists of large and small letters and numbers. Help me!!!' > diary.txt
+for i in `seq 1 56`;
+do
+echo $i
+if [[ $i/2 = 1 ]]
+then
+echo 'GIT is a distributed version control system. The project was created by Linus Torvalds to manage the development of the Linux kernel, the first version was released on April 7, 2005. Today it is supported by Junio Hamano.' $i > readme.txt
+else
+echo 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. ' $i > readme.txt
+fi
+git add .
+git commit -m "Index"
+done
+    echo 'FLAG IS 1 ' $1 > readme.txt 
+    git add . 
+    git commit -m "Index"
+for i in `seq 1 97`;
+do
+echo $i
+if [[ $i/2 = 1 ]]
+then
+echo 'GIT is a distributed version control system. The project was created by Linus Torvalds to manage the development of the Linux kernel, the first version was released on April 7, 2005. Today it is supported by Junio Hamano.' $i > readme.txt
+else
+echo 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. ' $i > readme.txt
+fi
+git add .
+git commit -m "Index"
+done
+    echo 'FLAG IS 2 ' $2 > readme.txt 
+    git add . 
+    git commit -m "Index"
+for i in `seq 1 24`;
+do
+echo $i
+if [[ $i/2 = 1 ]]
+then
+echo 'GIT is a distributed version control system. The project was created by Linus Torvalds to manage the development of the Linux kernel, the first version was released on April 7, 2005. Today it is supported by Junio Hamano.' $i > readme.txt
+else
+echo 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. ' $i > readme.txt
+fi
+git add .
+git commit -m "Index"
+done
+    echo 'FLAG IS 3 ' $3 > readme.txt 
+    git add . 
+    git commit -m "Index"
+for i in `seq 1 56`;
+do
+echo $i
+if [[ $i/2 = 1 ]]
+then
+echo 'GIT is a distributed version control system. The project was created by Linus Torvalds to manage the development of the Linux kernel, the first version was released on April 7, 2005. Today it is supported by Junio Hamano.' $i > readme.txt
+else
+echo 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. ' $i > readme.txt
+fi
+git add .
+git commit -m "Index"
+done
+echo 'FLAG IS 4 ' $4 > readme.txt 
+    git add . 
+    git commit -m "Index"
+for i in `seq 1 33`;
+do
+echo $i
+if [[ $i/2 = 1 ]]
+then
+echo 'GIT is a distributed version control system. The project was created by Linus Torvalds to manage the development of the Linux kernel, the first version was released on April 7, 2005. Today it is supported by Junio Hamano.' $i > readme.txt
+else
+echo 'Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. ' $i > readme.txt
+fi
+git add .
+git commit -m "Index"
+done
