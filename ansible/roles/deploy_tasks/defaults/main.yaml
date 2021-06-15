@@ -1,0 +1,2 @@
+---
+deploy_tasks_kill_docker_regexp: (ctfchecker|web|registry|rabbitmq)

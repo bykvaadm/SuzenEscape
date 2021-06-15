@@ -67,7 +67,7 @@
   - ../templates/suzen*.j2
 
 - name: upload cleanup docker script
-  copy:
+  template:
     src  : kill-docker.sh
     dest : /usr/local/bin/kill-docker.sh
     owner: root
