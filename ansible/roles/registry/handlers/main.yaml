@@ -1,2 +1,7 @@
-- name: reload systemd
-  command: systemctl daemon-reload
+---
+- name: restart registry
+  systemd:
+    name: registry
+    daemon_reload: yes
+    enabled: yes
+    state: restarted

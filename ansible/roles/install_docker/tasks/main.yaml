@@ -1,6 +1,9 @@
-- name: install pkgs
+---
+- name: Collect only facts returned by facter
+  setup: filter=ansible_distribution*
+
+- name: install docker pre-required pkgs
   apt:
-    update_cache: "{{ is_online | default('yes') }}"
     name:
     - apt-transport-https
     - ca-certificates
@@ -9,20 +12,18 @@
     - software-properties-common
     - htop
 
-- name: Add an Apt signing key, uses whichever key is at the URL
+- name: ensure docker registry gpg key
   apt_key:
     url: https://download.docker.com/linux/debian/gpg
     state: present
-  when: is_online == "yes"
 
-- name: add docker repo
+- name: ensure docker repo
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+    repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
     state: present
 
-- name: install pkgs
+- name: install docker
   apt:
-    update_cache: "{{ is_online | default('yes') }}"
     name:
     - docker-ce
     - docker-ce-cli

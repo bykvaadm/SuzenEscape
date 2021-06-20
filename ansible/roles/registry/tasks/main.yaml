@@ -1,30 +1,117 @@
-- name: copy docker registry service file
+---
+- name: create dirs
+  file:
+    dest: "{{ item }}"
+    state: directory
+  with_items:
+  - /var/lib/registry
+  - /etc/registry
+  - "{{ registry_ssl_path }}"
+
+- name: ensure pip3 modules
+  pip:
+    executable: pip3
+    name: [six, docker, passlib, bcrypt]
+    state: present
+
+- name: Add a user to a htpasswd file
+  notify: restart registry
+  community.general.htpasswd:
+    path: /etc/registry/htpasswd
+    name: "{{ registry_user }}"
+    password: "{{ registry_password }}"
+    crypt_scheme: bcrypt
+    owner: root
+    mode: 0640
+
+- name: certbot
+  block:
+  - name: install certbot
+    apt: name=certbot
+  - name: issue certificates
+    shell: |
+      certbot certonly \
+      --keep-until-expiring \
+      --standalone \
+      -d registry.suzenescape.ru \
+      --email info@bykvaadm.ru \
+      --agree-tos \
+      --non-interactive \
+      --config-dir {{ registry_ssl_path }}
+    changed_when: false
+  - name: ensure certbot renew service
+    copy:
+      dest: /etc/systemd/system/certbot-renew.service
+      content: |
+        [Unit]
+        Description=renew certificates
+        [Service]
+        Type=oneshot
+        ExecStart=/bin/sh -c 'ertbot renew --config-dir {{ registry_ssl_path }}'
+  - name: ensure certbot-renew timer
+    copy:
+      dest: /etc/systemd/system/certbot-renew.timer
+      content: |
+        [Unit]
+        Description=backup testrail database every night at 3am
+        [Timer]
+        OnCalendar=*-*-* 3:00:00
+        [Install]
+        WantedBy=timers.target
+  - name: enable and start systemd timer
+    systemd:
+      name: certbot-renew.timer
+      state: started
+      enabled: yes
+
+- name: ensure docker registry service file
   copy:
-    src: registry.service
     dest: /etc/systemd/system/registry.service
     owner: root
     group: root
     mode: 0644
-  notify: reload systemd
-  register: service_file
+    content: |
+      [Unit]
+      Requires=docker.service
+      After=docker.service
+      StartLimitIntervalSec=0
+      [Service]
+      ExecStartPre=-/usr/bin/docker rm --force %N
+      ExecStart=/usr/bin/docker run \
+        --name=%N \
+        --rm=true \
+        --network=host \
+        --stop-timeout=300 \
+        --volume=/var/lib/registry:/var/lib/registry \
+        --volume=/etc/registry/htpasswd:/auth/htpasswd \
+        --volume={{ registry_ssl_path }}:{{ registry_ssl_path }} \
+        --env=REGISTRY_HTTP_TLS_CERTIFICATE="{{ registry_ssl_path }}/live/{{ registry_host }}/fullchain.pem" \
+        --env=REGISTRY_HTTP_TLS_KEY="{{ registry_ssl_path }}/live/{{ registry_host }}/privkey.pem" \
+        --env=REGISTRY_AUTH="htpasswd" \
+        --env=REGISTRY_AUTH_HTPASSWD_REALM="SuzenEscape Registry Realm" \
+        --env=REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd \
+        --env=REGISTRY_HTTP_SECRET="{{ registry_http_secret }}" \
+        --env=REGISTRY_HTTP_ADDR=0.0.0.0:{{ registry_port }} \
+        registry:2
+      ExecStop=-/usr/bin/docker stop %N
+      Restart=always
+      RestartSec=10
+      KillMode=process
+      [Install]
+      WantedBy=multi-user.target
+  notify: restart registry
 
-- name: Restart service
-  service: name=registry state=restarted
-  when: service_file.changed
+- name: execute handlers
+  meta: flush_handlers
 
-- name: Start service
-  service: name=registry state=started enabled=yes
-
-- set_fact:
-    registry_host: "{{ registry_url.split(':')[0] | lower }}"
-    registry_port: "{{ registry_url.split(':')[1] | lower }}"
+- name: start registry service
+  systemd:
+    name: registry
+    state: started
+    enabled: yes
 
 - name: Wait for dockreg port
   wait_for:
     port: "{{ registry_port }}"
     host: "{{ registry_host }}"
-    delay: 2
-  register: result
-
-- set_fact: registry="up"
-  when: result.state == "started"
+    timeout: 60

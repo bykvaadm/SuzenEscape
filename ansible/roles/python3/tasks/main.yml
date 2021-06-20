@@ -1,0 +1,54 @@
+---
+- name: Check Python is installed
+  raw: python --version
+  register: python_version
+  ignore_errors: yes
+  changed_when: false
+  check_mode: no
+
+- name: Install or update PyPy
+  when: python_version is failed or 'Python 3' not in python_version.stdout
+  raw: |
+    if egrep '(Debian|Ubuntu)' /etc/os-release -q; then \
+      apt update; \
+      apt -y install python3 python-setuptools python3-setuptools && update-alternatives --install /usr/bin/python python /usr/bin/python3 10; \
+    else \
+      mkdir --parents /opt/bin && \
+      curl --silent --show-error --location https://github.com//squeaky-pl/portable-pypy/releases/download/{{ pypy_version }}/{{ pypy_version }}-linux_x86_64-portable.tar.bz2 | tar xjf - --directory=/tmp && \
+      mv --force /tmp/{{ pypy_version }}-linux_x86_64-portable /opt/pypy && \
+      ln --symbolic --no-dereference --force /opt/pypy/bin/pypy /opt/bin/python; \
+    fi
+  changed_when: false
+
+- name: collect facts
+  setup: filter=ansible_distribution
+
+- name: Check PIP is installed
+  raw: pip3 --version
+  register: pip_version
+  ignore_errors: yes
+  changed_when: false
+
+- name: Install or update PIP for Flatcar linux
+  when:
+  - pip_version is failed
+  - '"Flatcar" in ansible_distribution'
+  raw: |
+    curl --silent --show-error --location --output /tmp/get-pip.py https://bootstrap.pypa.io/get-pip.py &&\
+    python /tmp/get-pip.py --no-wheel --quiet && \
+    ln --symbolic --no-dereference --force /opt/pypy/bin/pip /opt/bin/pip3 && \
+    rm --force /tmp/get-pip.py
+  changed_when: false
+
+- name: Install or update PIP for DEB linux
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  apt:
+    name: python3-pip
+    state: present
+
+- name: PIP self force upgrade to latest version
+  tags: [skip_ansible_lint]
+  pip:
+    name: pip
+    executable: pip3
+    state: latest

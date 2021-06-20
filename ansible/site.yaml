@@ -1,4 +1,14 @@
 ---
+- hosts: registry
+  gather_facts: no
+  tags: [dockreg]
+  roles:
+  - { role: python3, tags: [python] }
+  - { role: install_docker, tags: [install_docker] }
+  - { role: registry, tags: [registry] }
+  vars_files: [vars.yaml]
+
+
 - hosts: all
   gather_facts: no
   become: true

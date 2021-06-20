@@ -1,2 +1,11 @@
-[all]
-game1 ansible_host=135.181.100.223 ansible_user=root
+[tasks]
+suzenescape.ru
+
+[registry]
+registry.suzenescape.ru
+
+[web]
+rtfm.suzenescape.ru
+
+[all:vars]
+ansible_user=root
