@@ -1,0 +1,10 @@
+---
+- name: build tasks
+  shell: "cd ../; ./build.py {{ tasks_to_build | default('all') }}"
+  retries: 3
+  delay: 3
+  register: result
+  until: result is not failed
+  connection: local
+  tags: test
+  become: no

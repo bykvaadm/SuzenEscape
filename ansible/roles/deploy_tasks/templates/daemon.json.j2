@@ -6,7 +6,7 @@
          }
       ],
 {% if registry_proto == "http" %}
-  "insecure-registries":["{{ registry_url }}"],
+  "insecure-registries":["{{ registry_host }}"],
 {% endif %}
   "experimental": true
 }

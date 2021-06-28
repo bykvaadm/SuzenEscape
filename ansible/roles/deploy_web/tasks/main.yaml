@@ -1,40 +1,53 @@
-- name: build web
-  shell: |
-    cd /vagrant/suzen_website && \
-    docker build -t 127.0.0.1:5000/suzenescape/web . && \
-    docker push 127.0.0.1:5000/suzenescape/web
-  when:
-  - vagrant|bool == true
-  - is_online == "yes"
+---
+- name: get timestamp
+  shell: date +%Y-%m-%d-%H-%M-%S
+  register: timestamp
+  changed_when: false
 
 - name: build'n'deploy web
   shell: |
     cd ../suzen_website && \
-    docker build -t {{ registry_url }}/suzenescape/web . && \
-    docker push {{ registry_url }}/suzenescape/web
+    docker build -t {{ registry_host }}/suzenescape/web:{{ timestamp.stdout }} . && \
+    docker push {{ registry_host }}/suzenescape/web:{{ timestamp.stdout }}
   retries: 3
   delay: 3
   register: result
   until: result is not failed
-  when:
-  - vagrant|bool == false
-  - is_online == "yes"
   connection: local
   become: no
 
-- name: copy web service file
-  template:
-    src: web.service.j2
+- name: ensure web service file
+  copy:
     dest: /etc/systemd/system/web.service
     owner: root
     group: root
     mode: 0644
-  notify: reload systemd
-  register: service_file
+    content: |
+      [Unit]
+      Requires=docker.service
+      After=docker.service
+      StartLimitIntervalSec=0
+      [Service]
+      ExecStartPre=-/usr/bin/docker rm --force %N
+      ExecStart=/usr/bin/docker run \
+        --name=%N \
+        --rm=true \
+        --network=host \
+        --stop-timeout=300 \
+        {{ registry_host }}/suzenescape/web:{{ timestamp.stdout }}
+      ExecStop=-/usr/bin/docker stop %N
+      Restart=always
+      RestartSec=10
+      KillMode=process
+      [Install]
+      WantedBy=multi-user.target
+  notify: restart web
 
-- name: Restart service
-  service: name=web state=restarted
-  when: service_file.changed
+- name: execute handlers
+  meta: flush_handlers
 
-- name: Start service
-  service: name=web state=started enabled=yes
+- name: start web service
+  systemd:
+    name: web
+    state: started
+    enabled: yes

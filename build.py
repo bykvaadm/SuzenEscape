@@ -9,7 +9,7 @@ except ImportError:
     print(
         'Import error.',
         'You need to install requirements.',
-        'pip3 install -r requirements.txt',
+        'pip3 install \'docker>=3.7.1\' \'pyyaml>=5.1\' \'six>=1.16\'',
         sep='\n',
     )
     exit(1)

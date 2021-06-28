@@ -3,38 +3,26 @@
   gather_facts: no
   tags: [dockreg]
   roles:
-  - { role: python3, tags: [python] }
+  - { role: python3,        tags: [python] }
   - { role: install_docker, tags: [install_docker] }
-  - { role: registry, tags: [registry] }
-  vars_files: [vars.yaml]
+  - { role: registry,       tags: [registry] }
+  vars_files: [global_params.yaml]
 
-
-- hosts: all
+- hosts: web
   gather_facts: no
-  become: true
-  vars_files:
-  - vars.yaml
-
-  pre_tasks:
-  - name: intall python
-    raw: if [ "{{ is_online | default('yes') }}" == "yes" ]; then apt -y update; fi; apt install -y python-minimal python-apt
-    changed_when: false
-  - name: determine if registry is already installed
-    uri:
-      url: "{{ registry_proto }}://{{ registry_url }}"
-      return_content: yes
-      timeout: 5
-    register: result
-    ignore_errors: yes
-  - set_fact: registry="{{ result.status }}"
-  - name: if running first time
-    debug:
-      msg: "THIS IS FIRST TIME RUNNING. RE-RUN vagrant provision after uploading tasks to registry"
-    when: "registry == -1"
-
+  tags: [web]
   roles:
-  - { role: install_docker,   when: install_docker|bool == true }
-  - { role: registry,         when: deploy_registry|bool == true }
-  - { role: build_containers, when: [build_containers|bool == true, is_online == "yes"] }
-  - { role: deploy_web,       when: (registry != "-1") and (deploy_web|bool == true), tags: ["deploy_web"] }
-  - { role: deploy_tasks,     when: registry != "-1", tags: ["deploy_tasks"] }
+  - { role: python3,        tags: [python] }
+  - { role: install_docker, tags: [install_docker] }
+  - { role: deploy_web,     tags: [deploy_web] }
+  vars_files: [global_params.yaml]
+
+- hosts: tasks
+  gather_facts: no
+  tags: [tasks]
+  roles:
+  - { role: python3,        tags: [python] }
+  - { role: install_docker, tags: [install_docker], when: install_docker }
+  - { role: build_tasks,    tags: [build_tasks] }
+  - { role: deploy_tasks,   tags: [deploy_tasks] }
+  vars_files: [global_params.yaml, vars.yaml]
