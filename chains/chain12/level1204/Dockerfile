@@ -17,7 +17,7 @@ ARG CONFIG
 COPY --from=bash /flag /home/suzen
 COPY diary.txt /home/suzen
 
-RUN cd /bin && ls | egrep -vw "(${CONFIG})" | xargs rm
+RUN cd /bin && ls | egrep -vw "(ls|cd|cat|sed|tr|awk|sh)" | xargs rm
 
 ADD hello /bin/hello
 

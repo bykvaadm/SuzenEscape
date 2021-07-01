@@ -1,7 +1,7 @@
 FROM bykva/busybinaries as busybinaries
 
 ARG CONFIG
-RUN cd /bin && ls | egrep -vw "(${CONFIG})" | xargs rm
+RUN cd /bin && ls | egrep -vw "(ls|cd|ls|mknod|sh)" | xargs rm
 
 FROM bash
 

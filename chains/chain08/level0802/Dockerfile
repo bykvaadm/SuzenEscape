@@ -16,7 +16,7 @@ ARG CONFIG
 
 COPY --from=bash /flag /home/suzen
 
-RUN cd /bin && ls | egrep -vw "(${CONFIG})" | xargs rm
+RUN cd /bin && ls | egrep -vw "(less|ls|sh)" | xargs rm
 
 ADD hello /bin/hello
 

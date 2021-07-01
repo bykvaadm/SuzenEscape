@@ -94,7 +94,7 @@ install_docker  : true
 vagrant         : true
 registry_proto  : http
 is_online       : "yes"
-registry_url    : "127.0.0.1:5000"
+registry_host    : "127.0.0.1:5000"
 tasks_to_build  : "1101 1102" # Здесь нужно через пробел указать уровни которые вы разрабатываете
 ```
 2) После этого вы получите доступ к задачам:
@@ -112,7 +112,7 @@ install_docker  : false
 vagrant         : true
 registry_proto  : http
 is_online       : "yes"
-registry_url    : "127.0.0.1:5000"
+registry_host    : "127.0.0.1:5000"
 tasks_to_build  : "1101 1102"
 ```
 
@@ -129,6 +129,6 @@ install_docker  : true
 vagrant         : true
 registry_proto  : http
 is_online       : "yes"
-registry_url    : "127.0.0.1:5000"
+registry_host    : "127.0.0.1:5000"
 tasks_to_build  : "all"
 ```

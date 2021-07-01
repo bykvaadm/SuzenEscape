@@ -29,9 +29,18 @@
     - docker-ce-cli
     - containerd.io
 
+- name: upload docker config
+  notify: restart docker service
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: 0755
+
 - name: log into registry
   docker_login:
-    registry_url: "{{ registry_url }}"
+    registry_url: "{{ registry_host }}"
     username: "{{ registry_user }}"
     password: "{{ registry_password }}"
   when: inventory_hostname not in groups['registry']

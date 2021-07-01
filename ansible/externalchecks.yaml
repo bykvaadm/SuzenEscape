@@ -1,0 +1,128 @@
+---
+externalchecks:
+- name: suzen0701
+  externalcheck: |
+    #!/bin/bash
+    ID="$1"
+    dockerstdout=$(docker exec ${ID} \
+      sh -c 'echo $(if [ -d /home/suzen/Documents/projects/lab19/using/simple/bash/commands ]; then echo yep; fi)')
+    dockerstdout=$(tr -dc '[[:print:]]' <<< "$dockerstdout")
+    if [ "$dockerstdout" = "yep" ]; then
+      FLAG="{{ levels | selectattr('name', 'equalto', 'suzen0701') | map(attribute='flag') | join(',') }}"
+      docker exec ${ID} mkdir "/home/suzen/Documents/projects/lab19/using/simple/bash/commands/${FLAG}"
+    fi
+- name: suzen0702
+  externalcheck: |
+    #!/bin/bash
+    ID="$1"
+    dockerstdout=$(docker exec ${ID} sh -c 'find "/home/john" -mindepth 1 -print 2>/dev/null')
+    dockerstdout=$(tr -dc '[[:print:]]' <<< "$dockerstdout")
+    if [ "$dockerstdout" = "" ]; then
+      FLAG="{{ levels | selectattr('name', 'equalto', 'suzen0702') | map(attribute='flag') | join(',') }}"
+      docker exec ${ID} mkdir "/home/suzen/${FLAG}"
+    fi
+- name: suzen0703
+  externalcheck: |
+    #!/bin/bash
+    ID="$1"
+    dockerstdout=$(docker exec ${ID} ls /home/suzen)
+    md5=$(printf "%s\n" "$dockerstdout" | md5sum | awk '{print $1}')
+    if [ "$md5" = "696c858a571863c21ede8017a1399951" ]; then
+      FLAG="{{ levels | selectattr('name', 'equalto', 'suzen0703') | map(attribute='flag') | join(',') }}"
+      docker exec ${ID} mkdir "/home/suzen/${FLAG}"
+    fi
+- name: suzen0704
+  externalcheck: |
+    #!/bin/bash
+    ID="$1"
+    dockerstdout=$(docker exec ${ID} ls /home/suzen)
+    md5=$(printf "%s\n" "$dockerstdout" | md5sum | awk '{print $1}')
+    if [ "$md5" = "0e1e388f75e27c33748cdfc1185cc2ec" ]; then
+      FLAG="{{ levels | selectattr('name', 'equalto', 'suzen0704') | map(attribute='flag') | join(',') }}"
+      docker exec ${ID} mkdir "/home/suzen/${FLAG}"
+    fi
+- name: suzen0705
+  externalcheck: |
+    #!/bin/bash
+    ID="$1"
+    dockerstdout1=$(docker exec ${ID} ls /home/suzen/source/)
+    dockerstdout2=$(docker exec ${ID} ls /home/suzen/destination/)
+    md52=$(printf "%s\n" "$dockerstdout2" | md5sum | awk '{print $1}')
+    if [ "$dockerstdout1" = "" ]; then
+      if [ "$md52" = "39b9bbe2ab9839d463a44843e2ad8234" ]; then
+        FLAG="{{ levels | selectattr('name', 'equalto', 'suzen0705') | map(attribute='flag') | join(',') }}"
+        docker exec ${ID} mkdir "/home/suzen/${FLAG}"
+      fi
+    fi
+- name: suzen0706
+  externalcheck: |
+    #!/bin/bash
+    ID="$1"
+    dockerstdout=$(docker exec ${ID} tree /home/suzen/)
+    md5=$(printf "%s\n" "$dockerstdout" | md5sum | awk '{print $1}')
+    if [ "$md5" = "15d2336c6f0f436f60872e68ec6c7d6c" ]; then
+      FLAG="{{ levels | selectattr('name', 'equalto', 'suzen0706') | map(attribute='flag') | join(',') }}"
+      docker exec ${ID} mkdir "/home/suzen/${FLAG}"
+    fi
+- name: suzen0803
+  externalcheck: |
+    #!/bin/bash
+    ID="$1"
+    dockerstdout=$(docker exec ${ID} ps aux)
+    if $(printf "%s\n" "$dockerstdout" | grep '\-f' | grep diary | grep -q tail); then
+      FLAG="{{ levels | selectattr('name', 'equalto', 'suzen0803') | map(attribute='flag') | join(',') }}"
+      docker exec ${ID} sh -c "echo FLAG: ${FLAG} >> /home/suzen/diary"
+    fi
+- name: suzen0804
+  externalcheck: |
+    #!/bin/bash
+    ID="$1"
+    dockerstdout=$(docker exec ${ID} md5sum /home/suzen/diary)
+    dockerstdout=$(tr -dc '[[:print:]]' <<< "$dockerstdout")
+    md5=$(echo ${dockerstdout} | awk '{print $1}')
+    if [ "$md5" = "09ad19c9d3502756f89a5e68c9938426" ]; then
+      FLAG="{{ levels | selectattr('name', 'equalto', 'suzen0804') | map(attribute='flag') | join(',') }}"
+      docker exec ${ID} mkdir "/home/suzen/${FLAG}"
+    fi
+- name: suzen1003
+  externalcheck: |
+    #!/bin/bash
+    ID="$1"
+    dockerstdout1=$(docker exec ${ID} ls /home/suzen/veryimportantdir/)
+    dockerstdout2=$(docker exec ${ID} ls /home/suzen/Desktop/)
+    dockerstdout3=$(docker exec ${ID} ls /home/suzen/Music/)
+    dockerstdout4=$(docker exec ${ID} ls /home/suzen/Pictures/)
+    dockerstdout5=$(docker exec ${ID} ls /home/suzen/Videos/)
+    dockerstdout6=$(docker exec ${ID} ls /home/suzen/.local/share/Trash/files/)
+    dockerstdout7=$(docker exec ${ID} ls /home/suzen/.local/share/Trash/info/)
+    md51=($(printf "%s\n" "$dockerstdout1" | md5sum)); md52=($(printf "%s\n" "$dockerstdout2" | md5sum))
+    md53=($(printf "%s\n" "$dockerstdout3" | md5sum)); md54=($(printf "%s\n" "$dockerstdout4" | md5sum))
+    md55=($(printf "%s\n" "$dockerstdout5" | md5sum))
+    if [ "$md51" = "6953cb93819773d3f24cb9a7733e7e06" ] && [ "$md52" = "b5b0e08bba2655ba2ab5e4353e858c3a" ] && \
+    [ "$md53" = "d6402c91063c5a2837931ed0ace2a647" ] && [ "$md54" = "9496de5850d668ce231177e5258d59fe" ] && \
+    [ "$md55" = "60b1541e575b6a5105039461488668e0" ] && [ "$dockerstdout6" = "" ] && [ "$dockerstdout7" = "" ]; then
+      FLAG="{{ levels | selectattr('name', 'equalto', 'suzen1003') | map(attribute='flag') | join(',') }}"
+       docker exec ${ID} sh -c "echo >> /home/suzen/${FLAG}"
+    fi
+- name: suzen1202
+  externalcheck: |
+    #!/bin/bash
+    ID="$1"
+    pattern="answer.py"
+    dockerstdout=$(docker exec ${ID} ls /home/suzen)
+    if [[ "$dockerstdout" == *"$pattern"* ]]
+    then
+      dockerstdout=$(docker exec ${ID} md5sum answer.py)
+      md5=$(echo "$dockerstdout" | awk '{print $1}')
+      if [ "$md5" == "fcaea3cd197f30930b210acd45a75eae" ]
+      then
+        FLAG="{{ levels | selectattr('name', 'equalto', 'suzen1202') | map(attribute='flag') | join(',') }}"
+        docker exec ${ID} mkdir "/home/suzen/${FLAG}"
+      fi
+    fi
+- name: suzen1404
+  externalcheck: |
+    #!/bin/bash
+    ID="$1"
+    FLAG="{{ levels | selectattr('name', 'equalto', 'suzen1404') | map(attribute='flag') | join(',') }}"
+    dockerstdout=$(docker exec -u hacker ${ID} sh -c "SECRET_TOKEN_TO_HACKERS_SERVER=${FLAG}; sleep 15s;" )

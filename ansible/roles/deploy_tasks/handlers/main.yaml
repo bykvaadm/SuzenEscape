@@ -1,0 +1,7 @@
+---
+- name: restart ssh service
+  service:
+    daemon_reload: yes
+    name: ssh
+    enabled: yes
+    state: restarted

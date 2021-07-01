@@ -1,13 +1,4 @@
-- name: install pkgs
-  apt:
-    update_cache: "{{ is_online | default('yes') }}"
-    name:
-    - bc
-    - python3-passlib
-    - python-passlib
-  tags:
-  - test
-
+---
 - name: create users
   user:
     name: "{{ item.name }}"
@@ -59,12 +50,12 @@
     mode: 0755
 
 - name: upload checker scripts
-  template:
-    src: "{{ item }}"
-    dest: "/opt/susenescape/{{ item | basename | replace('.j2', '' ) }}"
+  when: item.externalcheck is defined
+  copy:
+    content: "{{ item.externalcheck }}"
+    dest: "/opt/susenescape/{{ item.name }}"
     mode: 0755
-  with_fileglob:
-  - ../templates/suzen*.j2
+  with_items: "{{ externalchecks }}"
 
 - name: upload cleanup docker script
   template:
@@ -74,38 +65,8 @@
     group: root
     mode: 0755
 
-- name: check if rules file exists
-  stat:
-    path: /var/tmp/addr
-  register: kostyl_stat
-
-- name: create kostyl file
-  lineinfile:
-    path: /var/tmp/addr
-    line: '1'
-    create: yes
-    mode: 0777
-    state: present
-  when: kostyl_stat.stat.exists == false
-
-- name: upload docker config
-  template:
-    src: daemon.json.j2
-    dest: /etc/docker/daemon.json
-    owner: root
-    group: root
-    mode: 0755
-  register: docker_daemon_config
-
-- name: restart docker service
-  service:
-    daemon_reload: yes
-    name: docker
-    enabled: yes
-    state: restarted
-  when: docker_daemon_config.changed
-
 - name: upload ssh_config
+  notify: restart ssh service
   copy:
     src: ssh_config
     dest: /etc/ssh/ssh_config
@@ -114,22 +75,16 @@
     mode: 0644
 
 - name: upload sshd_config
+  notify: restart ssh service
   copy:
     src: sshd_config
     dest: /etc/ssh/sshd_config
     owner: root
     group: root
     mode: 0644
-  register: sshd_config
-
-- name: restart sshd
-  systemd:
-    name: sshd
-    state: restarted
-  when: sshd_config.changed
 
 - name: Pull docker image
-  command: docker pull {{ registry_url }}/suzenescape/{{ item.name }}
+  command: docker pull {{ registry_host }}/suzenescape/{{ item.name }}
   register: docker_pull
   changed_when: "'Status: Downloaded newer image' in docker_pull.stdout"
   with_items: "{{ levels }}"
@@ -139,14 +94,14 @@
   - new_task
 
 - name: Pull docker image
-  command: docker pull {{ registry_url }}/suzenescape/suzen{{ item }}
+  command: docker pull {{ registry_host }}/suzenescape/suzen{{ item }}
   register: docker_pull
   changed_when: "'Status: Downloaded newer image' in docker_pull.stdout"
   with_items: "{{ tasks_to_build.split() }}"
   when: tasks_to_build != "all"
 
 - name: Pull docker server image
-  command: docker pull {{ registry_url }}/suzenescape/{{ item.1.name }}
+  command: docker pull {{ registry_host }}/suzenescape/{{ item.1.name }}
   register: docker_pull_servers
   changed_when: "'Status: Downloaded newer image' in docker_pull_servers.stdout"
   loop: "{{ levels | subelements('servers', skip_missing=True) }}"
@@ -156,7 +111,7 @@
   - new_task
 
 - name: Pull docker server image
-  command: docker pull {{ registry_url }}/suzenescape/suzen{{ item }}server
+  command: docker pull {{ registry_host }}/suzenescape/suzen{{ item }}server
   register: docker_pull_servers
   changed_when: "'Status: Downloaded newer image' in docker_pull_servers.stdout"
   loop: "{{ tasks_to_build.split() }}"

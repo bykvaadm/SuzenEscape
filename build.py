@@ -15,10 +15,10 @@ except ImportError:
     exit(1)
 
 
-def build(level, registry_url, args):
+def build(level, registry_host, args):
     try:
-        image_tag = '{registry_url}/suzenescape/{level_name}'.format(
-            registry_url=registry_url, level_name=level['name']
+        image_tag = '{registry_host}/suzenescape/{level_name}'.format(
+            registry_host=registry_host, level_name=level['name']
         )
 
         _, build_log = client.images.build(
@@ -70,6 +70,7 @@ def argp():
     parser.add_argument('-v', '--verbose', help='log enable', action='count')
     # parser.add_argument('-f', '--vars-yaml', help='path to yaml level vars file')
     parser.add_argument('task', nargs='+', help='task to build list')
+    parser.add_argument('--registry', help='registry to build with')
 
     return parser.parse_args()
 
@@ -105,13 +106,13 @@ if __name__ == '__main__':
     logging.info('Start')
 
     try:
-        with open('ansible/vars.yaml', 'r') as stream:
+        with open('ansible/levels.yaml', 'r') as stream:
             yml = yaml.load(stream, Loader=yaml.BaseLoader)
     except yaml.YAMLError as exc:
         logging.error(exc)
         exit(1)
 
-    registry_url = yml['registry_url']
+    registry_host = args.registry
 
     levels_map = {level['name'][len('suzen'):]: level for level in yml['levels']}
 
@@ -129,4 +130,4 @@ if __name__ == '__main__':
 
     for level in build_query:
         logging.info('build level {level}'.format(level=level))
-        build(build_query[level], registry_url, args)
+        build(build_query[level], registry_host, args)

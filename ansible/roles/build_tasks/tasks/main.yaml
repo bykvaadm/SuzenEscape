@@ -1,6 +1,6 @@
 ---
 - name: build tasks
-  shell: "cd ../; ./build.py {{ tasks_to_build | default('all') }}"
+  shell: "cd ../; ./build.py --registry {{ registry_host }} {{ tasks_to_build | default('all') }}"
   retries: 3
   delay: 3
   register: result

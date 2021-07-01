@@ -15,7 +15,7 @@ ARG USERHOME
 ADD hello /bin
 
 RUN adduser -D suzen \
-    && cd /bin && ls | egrep -v "hello" | egrep -vw "(${CONFIG})" | xargs rm
+    && cd /bin && ls | egrep -v "hello" | egrep -vw "(sh|ls|awk|sed|sort|uniq|cat|find|grep|fold|rm|mv|split|cut|tr|less)" | xargs rm
 
 COPY --from=bash /diary.txt /home/suzen/diary.txt
 

@@ -8,7 +8,7 @@ COPY hello /bin
 
 RUN adduser -D suzen \
     && cd /bin \
-    && ls | egrep -v "hello" | egrep -vw "(${CONFIG})" | xargs rm \
+    && ls | egrep -v "hello" | egrep -vw "(ls|cd|cat|sed|sh)" | xargs rm \
     && cd /home/suzen/ \
     && echo "${FLAG}" \
     | sed "s/Y/\&\&/g" \

@@ -124,7 +124,7 @@ TOKEN="INSERT YOUR TOKEN HERE" ssh -p 2222 suzen1@127.0.0.1
 | -------------------------------------------------- | -------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
 | `deploy_registry`                                  | Контролирует сборку и установку контейнера Docker image registry                             | `true`                                                  |
 | `registry_proto`                                   | Global Docker image registry protocol                                                        | `http`                                                  |
-| `registry_url`                                     | Global Docker image registry url                                                             | `127.0.0.1:5000`                                        |
+| `registry_host`                                     | Global Docker image registry url                                                             | `127.0.0.1:5000`                                        |
 | `vagrant`                                          | Указатель среды в которой происходит работа ansible                                          | `vagrant`                                               |
 | `deploy_web`                                       | Контролирует сборку и установку контейнера с веб интерфейсом                                 | `true`                                                  |
 | `build_containers`                                 | Контролирует сборку и установку контейнеров с задачами                                       | `true`                                                  |

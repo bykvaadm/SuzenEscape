@@ -25,4 +25,4 @@
   - { role: install_docker, tags: [install_docker], when: install_docker }
   - { role: build_tasks,    tags: [build_tasks] }
   - { role: deploy_tasks,   tags: [deploy_tasks] }
-  vars_files: [global_params.yaml, vars.yaml]
+  vars_files: [global_params.yaml, levels.yaml, externalchecks.yaml]

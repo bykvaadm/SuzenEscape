@@ -8,26 +8,22 @@ levels:
 - name: suzen0101
   password: suzen0101
   flag: &suzen0101flag ZGFpejZhaFJhZVNhZXhhaWJ1YWYK
-  config: ls|cd|cat|file|du|find|sh
   chain: 1
   # read file
 - name: suzen0102
   password: *suzen0101flag
   flag: &suzen0102flag dGhlaWxpM2FoWm9odGFpM2VldzMK
-  config: ls|cd|sh|cat|less|more|head|tail
   chain: 1
   # read file
 - name: suzen0103
   password: *suzen0102flag
   flag: &suzen0103flag Y284ZWlxdXVlMmllTDNpZXBoNWUK
-  config: sh|ls
   rohome: true
   chain: 1
   # read file
 - name: suzen0104
   password: *suzen0103flag
   flag: C2HLBODHAER1ZMLLBNV1AGFPOW4K
-  config: sh|ls|awk|sed|sort|uniq|cat|find|grep|fold|rm|mv|split|cut|tr|less
   rohome: false
   chain: 1
 
@@ -36,7 +32,6 @@ levels:
 - name: suzen0201
   password: suzen0201
   flag: dmVlNFdvaE42ZWVoMFpvN3dhcGgK
-  config: ls|cd|ls|mknod|sh
   rohome: false
   chain: 2
   servers:
@@ -65,7 +60,7 @@ levels:
 - name: suzen0401
   password: suzen0401
   chain: 4
-  flag:  &suzen0401flag aWVyNWVvOGluM21haDBRdWFobTkK
+  flag: &suzen0401flag aWVyNWVvOGluM21haDBRdWFobTkK
   servers:
   - name: suzen0401server
     flag: *suzen0401flag
@@ -74,7 +69,6 @@ levels:
 - name: suzen0501
   password: suzen0501
   flag: &suzen0501flag aXY3ZWlqZWl5ZWlQaG9vczlhSmEK
-  config: ls|cd|cat|file|du|find|sh
   chain: 5
   # vim
 - name: suzen0502
@@ -167,7 +161,6 @@ levels:
 - name: suzen0802
   password: *suzen0801flag
   flag: &suzen0802flag WWVpc2gxYWlndXVrZWl5ZWloaWUK
-  config: less|ls|sh
   chain: 8
   # tail
 - name: suzen0803
@@ -178,13 +171,11 @@ levels:
 - name: suzen0804
   password: *suzen0803flag
   flag: &suzen0804flag ZWV4b1g1WnVkMm9oZnVjYWhkdTMK
-  config: sh|ls|cd|cat|md5sum|mkdir
   chain: 8
   # echo -e
 - name: suzen0805
   password: *suzen0804flag
   flag: dmFvbmcwcGFlMWlodUJvaFppZWQK
-  config: sh
   chain: 8
 
   ## Chain 9
@@ -249,22 +240,18 @@ levels:
 - name: suzen1201
   password: suzen1201
   flag: &suzen1201flag cXVlWWFpOXhvcGgyemFpdm9oZ2gK
-  config: ls|cd|cat|sed|sh
   chain: 12
 - name: suzen1202
   password: *suzen1201flag
   flag: &suzen1202flag bW9oUXVlZTNmZWlnaGVpYmVpM3UK
-  config: ls|cd|cat|sed|awk|exec|echo|mkdir|md5sum|sh
   chain: 12
 - name: suzen1203
   password: *suzen1202flag
   flag: &suzen1203flag YWhhZWthaG5naXBodWhhZXk5VXYK
-  config: ls|cd|cat|sed|sh
   chain: 12
 - name: suzen1204
   password: *suzen1203flag
   flag: YWhuNnBoYWliNk5pbmk0Y2FiMGUK
-  config: ls|cd|cat|sed|tr|awk|sh
   chain: 12
 
   ## Chain 13 getfacl
@@ -315,29 +302,4 @@ levels:
   flag: bG1gHfgjq091NWJTRpZjqe4wfEJJ
   chain: 14
 
-
-
-## EXAMPLE TEMPLATE
-#  - name    : suzen
-#    password: ""
-#    sault   : ""
-#    flag    : ""
-#    config  : ""
-#    chain   : ""
-
-# WTF
-#  # NOT FOR GAMING
-#  # build-essentials for ostep lab2
-#- name: suzen1901
-#  password: "suzen1901"
-#  flag: "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
-#  chain: 19
-#  # build-essentials for ostep lab1
-#- name: suzen1902
-#  password: "suzen1902"
-#  flag: "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
-#  chain: 19
-#- name: suzen1903
-#  password: "suzen1903"
-#  flag: "V2kwTGFlN0FwaGllTmd1OWVlc2gK"
-#  chain: 19
+#for id in $(docker ps -f "label=suzen19" --format '{{.ID}}'); do

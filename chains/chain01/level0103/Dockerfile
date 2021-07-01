@@ -9,7 +9,7 @@ ADD hello /bin
 RUN adduser -D suzen
 ADD -diary.txt- /home/suzen/
 RUN sed -i "s/FLAG/${FLAG}/g" /home/suzen/-diary.txt- \
-    && cd /bin && ls | egrep -v "hello" | egrep -vw "(${CONFIG})" | xargs rm
+    && cd /bin && ls | egrep -v "hello" | egrep -vw "(sh|ls)" | xargs rm
 WORKDIR /home/suzen
 
 CMD ["/bin/hello"]
