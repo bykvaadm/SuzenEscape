@@ -299,6 +299,12 @@ levels          :
     password: "4bf47e277be11d43b6817748359b"
     sault   : "3dsai45d"
     flag    : "217e09Qff7cd34c44f37cd17f347"
+    chain   : 15 
+    # zip
+  - name    : suzen1503
+    password: "217e09Qff7cd34c44f37cd17f347"
+    sault   : "aCXN84Wm"
+    flag    : "0rUdkL9E3qkMkCVOuNcwhNazsGol"
     chain   : 15
 
     ## Chain 17
