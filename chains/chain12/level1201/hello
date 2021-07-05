@@ -1,0 +1,10 @@
+#!/bin/bash
+echo -e "\n####################################"
+echo -e   "#                                  #"
+echo -e   "#       Hello! It's level 1201     #"
+echo -e   "#     This task is encrypted       #"
+echo -e   "#      and shorthand               #"
+echo -e   "#                                  #"
+echo -e   "####################################"
+bash
+

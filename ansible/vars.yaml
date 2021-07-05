@@ -271,6 +271,19 @@ levels          :
     flag    : "cG9vd29oNHViMVZpdzBCZWFqb28K"
     chain   : 11
 
+    ## Chain 12
+  - name    : suzen1201
+    password: "suzen1201"
+    sault   : "GTsqPcRa"
+    flag    : "nVWyifzngQZGYZfMdwsGNeVtKZbn"
+    chain   : 12
+    #hex 
+  - name    : suzen1202
+    password: "nVWyifzngQZGYZfMdwsGNeVtKZbn"
+    sault   : "eTsarRQC"
+    flag    : "KhBKgncNZhhbHdAxPQMAuNiOhKKm"
+    chain   : 12
+
     ## Chain 16
     # find
   - name    : suzen1601
@@ -428,6 +441,9 @@ levels          :
     sault   : "asdasdasd"
     flag    : "ApBDAPsu20JPCgKXYi22eRJxc85J"
     chain   : 23
+
+  
+
 
 ## EXAMPLE TEMPLATE
 #  - name    : suzen
