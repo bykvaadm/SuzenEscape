@@ -1,0 +1,8 @@
+#!/bin/sh
+echo -e "\n################################################"
+echo -e   "#                                              #"
+echo -e   "#            Hello! It's level 2401            #"
+echo -e   "#    Find flag on the neighbour server         #"
+echo -e   "#                                              #"
+echo -e   "################################################"
+sh
